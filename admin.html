@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rampagers Admin</title>
+<style>
+body {
+  font-family: sans-serif;
+  background: #f5f7fc;
+  padding: 40px;
+}
+.container {
+  max-width: 500px;
+  margin: auto;
+}
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+button {
+  background: #703fd3;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+.hidden {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- LOGIN -->
+  <div id="login">
+    <h2>Admin Login</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="checkPassword()">Login</button>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="admin" class="hidden">
+    <h2>Edit Runs</h2>
+
+    <h3>Saturday Run</h3>
+    <input id="sat-time" placeholder="Time">
+    <input id="sat-location" placeholder="Location">
+    <textarea id="sat-desc" placeholder="Description"></textarea>
+
+    <h3>Tuesday Run</h3>
+    <input id="tue-day" placeholder="Day (e.g. Tuesday, Apr 2)">
+    <input id="tue-time" placeholder="Time">
+    <input id="tue-location" placeholder="Location">
+    <textarea id="tue-workout" placeholder="Workout"></textarea>
+
+    <button onclick="saveRuns()">Save Changes</button>
+
+    <p id="status"></p>
+  </div>
+
+</div>
+
+<script>
+const PASSWORD = "rampagers123"; // CHANGE THIS
+
+function checkPassword() {
+  const input = document.getElementById('password').value;
+  if (input === PASSWORD) {
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('admin').classList.remove('hidden');
+    loadRuns();
+  } else {
+    alert("Wrong password");
+  }
+}
+
+async function loadRuns() {
+  const res = await fetch('/data/runs.json');
+  const data = await res.json();
+
+  document.getElementById('sat-time').value = data.saturday.time;
+  document.getElementById('sat-location').value = data.saturday.location;
+  document.getElementById('sat-desc').value = data.saturday.description;
+
+  document.getElementById('tue-day').value = data.tuesday.day;
+  document.getElementById('tue-time').value = data.tuesday.time;
+  document.getElementById('tue-location').value = data.tuesday.location;
+  document.getElementById('tue-workout').value = data.tuesday.workout;
+}
+
+async function saveRuns() {
+  const updated = {
+    saturday: {
+      day: "Saturday",
+      time: document.getElementById('sat-time').value,
+      location: document.getElementById('sat-location').value,
+      description: document.getElementById('sat-desc').value,
+      routes: [] // keep static for now
+    },
+    tuesday: {
+      day: document.getElementById('tue-day').value,
+      type: "Track Night",
+      time: document.getElementById('tue-time').value,
+      location: document.getElementById('tue-location').value,
+      workout: document.getElementById('tue-workout').value
+    }
+  };
+
+  document.getElementById('status').innerText =
+    "⚠️ Copy this JSON and paste into /data/runs.json:";
+
+  console.log(JSON.stringify(updated, null, 2));
+}
+</script>
+
+</body>
+</html>
