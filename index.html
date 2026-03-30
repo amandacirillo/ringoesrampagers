@@ -233,7 +233,7 @@ footer a { color: var(--light); text-decoration: none; }
     <p style="font-size:14px; color:var(--muted); margin-bottom:24px; line-height:1.6;">
       We'd love to have you! Fill out the form below and we'll be in touch &mdash; including an invite to our WhatsApp group. Feel free to invite anyone interested in joining the South Hunterdon running community.
     </p>
-    <form id="join-form" onsubmit="handleSubmit(event)">
+    <form id="join-form" onsubmit="handleSubmit(event)" action="https://formspree.io/f/amandacirillo13@gmail.com" method="POST">
       <div class="form-grid">
         <div class="form-field">
           <label for="fname">First Name</label>
@@ -377,11 +377,110 @@ footer a { color: var(--light); text-decoration: none; }
 </footer>
 
 <script>
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
-  document.getElementById('join-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
+  const form = document.getElementById('join-form');
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  const data = {
+    firstName: document.getElementById('fname').value,
+    lastName: document.getElementById('lname').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    distance: document.getElementById('distance').value,
+    reason: document.getElementById('reason').value,
+    pace: document.getElementById('pace').value,
+  };
+
+  try {
+    const res = await fetch('https://formspree.io/f/xwpkbqnk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      // Fallback: open mail client
+      const subject = encodeURIComponent('New Member Request: ' + data.firstName + ' ' + data.lastName);
+      const body = encodeURIComponent(
+        'Name: ' + data.firstName + ' ' + data.lastName + '\n' +
+        'Email: ' + data.email + '\n' +
+        'Phone: ' + data.phone + '\n' +
+        'Distance: ' + data.distance + '\n' +
+        'Pace: ' + data.pace + '\n' +
+        'Why they want to join:\n' + data.reason
+      );
+      window.location.href = 'mailto:amandacirillo13@gmail.com?subject=' + subject + '&body=' + body;
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  } catch (err) {
+    // Fallback to mailto
+    const subject = encodeURIComponent('New Member Request: ' + data.firstName + ' ' + data.lastName);
+    const body = encodeURIComponent(
+      'Name: ' + data.firstName + ' ' + data.lastName + '\n' +
+      'Email: ' + data.email + '\n' +
+      'Phone: ' + data.phone + '\n' +
+      'Distance: ' + data.distance + '\n' +
+      'Pace: ' + data.pace + '\n' +
+      'Why they want to join:\n' + data.reason
+    );
+    window.location.href = 'mailto:amandacirillo13@gmail.com?subject=' + subject + '&body=' + body;
+    form.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
 }
+
+// Load schedule from admin if available
+(function loadSchedule() {
+  try {
+    const saved = localStorage.getItem('rr_schedule');
+    if (!saved) return;
+    const schedule = JSON.parse(saved);
+
+    // Update Saturday card
+    if (schedule.saturday) {
+      const s = schedule.saturday;
+      const cards = document.querySelectorAll('.run-card');
+      const satCard = cards[0];
+      if (s.time) satCard.querySelector('.run-detail:nth-child(3)').childNodes[2 === undefined ? 1 : 1].textContent = ' ' + s.time;
+      if (s.notes) {
+        const noteEl = satCard.querySelectorAll('.run-detail')[2];
+        if (noteEl) noteEl.innerHTML = noteEl.innerHTML.replace(/Three routes.*$/, s.notes);
+      }
+    }
+
+    // Update or add track card
+    if (schedule.track && schedule.track.show) {
+      const t = schedule.track;
+      const cards = document.querySelectorAll('.run-card');
+      const trackCard = cards[1];
+      if (trackCard) {
+        if (t.day && t.date) trackCard.querySelector('.run-day').innerHTML = t.day + ', ' + t.date;
+        if (t.time) {
+          const timeEl = trackCard.querySelectorAll('.run-detail')[0];
+          if (timeEl) timeEl.lastChild.textContent = ' ' + t.time;
+        }
+        if (t.location) {
+          const locEl = trackCard.querySelectorAll('.run-detail')[1];
+          if (locEl) locEl.lastChild.textContent = ' ' + t.location;
+        }
+        if (t.workout) {
+          const wkEl = trackCard.querySelectorAll('.run-detail')[2];
+          if (wkEl) wkEl.innerHTML = wkEl.innerHTML.replace(/(<strong>Workout:<\/strong>\s*).*$/, '$1' + t.workout);
+        }
+        trackCard.style.display = '';
+      }
+    } else if (schedule.track && !schedule.track.show) {
+      const cards = document.querySelectorAll('.run-card');
+      if (cards[1]) cards[1].style.display = 'none';
+    }
+  } catch(e) {}
+})();
 </script>
 </body>
 </html>

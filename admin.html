@@ -2,123 +2,543 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Rampagers Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Ringoes Rampagers</title>
 <style>
-body {
-  font-family: sans-serif;
-  background: #f5f7fc;
-  padding: 40px;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #703fd3;
+  --blue: #8a64d9;
+  --mid: #9883f2;
+  --light: #d5caed;
+  --pale: #d7d1f0;
+  --cream: #F5F7FC;
+  --sand: #EDF0F8;
+  --gold: #E8A020;
+  --goldd: #C47F0A;
+  --bark: #4A4060;
+  --text: #1A1A2E;
+  --muted: #5A5A7A;
+  --white: #FFFFFF;
+  --green: #1a9e5c;
+  --red: #d63535;
 }
-.container {
-  max-width: 500px;
-  margin: auto;
+body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+/* LOGIN */
+#login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  padding: 2rem;
 }
-input, textarea {
+.login-box {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 36px;
   width: 100%;
-  padding: 10px;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.login-logo { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--navy); margin-bottom: 4px; }
+.login-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+.login-box input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #c0cce8;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .2s;
   margin-bottom: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
 }
-button {
-  background: #703fd3;
+.login-box input:focus { border-color: var(--mid); }
+.login-btn {
+  width: 100%;
+  background: var(--navy);
   color: white;
-  padding: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 13px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
+  transition: background .2s;
+}
+.login-btn:hover { background: var(--blue); }
+.login-error { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
+
+/* ADMIN PANEL */
+#admin-panel { display: none; }
+
+nav {
+  background: var(--navy);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--light); letter-spacing: 1px; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-site-link { color: #b0c8ee; text-decoration: none; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: background .2s; }
+.nav-site-link:hover { background: rgba(255,255,255,0.1); }
+.logout-btn { background: rgba(255,255,255,0.1); color: #b0c8ee; border: none; padding: 6px 14px; border-radius: 6px; font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .2s; }
+.logout-btn:hover { background: rgba(255,255,255,0.2); }
+
+.admin-wrap { max-width: 800px; margin: 0 auto; padding: 36px 2rem 60px; }
+.page-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--navy); letter-spacing: 1px; margin-bottom: 4px; }
+.page-sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; line-height: 1.5; }
+.gold-line { width: 48px; height: 4px; background: var(--gold); border-radius: 2px; margin-bottom: 12px; }
+
+/* CARDS */
+.admin-card {
+  background: white;
+  border-radius: 16px;
+  border: 1.5px solid #c8d8f0;
+  padding: 28px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+.card-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--navy); letter-spacing: 0.5px; }
+.card-badge { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; }
+.badge-perpetual { background: #e8f5ee; color: var(--green); }
+.badge-weekly { background: var(--pale); color: var(--mid); }
+
+/* TOGGLE */
+.toggle-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.toggle-label { font-size: 14px; font-weight: 700; color: var(--bark); }
+.toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #c0cce8;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background .25s;
+}
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: transform .25s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.toggle input:checked + .toggle-slider { background: var(--navy); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* FORM FIELDS */
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 540px) { .field-grid { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: 12px; font-weight: 700; color: var(--bark); text-transform: uppercase; letter-spacing: 0.5px; }
+.field input, .field textarea, .field select {
+  background: var(--cream);
+  border: 1.5px solid #c0cce8;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
   width: 100%;
 }
-.hidden {
-  display: none;
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--mid); background: white; }
+.field textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+.field-hint { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+/* DAY PICKER */
+.day-picker { display: flex; gap: 8px; flex-wrap: wrap; }
+.day-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid #c0cce8;
+  background: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s;
 }
+.day-btn.active { background: var(--navy); border-color: var(--navy); color: white; }
+
+/* PREVIEW */
+.preview-box {
+  background: var(--sand);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-top: 20px;
+  border: 1px solid #d0dcf0;
+}
+.preview-label { font-size: 11px; font-weight: 700; color: var(--bark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+.preview-day { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--navy); line-height: 1; }
+.preview-type { display: inline-block; background: var(--pale); color: var(--mid); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin: 6px 0 10px; }
+.preview-detail { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 5px; line-height: 1.4; }
+
+/* ACTIONS */
+.action-row { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+.save-btn {
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.save-btn:hover { background: var(--blue); transform: translateY(-1px); }
+.save-btn:active { transform: translateY(0); }
+.reset-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1.5px solid #c0cce8;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.reset-btn:hover { border-color: var(--mid); color: var(--navy); }
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--text);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  z-index: 999;
+  white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.success { background: var(--green); }
+
+/* INFO BOX */
+.info-box { background: #fffbe6; border: 1.5px solid #e8c060; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #7a5800; line-height: 1.6; margin-bottom: 24px; }
+.info-box strong { font-weight: 700; }
+
+/* HIDDEN when track toggled off */
+.track-fields { transition: opacity .2s; }
+.track-fields.hidden { opacity: 0.35; pointer-events: none; }
 </style>
 </head>
 <body>
 
-<div class="container">
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">🏃 Ringoes Rampagers</div>
+    <div class="login-sub">Admin Schedule Manager</div>
+    <input type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-error" id="login-error">Incorrect password. Try again.</div>
+  </div>
+</div>
 
-  <!-- LOGIN -->
-  <div id="login">
-    <h2>Admin Login</h2>
-    <input type="password" id="password" placeholder="Enter password">
-    <button onclick="checkPassword()">Login</button>
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+
+<nav>
+  <div class="nav-logo">⚙️ Rampagers Admin</div>
+  <div class="nav-right">
+    <a href="index.html" class="nav-site-link" target="_blank">← View Site</a>
+    <button class="logout-btn" onclick="doLogout()">Log Out</button>
+  </div>
+</nav>
+
+<div class="admin-wrap">
+  <div class="page-title">Schedule Manager</div>
+  <div class="gold-line"></div>
+  <div class="page-sub">Changes save to this browser and will be reflected on the main site. The Saturday run is always shown. Add a track workout a few days before it happens.</div>
+
+  <div class="info-box">
+    <strong>How this works:</strong> This admin page saves the schedule to your browser's local storage. Open <strong>index.html</strong> from the same browser to see the live schedule. Both files must be on the same domain (e.g. ringoesrampagers.org) for changes to show up on the public site.
   </div>
 
-  <!-- ADMIN PANEL -->
-  <div id="admin" class="hidden">
-    <h2>Edit Runs</h2>
+  <!-- SATURDAY CARD -->
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">🏃 Saturday Group Run</div>
+      <span class="card-badge badge-perpetual">Perpetual — Always Shown</span>
+    </div>
 
-    <h3>Saturday Run</h3>
-    <input id="sat-time" placeholder="Time">
-    <input id="sat-location" placeholder="Location">
-    <textarea id="sat-desc" placeholder="Description"></textarea>
+    <div class="field-grid">
+      <div class="field">
+        <label>Start Time</label>
+        <input type="text" id="sat-time" value="8:00 AM" placeholder="8:00 AM">
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input type="text" id="sat-location" value="Marion Clawson Park, Ringoes">
+      </div>
+      <div class="field full">
+        <label>Notes / Description</label>
+        <input type="text" id="sat-notes" value="Three routes available — pick your distance!">
+      </div>
+    </div>
 
-    <h3>Tuesday Run</h3>
-    <input id="tue-day" placeholder="Day (e.g. Tuesday, Apr 2)">
-    <input id="tue-time" placeholder="Time">
-    <input id="tue-location" placeholder="Location">
-    <textarea id="tue-workout" placeholder="Workout"></textarea>
+    <div class="preview-box">
+      <div class="preview-label">👁 Preview</div>
+      <div class="preview-day">Saturday</div>
+      <div class="preview-type">Group Run</div>
+      <div class="preview-detail">🕗 <span id="prev-sat-time">8:00 AM</span></div>
+      <div class="preview-detail">📍 <span id="prev-sat-loc">Marion Clawson Park, Ringoes</span></div>
+      <div class="preview-detail">↩ <span id="prev-sat-notes">Three routes available — pick your distance!</span></div>
+    </div>
+  </div>
 
-    <button onclick="saveRuns()">Save Changes</button>
+  <!-- TRACK CARD -->
+  <div class="admin-card">
+    <div class="card-header">
+      <div class="card-title">🏟 Track Workout</div>
+      <span class="card-badge badge-weekly">Post a Few Days Before</span>
+    </div>
 
-    <p id="status"></p>
+    <div class="toggle-row">
+      <label class="toggle">
+        <input type="checkbox" id="track-toggle" onchange="toggleTrack(this)">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label" id="toggle-label-text">Show track workout this week</span>
+    </div>
+
+    <div class="track-fields hidden" id="track-fields">
+      <div style="margin-bottom:16px;">
+        <div class="field" style="margin-bottom:10px;"><label>Day of Week</label></div>
+        <div class="day-picker" id="day-picker">
+          <button class="day-btn active" onclick="setDay(this,'Tuesday')">Tuesday</button>
+          <button class="day-btn" onclick="setDay(this,'Wednesday')">Wednesday</button>
+        </div>
+        <div class="field-hint" style="margin-top:8px;">Tuesday or Wednesday depending on the HS schedule</div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label>Date (e.g. Apr 1)</label>
+          <input type="text" id="track-date" placeholder="Apr 1">
+          <div class="field-hint">Shown as "Tuesday, Apr 1"</div>
+        </div>
+        <div class="field">
+          <label>Start Time</label>
+          <input type="text" id="track-time" value="7:00 PM" placeholder="7:00 PM">
+        </div>
+        <div class="field">
+          <label>Location</label>
+          <input type="text" id="track-location" value="Hunterdon Central HS" placeholder="Hunterdon Central HS">
+        </div>
+        <div class="field full">
+          <label>Workout Description</label>
+          <textarea id="track-workout" placeholder="1 mi warmup • 4×1 mi @ HM pace • 1 mi cooldown">1 mi warmup • 4×1 mi @ HM pace −4%, 5%, 6%, 7% w/ 5 min rest or ½ mi recovery jog • 1 mi cooldown</textarea>
+          <div class="field-hint">Describe the workout in full. Use • to separate sections.</div>
+        </div>
+      </div>
+
+      <div class="preview-box">
+        <div class="preview-label">👁 Preview</div>
+        <div class="preview-day" id="prev-track-day">Tuesday, Apr 1</div>
+        <div class="preview-type">Track Night</div>
+        <div class="preview-detail">🕖 <span id="prev-track-time">7:00 PM</span></div>
+        <div class="preview-detail">📍 <span id="prev-track-loc">Hunterdon Central HS</span></div>
+        <div class="preview-detail"><strong>Workout:</strong>&nbsp;<span id="prev-track-workout">1 mi warmup • 4×1 mi @ HM pace • 1 mi cooldown</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-row">
+    <button class="save-btn" onclick="saveSchedule()">💾 Save & Publish Schedule</button>
+    <button class="reset-btn" onclick="resetAll()">Reset to Defaults</button>
   </div>
 
 </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <script>
-const PASSWORD = "rampagers123"; // CHANGE THIS
+const PASSWORD = 'Rampagers123!';
+let selectedDay = 'Tuesday';
 
-function checkPassword() {
-  const input = document.getElementById('password').value;
-  if (input === PASSWORD) {
-    document.getElementById('login').classList.add('hidden');
-    document.getElementById('admin').classList.remove('hidden');
-    loadRuns();
+// --- AUTH ---
+function doLogin() {
+  const pw = document.getElementById('pw-input').value;
+  if (pw === PASSWORD) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'block';
+    loadSaved();
+    bindPreviews();
   } else {
-    alert("Wrong password");
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
   }
 }
 
-async function loadRuns() {
-  const res = await fetch('/data/runs.json');
-  const data = await res.json();
-
-  document.getElementById('sat-time').value = data.saturday.time;
-  document.getElementById('sat-location').value = data.saturday.location;
-  document.getElementById('sat-desc').value = data.saturday.description;
-
-  document.getElementById('tue-day').value = data.tuesday.day;
-  document.getElementById('tue-time').value = data.tuesday.time;
-  document.getElementById('tue-location').value = data.tuesday.location;
-  document.getElementById('tue-workout').value = data.tuesday.workout;
+function doLogout() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('admin-panel').style.display = 'none';
+  document.getElementById('pw-input').value = '';
 }
 
-async function saveRuns() {
-  const updated = {
+// --- DAY PICKER ---
+function setDay(btn, day) {
+  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedDay = day;
+  updateTrackPreview();
+}
+
+// --- TRACK TOGGLE ---
+function toggleTrack(cb) {
+  const fields = document.getElementById('track-fields');
+  const label = document.getElementById('toggle-label-text');
+  if (cb.checked) {
+    fields.classList.remove('hidden');
+    label.textContent = 'Track workout is ON this week ✓';
+  } else {
+    fields.classList.add('hidden');
+    label.textContent = 'Show track workout this week';
+  }
+}
+
+// --- LIVE PREVIEWS ---
+function bindPreviews() {
+  // Saturday
+  ['sat-time','sat-location','sat-notes'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateSatPreview);
+  });
+  // Track
+  ['track-date','track-time','track-location','track-workout'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateTrackPreview);
+  });
+}
+
+function updateSatPreview() {
+  document.getElementById('prev-sat-time').textContent = document.getElementById('sat-time').value || '—';
+  document.getElementById('prev-sat-loc').textContent = document.getElementById('sat-location').value || '—';
+  document.getElementById('prev-sat-notes').textContent = document.getElementById('sat-notes').value || '—';
+}
+
+function updateTrackPreview() {
+  const date = document.getElementById('track-date').value;
+  document.getElementById('prev-track-day').textContent = selectedDay + (date ? ', ' + date : '');
+  document.getElementById('prev-track-time').textContent = document.getElementById('track-time').value || '—';
+  document.getElementById('prev-track-loc').textContent = document.getElementById('track-location').value || '—';
+  document.getElementById('prev-track-workout').textContent = document.getElementById('track-workout').value || '—';
+}
+
+// --- SAVE ---
+function saveSchedule() {
+  const schedule = {
     saturday: {
-      day: "Saturday",
       time: document.getElementById('sat-time').value,
       location: document.getElementById('sat-location').value,
-      description: document.getElementById('sat-desc').value,
-      routes: [] // keep static for now
+      notes: document.getElementById('sat-notes').value,
     },
-    tuesday: {
-      day: document.getElementById('tue-day').value,
-      type: "Track Night",
-      time: document.getElementById('tue-time').value,
-      location: document.getElementById('tue-location').value,
-      workout: document.getElementById('tue-workout').value
+    track: {
+      show: document.getElementById('track-toggle').checked,
+      day: selectedDay,
+      date: document.getElementById('track-date').value,
+      time: document.getElementById('track-time').value,
+      location: document.getElementById('track-location').value,
+      workout: document.getElementById('track-workout').value,
     }
   };
+  localStorage.setItem('rr_schedule', JSON.stringify(schedule));
+  showToast('✅ Schedule saved! Reload index.html to see changes.', 'success');
+}
 
-  document.getElementById('status').innerText =
-    "⚠️ Copy this JSON and paste into /data/runs.json:";
+function resetAll() {
+  if (!confirm('Reset everything to defaults?')) return;
+  localStorage.removeItem('rr_schedule');
+  document.getElementById('sat-time').value = '8:00 AM';
+  document.getElementById('sat-location').value = 'Marion Clawson Park, Ringoes';
+  document.getElementById('sat-notes').value = 'Three routes available — pick your distance!';
+  document.getElementById('track-toggle').checked = false;
+  toggleTrack(document.getElementById('track-toggle'));
+  document.getElementById('track-date').value = '';
+  document.getElementById('track-time').value = '7:00 PM';
+  document.getElementById('track-location').value = 'Hunterdon Central HS';
+  document.getElementById('track-workout').value = '1 mi warmup • 4×1 mi @ HM pace −4%, 5%, 6%, 7% w/ 5 min rest or ½ mi recovery jog • 1 mi cooldown';
+  updateSatPreview();
+  updateTrackPreview();
+  showToast('Reset to defaults.');
+}
 
-  console.log(JSON.stringify(updated, null, 2));
+// --- LOAD SAVED ---
+function loadSaved() {
+  try {
+    const saved = localStorage.getItem('rr_schedule');
+    if (!saved) return;
+    const s = JSON.parse(saved);
+
+    if (s.saturday) {
+      if (s.saturday.time) document.getElementById('sat-time').value = s.saturday.time;
+      if (s.saturday.location) document.getElementById('sat-location').value = s.saturday.location;
+      if (s.saturday.notes) document.getElementById('sat-notes').value = s.saturday.notes;
+    }
+    if (s.track) {
+      document.getElementById('track-toggle').checked = !!s.track.show;
+      toggleTrack(document.getElementById('track-toggle'));
+      if (s.track.day) {
+        selectedDay = s.track.day;
+        document.querySelectorAll('.day-btn').forEach(b => {
+          b.classList.toggle('active', b.textContent === s.track.day);
+        });
+      }
+      if (s.track.date) document.getElementById('track-date').value = s.track.date;
+      if (s.track.time) document.getElementById('track-time').value = s.track.time;
+      if (s.track.location) document.getElementById('track-location').value = s.track.location;
+      if (s.track.workout) document.getElementById('track-workout').value = s.track.workout;
+    }
+  } catch(e) {}
+  updateSatPreview();
+  updateTrackPreview();
+}
+
+// --- TOAST ---
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (type ? ' ' + type : '');
+  requestAnimationFrame(() => { t.classList.add('show'); });
+  setTimeout(() => { t.classList.remove('show'); }, 3200);
 }
 </script>
-
 </body>
 </html>
