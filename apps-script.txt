@@ -1,96 +1,103 @@
 // ============================================================
-// RINGOES RAMPAGERS — Google Apps Script
-// Paste this entire file into your Apps Script editor
+// RINGOES RAMPAGERS — Google Apps Script (v3)
+// IMPORTANT: Paste this, then create a NEW deployment.
+// Use the new URL in both admin.html and index.html.
 // ============================================================
 
 const SHEET_NAME = 'Schedule';
 
 function doGet(e) {
-  return handleRequest(e, 'GET');
-}
-
-function doPost(e) {
-  return handleRequest(e, 'POST');
-}
-
-function handleRequest(e, method) {
+  const callback = e && e.parameter && e.parameter.callback;
   const output = ContentService.createTextOutput();
-  output.setMimeType(ContentService.MimeType.JSON);
-
   try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    let sheet = ss.getSheetByName(SHEET_NAME);
-
-    // Create sheet with headers if it doesn't exist
-    if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
-      sheet.getRange('A1:B1').setValues([['key', 'value']]);
-    }
-
-    if (method === 'GET' || (e && e.parameter && e.parameter.action === 'get')) {
-      // READ — return all key/value pairs as structured JSON
-      const data = readSheet(sheet);
-      output.setContent(JSON.stringify(buildScheduleObject(data)));
-
+    const data = loadData();
+    const json = JSON.stringify(data);
+    if (callback) {
+      output.setMimeType(ContentService.MimeType.JAVASCRIPT);
+      output.setContent(callback + '(' + json + ')');
     } else {
-      // WRITE — parse POST body and save
-      const body = JSON.parse(e.postData.contents);
-      if (body.saturday) {
-        setValue(sheet, 'sat_time',     body.saturday.time     || '');
-        setValue(sheet, 'sat_location', body.saturday.location || '');
-        setValue(sheet, 'sat_notes',    body.saturday.notes    || '');
-      }
-      if (body.track) {
-        setValue(sheet, 'track_show',     body.track.show     || 'false');
-        setValue(sheet, 'track_day',      body.track.day      || 'Tuesday');
-        setValue(sheet, 'track_date',     body.track.date     || '');
-        setValue(sheet, 'track_time',     body.track.time     || '');
-        setValue(sheet, 'track_location', body.track.location || '');
-        setValue(sheet, 'track_workout',  body.track.workout  || '');
-      }
-      output.setContent(JSON.stringify({ status: 'ok' }));
+      output.setMimeType(ContentService.MimeType.JSON);
+      output.setContent(json);
     }
   } catch(err) {
-    output.setContent(JSON.stringify({ status: 'error', message: err.toString() }));
+    const errJson = JSON.stringify({ status:'error', message: err.toString() });
+    if (callback) {
+      output.setMimeType(ContentService.MimeType.JAVASCRIPT);
+      output.setContent(callback + '(' + errJson + ')');
+    } else {
+      output.setMimeType(ContentService.MimeType.JSON);
+      output.setContent(errJson);
+    }
   }
-
-  // Allow CORS so the website can call this
   return output;
 }
 
-function readSheet(sheet) {
-  const rows = sheet.getDataRange().getValues();
-  const map = {};
-  rows.forEach(row => { if (row[0]) map[row[0]] = row[1]; });
-  return map;
+function doPost(e) {
+  const output = ContentService.createTextOutput();
+  output.setMimeType(ContentService.MimeType.JSON);
+  try {
+    const body = JSON.parse(e.postData.contents);
+    saveData(body);
+    output.setContent(JSON.stringify({ status: 'ok' }));
+  } catch(err) {
+    output.setContent(JSON.stringify({ status:'error', message: err.toString() }));
+  }
+  return output;
 }
 
-function buildScheduleObject(data) {
-  return {
-    saturday: {
-      time:     data['sat_time']     || '8:00 AM',
-      location: data['sat_location'] || 'Marion Clawson Park, Ringoes',
-      notes:    data['sat_notes']    || 'Three routes available — pick your distance!',
-    },
-    track: {
-      show:     data['track_show']     || 'false',
-      day:      data['track_day']      || 'Tuesday',
-      date:     data['track_date']     || '',
-      time:     data['track_time']     || '7:00 PM',
-      location: data['track_location'] || 'Hunterdon Central HS',
-      workout:  data['track_workout']  || '',
-    }
+function getOrCreateSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SHEET_NAME);
+  if (!sheet) {
+    sheet = ss.insertSheet(SHEET_NAME);
+    sheet.getRange(1,1,1,2).setValues([['key','value']]);
+  }
+  return sheet;
+}
+
+function loadData() {
+  const sheet = getOrCreateSheet();
+  const rows = sheet.getDataRange().getValues();
+  const map = {};
+  rows.forEach(row => { if (row[0]) map[String(row[0])] = String(row[1]); });
+
+  // Saturday
+  const saturday = {
+    time:     map['sat_time']     || '8:00 AM',
+    location: map['sat_location'] || 'Marion Clawson Park, Ringoes',
+    notes:    map['sat_notes']    || 'Three routes available — pick your distance!',
   };
+
+  // Other runs — stored as JSON in a single cell
+  let runs = [];
+  try {
+    if (map['runs_json']) runs = JSON.parse(map['runs_json']);
+  } catch(e) { runs = []; }
+
+  return { saturday, runs };
+}
+
+function saveData(body) {
+  const sheet = getOrCreateSheet();
+
+  if (body.saturday) {
+    setValue(sheet, 'sat_time',     body.saturday.time     || '');
+    setValue(sheet, 'sat_location', body.saturday.location || '');
+    setValue(sheet, 'sat_notes',    body.saturday.notes    || '');
+  }
+
+  if (body.runs !== undefined) {
+    setValue(sheet, 'runs_json', JSON.stringify(body.runs || []));
+  }
 }
 
 function setValue(sheet, key, value) {
   const data = sheet.getDataRange().getValues();
   for (let i = 0; i < data.length; i++) {
-    if (data[i][0] === key) {
+    if (String(data[i][0]) === key) {
       sheet.getRange(i + 1, 2).setValue(value);
       return;
     }
   }
-  // Key not found — append new row
   sheet.appendRow([key, value]);
 }

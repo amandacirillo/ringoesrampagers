@@ -6,90 +6,118 @@
 <title>Admin — Ringoes Rampagers</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap');
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --navy: #703fd3; --blue: #8a64d9; --mid: #9883f2; --light: #d5caed;
-  --pale: #d7d1f0; --cream: #F5F7FC; --sand: #EDF0F8; --gold: #E8A020;
-  --goldd: #C47F0A; --bark: #4A4060; --text: #1A1A2E; --muted: #5A5A7A;
-  --white: #FFFFFF; --green: #1a9e5c; --red: #d63535;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#703fd3;--blue:#8a64d9;--mid:#9883f2;--light:#d5caed;
+  --pale:#d7d1f0;--cream:#F5F7FC;--sand:#EDF0F8;--gold:#E8A020;
+  --goldd:#C47F0A;--bark:#4A4060;--text:#1A1A2E;--muted:#5A5A7A;
+  --white:#FFFFFF;--green:#1a9e5c;--red:#d63535;
 }
-body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--text); min-height:100vh; }
-#login-screen { min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--navy); padding:2rem; }
-.login-box { background:white; border-radius:20px; padding:40px 36px; width:100%; max-width:380px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.25); }
-.login-logo { font-family:'Bebas Neue',sans-serif; font-size:30px; color:var(--navy); margin-bottom:4px; }
-.login-sub { font-size:13px; color:var(--muted); margin-bottom:28px; }
-.login-box input { width:100%; padding:12px 16px; border:1.5px solid #c0cce8; border-radius:10px; font-family:'Nunito',sans-serif; font-size:15px; outline:none; transition:border-color .2s; margin-bottom:12px; }
-.login-box input:focus { border-color:var(--mid); }
-.login-btn { width:100%; background:var(--navy); color:white; border:none; border-radius:10px; padding:13px; font-family:'Nunito',sans-serif; font-size:15px; font-weight:700; cursor:pointer; transition:background .2s; }
-.login-btn:hover { background:var(--blue); }
-.login-error { color:var(--red); font-size:13px; margin-top:10px; display:none; }
-#admin-panel { display:none; }
-nav { background:var(--navy); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:56px; position:sticky; top:0; z-index:100; }
-.nav-logo { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--light); letter-spacing:1px; }
-.nav-right { display:flex; align-items:center; gap:12px; }
-.nav-site-link { color:#b0c8ee; text-decoration:none; font-size:13px; font-weight:600; padding:6px 12px; border-radius:6px; transition:background .2s; }
-.nav-site-link:hover { background:rgba(255,255,255,0.1); }
-.logout-btn { background:rgba(255,255,255,0.1); color:#b0c8ee; border:none; padding:6px 14px; border-radius:6px; font-family:'Nunito',sans-serif; font-size:13px; font-weight:600; cursor:pointer; }
-.logout-btn:hover { background:rgba(255,255,255,0.2); }
-.admin-wrap { max-width:800px; margin:0 auto; padding:36px 2rem 60px; }
-.page-title { font-family:'Bebas Neue',sans-serif; font-size:38px; color:var(--navy); letter-spacing:1px; margin-bottom:4px; }
-.gold-line { width:48px; height:4px; background:var(--gold); border-radius:2px; margin-bottom:12px; }
-.page-sub { font-size:14px; color:var(--muted); margin-bottom:28px; line-height:1.5; }
-.setup-banner { background:#fff8e1; border:2px solid var(--gold); border-radius:12px; padding:20px 22px; margin-bottom:28px; }
-.setup-banner h3 { font-size:15px; font-weight:800; color:#7a5800; margin-bottom:12px; }
-.setup-banner ol { padding-left:20px; font-size:13px; color:#7a5800; line-height:2.2; }
-.setup-banner code { background:#ffe4a0; padding:2px 7px; border-radius:4px; font-size:12px; font-family:monospace; }
-.setup-banner a { color:#b07000; font-weight:700; }
-.setup-url-row { display:flex; gap:8px; margin-top:14px; align-items:center; flex-wrap:wrap; }
-.setup-url-row input { flex:1; min-width:200px; padding:9px 12px; border:1.5px solid #e8c060; border-radius:8px; font-family:monospace; font-size:12px; outline:none; }
-.setup-url-row input:focus { border-color:var(--gold); }
-.setup-save-btn { background:var(--gold); color:white; border:none; border-radius:8px; padding:10px 18px; font-family:'Nunito',sans-serif; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap; }
-.setup-save-btn:hover { background:var(--goldd); }
-.connected-badge { display:inline-flex; align-items:center; gap:6px; background:#e8f5ee; color:var(--green); font-size:13px; font-weight:700; padding:6px 14px; border-radius:20px; }
-.admin-card { background:white; border-radius:16px; border:1.5px solid #c8d8f0; padding:28px; margin-bottom:24px; }
-.card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
-.card-title { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--navy); letter-spacing:0.5px; }
-.card-badge { font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 12px; border-radius:20px; }
-.badge-perpetual { background:#e8f5ee; color:var(--green); }
-.badge-weekly { background:var(--pale); color:var(--mid); }
-.toggle-row { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
-.toggle-label { font-size:14px; font-weight:700; color:var(--bark); }
-.toggle { position:relative; width:44px; height:24px; flex-shrink:0; }
-.toggle input { opacity:0; width:0; height:0; }
-.toggle-slider { position:absolute; inset:0; background:#c0cce8; border-radius:24px; cursor:pointer; transition:background .25s; }
-.toggle-slider::before { content:''; position:absolute; left:3px; top:3px; width:18px; height:18px; background:white; border-radius:50%; transition:transform .25s; box-shadow:0 1px 4px rgba(0,0,0,0.2); }
-.toggle input:checked + .toggle-slider { background:var(--navy); }
-.toggle input:checked + .toggle-slider::before { transform:translateX(20px); }
-.field-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-@media(max-width:540px){ .field-grid { grid-template-columns:1fr; } }
-.field { display:flex; flex-direction:column; gap:5px; }
-.field.full { grid-column:1/-1; }
-.field label { font-size:12px; font-weight:700; color:var(--bark); text-transform:uppercase; letter-spacing:0.5px; }
-.field input, .field textarea { background:var(--cream); border:1.5px solid #c0cce8; border-radius:10px; padding:10px 14px; font-family:'Nunito',sans-serif; font-size:14px; color:var(--text); outline:none; transition:border-color .2s; width:100%; }
-.field input:focus, .field textarea:focus { border-color:var(--mid); background:white; }
-.field textarea { resize:vertical; min-height:80px; line-height:1.5; }
-.field-hint { font-size:11px; color:var(--muted); margin-top:3px; }
-.day-picker { display:flex; gap:8px; flex-wrap:wrap; }
-.day-btn { padding:8px 18px; border-radius:20px; border:2px solid #c0cce8; background:white; font-family:'Nunito',sans-serif; font-size:13px; font-weight:700; color:var(--muted); cursor:pointer; transition:all .15s; }
-.day-btn.active { background:var(--navy); border-color:var(--navy); color:white; }
-.preview-box { background:var(--sand); border-radius:12px; padding:16px 18px; margin-top:20px; border:1px solid #d0dcf0; }
-.preview-label { font-size:11px; font-weight:700; color:var(--bark); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px; }
-.preview-day { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--navy); line-height:1; }
-.preview-type { display:inline-block; background:var(--pale); color:var(--mid); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin:6px 0 10px; }
-.preview-detail { font-size:13px; color:var(--muted); margin-bottom:5px; line-height:1.4; }
-.action-row { display:flex; gap:12px; margin-top:24px; flex-wrap:wrap; align-items:center; }
-.save-btn { background:var(--navy); color:white; border:none; border-radius:10px; padding:13px 30px; font-family:'Nunito',sans-serif; font-size:14px; font-weight:700; cursor:pointer; transition:background .2s, transform .15s; }
-.save-btn:hover { background:var(--blue); transform:translateY(-1px); }
-.save-btn:disabled { background:#aab; cursor:not-allowed; transform:none; }
-.reset-btn { background:transparent; color:var(--muted); border:1.5px solid #c0cce8; border-radius:10px; padding:12px 20px; font-family:'Nunito',sans-serif; font-size:14px; font-weight:700; cursor:pointer; }
-.reset-btn:hover { border-color:var(--mid); color:var(--navy); }
-.saving-indicator { font-size:13px; color:var(--muted); display:none; }
-.track-fields { transition:opacity .2s; }
-.track-fields.hidden { opacity:.35; pointer-events:none; }
-.toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--text); color:white; padding:12px 24px; border-radius:30px; font-size:14px; font-weight:600; transition:transform .35s cubic-bezier(.34,1.56,.64,1); z-index:999; white-space:nowrap; }
-.toast.show { transform:translateX(-50%) translateY(0); }
-.toast.success { background:var(--green); }
-.toast.error { background:var(--red); }
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
+
+/* LOGIN */
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--navy);padding:2rem;}
+.login-box{background:white;border-radius:20px;padding:40px 36px;width:100%;max-width:380px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.25);}
+.login-logo{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--navy);margin-bottom:4px;}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:28px;}
+.login-box input{width:100%;padding:12px 16px;border:1.5px solid #c0cce8;border-radius:10px;font-family:'Nunito',sans-serif;font-size:15px;outline:none;transition:border-color .2s;margin-bottom:12px;}
+.login-box input:focus{border-color:var(--mid);}
+.login-btn{width:100%;background:var(--navy);color:white;border:none;border-radius:10px;padding:13px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;}
+.login-btn:hover{background:var(--blue);}
+.login-error{color:var(--red);font-size:13px;margin-top:10px;display:none;}
+
+/* SHELL */
+#admin-panel{display:none;}
+nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--light);letter-spacing:1px;}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-site-link{color:#b0c8ee;text-decoration:none;font-size:13px;font-weight:600;padding:6px 12px;border-radius:6px;transition:background .2s;}
+.nav-site-link:hover{background:rgba(255,255,255,0.1);}
+.logout-btn{background:rgba(255,255,255,0.1);color:#b0c8ee;border:none;padding:6px 14px;border-radius:6px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
+.logout-btn:hover{background:rgba(255,255,255,0.2);}
+.admin-wrap{max-width:860px;margin:0 auto;padding:36px 2rem 60px;}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--navy);letter-spacing:1px;margin-bottom:4px;}
+.gold-line{width:48px;height:4px;background:var(--gold);border-radius:2px;margin-bottom:12px;}
+.page-sub{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.5;}
+
+/* SETUP */
+.setup-banner{background:#fff8e1;border:2px solid var(--gold);border-radius:12px;padding:18px 20px;margin-bottom:28px;}
+.setup-banner h3{font-size:14px;font-weight:800;color:#7a5800;margin-bottom:8px;}
+.setup-url-row{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap;}
+.setup-url-row input{flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #e8c060;border-radius:8px;font-family:monospace;font-size:12px;outline:none;}
+.setup-url-row input:focus{border-color:var(--gold);}
+.url-save-btn{background:var(--gold);color:white;border:none;border-radius:8px;padding:10px 16px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.url-save-btn:hover{background:var(--goldd);}
+.connected-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f5ee;color:var(--green);font-size:13px;font-weight:700;padding:6px 14px;border-radius:20px;}
+.change-url-btn{background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;margin-left:8px;text-decoration:underline;}
+
+/* SECTION HEADERS */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
+.section-label{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--navy);letter-spacing:0.5px;}
+.add-run-btn{background:var(--navy);color:white;border:none;border-radius:10px;padding:10px 20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .2s;}
+.add-run-btn:hover{background:var(--blue);}
+
+/* CARDS */
+.admin-card{background:white;border-radius:16px;border:1.5px solid #c8d8f0;padding:24px;margin-bottom:16px;position:relative;}
+.admin-card.saturday-card{border-color:#b0d4f8;background:#fafcff;}
+.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
+.card-name{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--navy);}
+.card-actions{display:flex;gap:8px;}
+.badge{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
+.badge-sat{background:#e8f5ee;color:var(--green);}
+.badge-active{background:var(--pale);color:var(--mid);}
+.badge-inactive{background:#eef0f5;color:#8890aa;}
+.icon-btn{background:none;border:1.5px solid #c8d8f0;border-radius:8px;padding:6px 10px;cursor:pointer;font-size:14px;transition:all .15s;color:var(--muted);}
+.icon-btn:hover{border-color:var(--mid);color:var(--navy);}
+.icon-btn.delete:hover{border-color:var(--red);color:var(--red);}
+
+/* FIELD GRID */
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:560px){.field-grid{grid-template-columns:1fr;}}
+.field{display:flex;flex-direction:column;gap:4px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:11px;font-weight:700;color:var(--bark);text-transform:uppercase;letter-spacing:0.5px;}
+.field input,.field textarea,.field select{background:var(--cream);border:1.5px solid #c0cce8;border-radius:8px;padding:9px 12px;font-family:'Nunito',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s;width:100%;}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--mid);background:white;}
+.field textarea{resize:vertical;min-height:70px;line-height:1.5;}
+.field-hint{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* TIME PICKER */
+.time-picker{display:flex;gap:6px;align-items:center;}
+.time-picker select{flex:1;background:var(--cream);border:1.5px solid #c0cce8;border-radius:8px;padding:9px 10px;font-family:'Nunito',sans-serif;font-size:14px;color:var(--text);outline:none;cursor:pointer;}
+.time-picker select:focus{border-color:var(--mid);background:white;}
+.time-sep{font-weight:700;color:var(--muted);flex-shrink:0;}
+
+/* DAY PICKER */
+.day-picker{display:flex;gap:6px;flex-wrap:wrap;}
+.day-btn{padding:7px 14px;border-radius:20px;border:2px solid #c0cce8;background:white;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .15s;}
+.day-btn.active{background:var(--navy);border-color:var(--navy);color:white;}
+
+/* TOGGLE */
+.toggle-row{display:flex;align-items:center;gap:8px;}
+.toggle-lbl{font-size:13px;font-weight:700;color:var(--bark);}
+.toggle{position:relative;width:40px;height:22px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:#c0cce8;border-radius:22px;cursor:pointer;transition:background .25s;}
+.toggle-slider::before{content:'';position:absolute;left:3px;top:2px;width:16px;height:16px;background:white;border-radius:50%;transition:transform .25s;box-shadow:0 1px 3px rgba(0,0,0,0.2);}
+.toggle input:checked+.toggle-slider{background:var(--navy);}
+.toggle input:checked+.toggle-slider::before{transform:translateX(18px);}
+
+/* RUNS LIST */
+#other-runs-list{margin-bottom:20px;}
+.empty-state{text-align:center;padding:32px;color:var(--muted);font-size:14px;background:white;border-radius:16px;border:2px dashed #c8d8f0;}
+
+/* GLOBAL SAVE */
+.global-save-bar{position:sticky;bottom:20px;display:flex;justify-content:center;z-index:50;margin-top:24px;}
+.global-save-btn{background:var(--navy);color:white;border:none;border-radius:30px;padding:14px 40px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(112,63,211,0.35);transition:background .2s,transform .15s;}
+.global-save-btn:hover{background:var(--blue);transform:translateY(-2px);}
+.global-save-btn:disabled{background:#aab;box-shadow:none;transform:none;cursor:not-allowed;}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:white;padding:12px 24px;border-radius:30px;font-size:14px;font-weight:600;transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:999;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast.success{background:var(--green);}
+.toast.error{background:var(--red);}
 </style>
 </head>
 <body>
@@ -116,122 +144,158 @@ nav { background:var(--navy); padding:0 2rem; display:flex; align-items:center; 
 <div class="admin-wrap">
   <div class="page-title">Schedule Manager</div>
   <div class="gold-line"></div>
-  <div class="page-sub">Post the weekly track workout a few days before it happens. Saturday is always shown.</div>
+  <div class="page-sub">Edit the Saturday run, add track workouts or other runs. Changes go live the moment you hit Save & Publish.</div>
 
-  <div class="setup-banner">
-    <h3>⚡ One-time setup: Connect to Google Sheets (~5 min)</h3>
-    <ol>
-      <li>Go to <a href="https://sheets.google.com" target="_blank">sheets.google.com</a> → create a blank sheet named <strong>Rampagers Schedule</strong></li>
-      <li>Click <strong>Extensions → Apps Script</strong></li>
-      <li>Delete the code there and paste in the script from <code>apps-script.txt</code> (in your download)</li>
-      <li>Click <strong>Deploy → New deployment</strong> → Type: <em>Web app</em> → Execute as: <em>Me</em> → Access: <em>Anyone</em></li>
-      <li>Click <strong>Deploy</strong>, authorize when prompted, then copy the <strong>Web App URL</strong></li>
-      <li>Paste it below and click Save</li>
-    </ol>
+  <!-- SETUP -->
+  <div class="setup-banner" id="setup-banner">
+    <h3>🔗 Connect to Google Sheets — paste your Apps Script URL below</h3>
     <div class="setup-url-row">
       <input type="text" id="script-url-input" placeholder="https://script.google.com/macros/s/…/exec">
-      <button class="setup-save-btn" onclick="saveScriptUrl()">Save URL</button>
+      <button class="url-save-btn" onclick="saveScriptUrl()">Connect</button>
     </div>
-    <div id="connected-indicator" style="margin-top:12px;display:none;">
+    <div id="connected-indicator" style="margin-top:10px;display:none;">
       <span class="connected-badge">✓ Connected to Google Sheets</span>
-      <button onclick="disconnectSheet()" style="background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;margin-left:10px;">Change URL</button>
+      <button class="change-url-btn" onclick="disconnectSheet()">Change URL</button>
     </div>
   </div>
 
-  <div class="admin-card">
-    <div class="card-header">
-      <div class="card-title">🏃 Saturday Group Run</div>
-      <span class="card-badge badge-perpetual">Always Shown</span>
-    </div>
+  <!-- SATURDAY -->
+  <div class="section-header">
+    <div class="section-label">🏃 Saturday Run</div>
+    <span class="badge badge-sat">Always shown</span>
+  </div>
+  <div class="admin-card saturday-card">
     <div class="field-grid">
       <div class="field">
-        <label>Start Time</label>
-        <input type="text" id="sat-time" value="8:00 AM">
+        <label>Time</label>
+        <div class="time-picker">
+          <select id="sat-hour">
+            <option>6</option><option>7</option><option selected>8</option><option>9</option>
+            <option>10</option><option>11</option><option>12</option>
+          </select>
+          <span class="time-sep">:</span>
+          <select id="sat-min">
+            <option value="00" selected>00</option><option value="15">15</option>
+            <option value="30">30</option><option value="45">45</option>
+          </select>
+          <select id="sat-ampm">
+            <option>AM</option><option selected>AM</option>
+          </select>
+        </div>
       </div>
       <div class="field">
         <label>Location</label>
         <input type="text" id="sat-location" value="Marion Clawson Park, Ringoes">
       </div>
       <div class="field full">
-        <label>Notes / Description</label>
+        <label>Notes</label>
         <input type="text" id="sat-notes" value="Three routes available — pick your distance!">
       </div>
     </div>
-    <div class="preview-box">
-      <div class="preview-label">👁 Preview</div>
-      <div class="preview-day">Saturday</div>
-      <div class="preview-type">Group Run</div>
-      <div class="preview-detail">🕗 <span id="prev-sat-time">8:00 AM</span></div>
-      <div class="preview-detail">📍 <span id="prev-sat-loc">Marion Clawson Park, Ringoes</span></div>
-      <div class="preview-detail">↩ <span id="prev-sat-notes">Three routes available — pick your distance!</span></div>
-    </div>
   </div>
 
-  <div class="admin-card">
-    <div class="card-header">
-      <div class="card-title">🏟 Track Workout</div>
-      <span class="card-badge badge-weekly">Post a Few Days Before</span>
-    </div>
-    <div class="toggle-row">
-      <label class="toggle">
-        <input type="checkbox" id="track-toggle" onchange="toggleTrack(this)">
-        <span class="toggle-slider"></span>
-      </label>
-      <span class="toggle-label" id="toggle-label-text">Show track workout this week</span>
-    </div>
-    <div class="track-fields hidden" id="track-fields">
-      <div style="margin-bottom:16px;">
-        <div class="field" style="margin-bottom:8px;"><label>Day of Week</label></div>
-        <div class="day-picker">
-          <button class="day-btn active" onclick="setDay(this,'Tuesday')">Tuesday</button>
-          <button class="day-btn" onclick="setDay(this,'Wednesday')">Wednesday</button>
-        </div>
-        <div class="field-hint" style="margin-top:8px;">Depends on the HS schedule</div>
-      </div>
-      <div class="field-grid">
-        <div class="field">
-          <label>Date (e.g. Apr 8)</label>
-          <input type="text" id="track-date" placeholder="Apr 8">
-        </div>
-        <div class="field">
-          <label>Start Time</label>
-          <input type="text" id="track-time" value="7:00 PM">
-        </div>
-        <div class="field">
-          <label>Location</label>
-          <input type="text" id="track-location" value="Hunterdon Central HS">
-        </div>
-        <div class="field full">
-          <label>Workout Description</label>
-          <textarea id="track-workout" placeholder="1 mi warmup • 4×1 mi @ HM pace • 1 mi cooldown">1 mi warmup • 4×1 mi @ HM pace −4%, 5%, 6%, 7% w/ 5 min rest or ½ mi recovery jog • 1 mi cooldown</textarea>
-          <div class="field-hint">Use • to separate sections</div>
-        </div>
-      </div>
-      <div class="preview-box">
-        <div class="preview-label">👁 Preview</div>
-        <div class="preview-day" id="prev-track-day">Tuesday, Apr 8</div>
-        <div class="preview-type">Track Night</div>
-        <div class="preview-detail">🕖 <span id="prev-track-time">7:00 PM</span></div>
-        <div class="preview-detail">📍 <span id="prev-track-loc">Hunterdon Central HS</span></div>
-        <div class="preview-detail"><strong>Workout:</strong> <span id="prev-track-workout">1 mi warmup • …</span></div>
-      </div>
-    </div>
+  <!-- OTHER RUNS -->
+  <div class="section-header" style="margin-top:32px;">
+    <div class="section-label">📅 Other Runs</div>
+    <button class="add-run-btn" onclick="addRun()">+ Add Run</button>
   </div>
 
-  <div class="action-row">
-    <button class="save-btn" id="save-btn" onclick="saveSchedule()">💾 Save &amp; Publish Schedule</button>
-    <button class="reset-btn" onclick="resetAll()">Reset to Defaults</button>
-    <span class="saving-indicator" id="saving-indicator">Saving…</span>
+  <div id="other-runs-list">
+    <div class="empty-state" id="empty-state">No other runs this week. Hit "+ Add Run" to add a track workout or anything else.</div>
+  </div>
+
+  <div class="global-save-bar">
+    <button class="global-save-btn" id="save-btn" onclick="saveSchedule()">💾 Save &amp; Publish Schedule</button>
   </div>
 </div>
 </div>
+
 <div class="toast" id="toast"></div>
+
+<!-- RUN CARD TEMPLATE -->
+<template id="run-card-tpl">
+  <div class="admin-card" data-id="">
+    <div class="card-top">
+      <div class="card-name">New Run</div>
+      <div class="card-actions">
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" class="run-active" checked>
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-lbl">Visible on site</span>
+        </div>
+        <button class="icon-btn delete" onclick="deleteRun(this)" title="Delete">🗑</button>
+      </div>
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label>Run Type / Label</label>
+        <select class="run-label">
+          <option value="Track Night">Track Night</option>
+          <option value="Group Run">Group Run</option>
+          <option value="Race">Race</option>
+          <option value="Special Event">Special Event</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Date</label>
+        <input type="date" class="run-date">
+        <div class="field-hint">Used for sorting — won't show the ugly format on site</div>
+      </div>
+      <div class="field full">
+        <label>Day &amp; Display Date (shown on card)</label>
+        <div class="day-picker" style="margin-bottom:8px;">
+          <button type="button" class="day-btn active" onclick="setRunDay(this,'Tuesday')">Tue</button>
+          <button type="button" class="day-btn" onclick="setRunDay(this,'Wednesday')">Wed</button>
+          <button type="button" class="day-btn" onclick="setRunDay(this,'Thursday')">Thu</button>
+          <button type="button" class="day-btn" onclick="setRunDay(this,'Friday')">Fri</button>
+          <button type="button" class="day-btn" onclick="setRunDay(this,'Saturday')">Sat</button>
+          <button type="button" class="day-btn" onclick="setRunDay(this,'Sunday')">Sun</button>
+          <button type="button" class="day-btn" onclick="setRunDay(this,'Monday')">Mon</button>
+        </div>
+        <input type="text" class="run-display-date" placeholder="e.g. Apr 8">
+        <div class="field-hint">Short display date shown on the card (e.g. "Apr 8")</div>
+      </div>
+      <div class="field">
+        <label>Time</label>
+        <div class="time-picker">
+          <select class="run-hour">
+            <option>6</option><option>7</option><option selected>7</option><option>8</option>
+            <option>9</option><option>10</option><option>11</option><option>12</option>
+          </select>
+          <span class="time-sep">:</span>
+          <select class="run-min">
+            <option value="00" selected>00</option><option value="15">15</option>
+            <option value="30">30</option><option value="45">45</option>
+          </select>
+          <select class="run-ampm">
+            <option>AM</option><option selected>PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input type="text" class="run-location" placeholder="Hunterdon Central HS">
+      </div>
+      <div class="field full">
+        <label>Notes (optional)</label>
+        <input type="text" class="run-notes" placeholder="Brief description…">
+      </div>
+      <div class="field full">
+        <label>Workout (optional — for track nights)</label>
+        <textarea class="run-workout" placeholder="1 mi warmup • 4×1 mi @ HM pace • 1 mi cooldown"></textarea>
+      </div>
+    </div>
+  </div>
+</template>
 
 <script>
 const PASSWORD = 'Rampagers123!';
-let selectedDay = 'Tuesday';
 let scriptUrl = '';
+let runIdCounter = 0;
 
+// ── AUTH ──────────────────────────────────────────────────
 function doLogin() {
   if (document.getElementById('pw-input').value === PASSWORD) {
     document.getElementById('login-screen').style.display = 'none';
@@ -249,6 +313,7 @@ function doLogout() {
   document.getElementById('pw-input').value = '';
 }
 
+// ── INIT ──────────────────────────────────────────────────
 async function init() {
   scriptUrl = localStorage.getItem('rr_script_url') || '';
   if (scriptUrl) {
@@ -256,18 +321,16 @@ async function init() {
     showConnected(true);
     await fetchSchedule();
   }
-  bindPreviews();
-  updateSatPreview();
-  updateTrackPreview();
 }
 
+// ── URL ───────────────────────────────────────────────────
 function saveScriptUrl() {
   const val = document.getElementById('script-url-input').value.trim();
   if (!val.startsWith('https://')) { showToast('Please paste a valid URL', 'error'); return; }
   scriptUrl = val;
   localStorage.setItem('rr_script_url', scriptUrl);
   showConnected(true);
-  showToast('URL saved! Loading schedule…', 'success');
+  showToast('Connected! Loading schedule…', 'success');
   fetchSchedule();
 }
 function disconnectSheet() {
@@ -278,117 +341,199 @@ function disconnectSheet() {
 }
 function showConnected(yes) {
   document.getElementById('script-url-input').style.display = yes ? 'none' : '';
-  document.querySelector('.setup-save-btn').style.display = yes ? 'none' : '';
+  document.querySelector('.url-save-btn').style.display = yes ? 'none' : '';
   document.getElementById('connected-indicator').style.display = yes ? 'block' : 'none';
 }
 
-async function fetchSchedule() {
-  if (!scriptUrl) return;
-  try {
-    const res = await fetch(scriptUrl + '?action=get');
-    const data = await res.json();
-    if (data.saturday) {
-      document.getElementById('sat-time').value = data.saturday.time || '8:00 AM';
-      document.getElementById('sat-location').value = data.saturday.location || 'Marion Clawson Park, Ringoes';
-      document.getElementById('sat-notes').value = data.saturday.notes || 'Three routes available — pick your distance!';
-    }
-    if (data.track) {
-      document.getElementById('track-toggle').checked = data.track.show === 'true';
-      toggleTrack(document.getElementById('track-toggle'));
-      if (data.track.day) {
-        selectedDay = data.track.day;
-        document.querySelectorAll('.day-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === data.track.day));
-      }
-      document.getElementById('track-date').value = data.track.date || '';
-      document.getElementById('track-time').value = data.track.time || '7:00 PM';
-      document.getElementById('track-location').value = data.track.location || 'Hunterdon Central HS';
-      document.getElementById('track-workout').value = data.track.workout || '';
-    }
-    updateSatPreview(); updateTrackPreview();
-    showToast('Schedule loaded ✓', 'success');
-  } catch(e) { showToast('Could not load from Google Sheets', 'error'); }
+// ── TIME HELPERS ──────────────────────────────────────────
+function timeToString(hourEl, minEl, ampmEl) {
+  return hourEl.value + ':' + minEl.value + ' ' + ampmEl.value;
+}
+function setTimePicker(hourEl, minEl, ampmEl, timeStr) {
+  if (!timeStr) return;
+  const m = timeStr.match(/^(\d+):(\d+)\s*(AM|PM)$/i);
+  if (!m) return;
+  hourEl.value = m[1];
+  minEl.value = m[2].padStart(2,'0');
+  ampmEl.value = m[3].toUpperCase();
 }
 
-async function saveSchedule() {
-  if (!scriptUrl) { showToast('Paste your Apps Script URL first', 'error'); return; }
-  const btn = document.getElementById('save-btn');
-  const ind = document.getElementById('saving-indicator');
-  btn.disabled = true; ind.style.display = 'inline';
-  const payload = {
-    action: 'set',
-    saturday: {
-      time: document.getElementById('sat-time').value,
-      location: document.getElementById('sat-location').value,
-      notes: document.getElementById('sat-notes').value,
-    },
-    track: {
-      show: document.getElementById('track-toggle').checked ? 'true' : 'false',
-      day: selectedDay,
-      date: document.getElementById('track-date').value,
-      time: document.getElementById('track-time').value,
-      location: document.getElementById('track-location').value,
-      workout: document.getElementById('track-workout').value,
+// ── DAY PICKER ────────────────────────────────────────────
+function setRunDay(btn, day) {
+  const card = btn.closest('.admin-card');
+  card.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  card.dataset.day = day;
+  updateCardName(card);
+}
+
+function updateCardName(card) {
+  const label = card.querySelector('.run-label') ? card.querySelector('.run-label').value : '';
+  const date = card.querySelector('.run-display-date') ? card.querySelector('.run-display-date').value : '';
+  const day = card.dataset.day || '';
+  card.querySelector('.card-name').textContent = label + (day ? ' · ' + day : '') + (date ? ' ' + date : '');
+}
+
+// ── ADD RUN ───────────────────────────────────────────────
+function addRun(data) {
+  const tpl = document.getElementById('run-card-tpl');
+  const clone = tpl.content.cloneNode(true);
+  const card = clone.querySelector('.admin-card');
+  const id = 'run_' + (++runIdCounter);
+  card.dataset.id = id;
+  card.dataset.day = data ? (data.day || 'Tuesday') : 'Tuesday';
+
+  if (data) {
+    // Populate from saved data
+    const labelEl = card.querySelector('.run-label');
+    if (data.label && labelEl) {
+      // Add option if not standard
+      if (![...labelEl.options].find(o => o.value === data.label)) {
+        const opt = document.createElement('option');
+        opt.value = opt.textContent = data.label;
+        labelEl.appendChild(opt);
+      }
+      labelEl.value = data.label;
     }
-  };
-  try {
-    const res = await fetch(scriptUrl, { method:'POST', body: JSON.stringify(payload) });
-    const data = await res.json();
-    if (data.status === 'ok') {
-      showToast('✅ Schedule published! Live on the site.', 'success');
-    } else {
-      showToast('Error: ' + (data.message || 'unknown'), 'error');
-    }
-  } catch(e) {
-    showToast('❌ Could not reach Google Sheets. Check your URL.', 'error');
-  } finally {
-    btn.disabled = false; ind.style.display = 'none';
+    const dateEl = card.querySelector('.run-date');
+    if (dateEl && data.sortDate) dateEl.value = data.sortDate;
+    const dispDateEl = card.querySelector('.run-display-date');
+    if (dispDateEl && data.date) dispDateEl.value = data.date;
+    const locEl = card.querySelector('.run-location');
+    if (locEl && data.location) locEl.value = data.location;
+    const notesEl = card.querySelector('.run-notes');
+    if (notesEl && data.notes) notesEl.value = data.notes;
+    const workoutEl = card.querySelector('.run-workout');
+    if (workoutEl && data.workout) workoutEl.value = data.workout;
+    const activeEl = card.querySelector('.run-active');
+    if (activeEl) activeEl.checked = data.active !== 'false';
+    // Time
+    setTimePicker(card.querySelector('.run-hour'), card.querySelector('.run-min'), card.querySelector('.run-ampm'), data.time || '7:00 PM');
+    // Day buttons
+    card.querySelectorAll('.day-btn').forEach(b => {
+      b.classList.toggle('active', b.textContent.trim() === (data.day || 'Tuesday').substring(0,3));
+    });
+  }
+
+  // Listeners for card name update
+  ['run-label','run-display-date'].forEach(cls => {
+    const el = card.querySelector('.' + cls);
+    if (el) el.addEventListener('input', () => updateCardName(card));
+    if (el && el.tagName === 'SELECT') el.addEventListener('change', () => updateCardName(card));
+  });
+
+  document.getElementById('other-runs-list').appendChild(card);
+  document.getElementById('empty-state').style.display = 'none';
+  updateCardName(card);
+  return card;
+}
+
+function deleteRun(btn) {
+  const card = btn.closest('.admin-card');
+  card.remove();
+  if (!document.getElementById('other-runs-list').querySelector('.admin-card')) {
+    document.getElementById('empty-state').style.display = '';
   }
 }
 
-function resetAll() {
-  if (!confirm('Reset to defaults?')) return;
-  document.getElementById('sat-time').value = '8:00 AM';
-  document.getElementById('sat-location').value = 'Marion Clawson Park, Ringoes';
-  document.getElementById('sat-notes').value = 'Three routes available — pick your distance!';
-  document.getElementById('track-toggle').checked = false;
-  toggleTrack(document.getElementById('track-toggle'));
-  document.getElementById('track-date').value = '';
-  document.getElementById('track-time').value = '7:00 PM';
-  document.getElementById('track-location').value = 'Hunterdon Central HS';
-  document.getElementById('track-workout').value = '';
-  updateSatPreview(); updateTrackPreview();
+// ── COLLECT DATA ──────────────────────────────────────────
+function collectRuns() {
+  const cards = document.getElementById('other-runs-list').querySelectorAll('.admin-card');
+  return Array.from(cards).map(card => {
+    const activeBtn = card.querySelector('.day-btn.active');
+    const day = card.dataset.day || (activeBtn ? activeBtn.textContent.trim() : 'Tuesday');
+    // Map short day names back to full
+    const dayMap = {Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday',Fri:'Friday',Sat:'Saturday',Sun:'Sunday',Mon:'Monday'};
+    const fullDay = dayMap[day] || day;
+    return {
+      id:        card.dataset.id,
+      label:     card.querySelector('.run-label') ? card.querySelector('.run-label').value : '',
+      sortDate:  card.querySelector('.run-date') ? card.querySelector('.run-date').value : '',
+      day:       fullDay,
+      date:      card.querySelector('.run-display-date') ? card.querySelector('.run-display-date').value : '',
+      time:      timeToString(card.querySelector('.run-hour'), card.querySelector('.run-min'), card.querySelector('.run-ampm')),
+      location:  card.querySelector('.run-location') ? card.querySelector('.run-location').value : '',
+      notes:     card.querySelector('.run-notes') ? card.querySelector('.run-notes').value : '',
+      workout:   card.querySelector('.run-workout') ? card.querySelector('.run-workout').value : '',
+      active:    card.querySelector('.run-active') ? String(card.querySelector('.run-active').checked) : 'true',
+    };
+  });
 }
 
-function bindPreviews() {
-  ['sat-time','sat-location','sat-notes'].forEach(id => document.getElementById(id).addEventListener('input', updateSatPreview));
-  ['track-date','track-time','track-location','track-workout'].forEach(id => document.getElementById(id).addEventListener('input', updateTrackPreview));
+// ── FETCH ─────────────────────────────────────────────────
+async function fetchSchedule() {
+  if (!scriptUrl) return;
+  return new Promise(resolve => {
+    const cb = 'rrAdminFetch_' + Date.now();
+    window[cb] = function(data) {
+      delete window[cb];
+      const old = document.getElementById('rr-admin-jsonp');
+      if (old) old.remove();
+      populateForm(data);
+      resolve();
+    };
+    const s = document.createElement('script');
+    s.id = 'rr-admin-jsonp';
+    s.src = scriptUrl + '?action=get&callback=' + cb;
+    s.onerror = () => { showToast('Could not load from Google Sheets', 'error'); resolve(); };
+    document.body.appendChild(s);
+  });
 }
-function updateSatPreview() {
-  document.getElementById('prev-sat-time').textContent = document.getElementById('sat-time').value || '—';
-  document.getElementById('prev-sat-loc').textContent = document.getElementById('sat-location').value || '—';
-  document.getElementById('prev-sat-notes').textContent = document.getElementById('sat-notes').value || '—';
+
+function populateForm(data) {
+  // Saturday
+  if (data.saturday) {
+    const s = data.saturday;
+    setTimePicker(document.getElementById('sat-hour'), document.getElementById('sat-min'), document.getElementById('sat-ampm'), s.time || '8:00 AM');
+    if (s.location) document.getElementById('sat-location').value = s.location;
+    if (s.notes)    document.getElementById('sat-notes').value = s.notes;
+  }
+  // Other runs
+  document.getElementById('other-runs-list').innerHTML = '';
+  document.getElementById('empty-state').style.display = '';
+  document.getElementById('other-runs-list').appendChild(document.getElementById('empty-state'));
+  if (data.runs && data.runs.length) {
+    data.runs.forEach(r => addRun(r));
+  }
+  showToast('Schedule loaded ✓', 'success');
 }
-function updateTrackPreview() {
-  const date = document.getElementById('track-date').value;
-  document.getElementById('prev-track-day').textContent = selectedDay + (date ? ', ' + date : '');
-  document.getElementById('prev-track-time').textContent = document.getElementById('track-time').value || '—';
-  document.getElementById('prev-track-loc').textContent = document.getElementById('track-location').value || '—';
-  document.getElementById('prev-track-workout').textContent = document.getElementById('track-workout').value || '—';
+
+// ── SAVE ──────────────────────────────────────────────────
+async function saveSchedule() {
+  if (!scriptUrl) { showToast('Paste your Apps Script URL first', 'error'); return; }
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true; btn.textContent = 'Saving…';
+
+  const payload = {
+    action: 'set',
+    saturday: {
+      time:     timeToString(document.getElementById('sat-hour'), document.getElementById('sat-min'), document.getElementById('sat-ampm')),
+      location: document.getElementById('sat-location').value,
+      notes:    document.getElementById('sat-notes').value,
+    },
+    runs: collectRuns(),
+  };
+
+  try {
+    const res = await fetch(scriptUrl, { method:'POST', body: JSON.stringify(payload) });
+    const result = await res.json();
+    if (result.status === 'ok') {
+      showToast('✅ Schedule published! Live on the site.', 'success');
+    } else {
+      showToast('Error: ' + (result.message || 'unknown'), 'error');
+    }
+  } catch(e) {
+    showToast('❌ Could not reach Google Sheets. Check the URL.', 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = '💾 Save & Publish Schedule';
+  }
 }
-function setDay(btn, day) {
-  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  selectedDay = day;
-  updateTrackPreview();
-}
-function toggleTrack(cb) {
-  document.getElementById('track-fields').classList.toggle('hidden', !cb.checked);
-  document.getElementById('toggle-label-text').textContent = cb.checked ? 'Track workout is ON this week ✓' : 'Show track workout this week';
-}
+
+// ── TOAST ─────────────────────────────────────────────────
 function showToast(msg, type) {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = 'toast' + (type ? ' ' + type : '');
+  t.className = 'toast' + (type ? ' '+type : '');
   requestAnimationFrame(() => t.classList.add('show'));
   setTimeout(() => t.classList.remove('show'), 3500);
 }

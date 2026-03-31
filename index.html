@@ -152,75 +152,39 @@ footer a { color: var(--light); text-decoration: none; }
   </div>
 </div>
 
-<!-- ============================================================
-     EDIT RUNS HERE
-     Open this file in Notepad (Windows) or TextEdit (Mac),
-     find this section, update the details, save, and re-upload
-     to Netlify. Takes about 2 minutes!
-     ============================================================ -->
-
-<!-- RUNS -->
+<!-- RUNS — rendered dynamically from Google Sheets -->
 <div class="section" id="runs">
   <div class="section-title">Weekly Runs</div>
   <div class="section-line"></div>
-
-  <div class="runs-grid">
-
-    <!-- SATURDAY RUN — edit details here -->
-    <div class="run-card">
+  <div class="runs-grid" id="runs-grid">
+    <!-- Fallback Saturday card shown until schedule loads -->
+    <div class="run-card" id="sat-fallback">
       <div class="run-day">Saturday</div>
       <div class="run-type">Group Run</div>
       <div class="run-detail">
         <svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 1"/></svg>
-        <!-- EDIT TIME --> 8:00 AM
+        8:00 AM
       </div>
       <div class="run-detail">
         <svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2C5.8 2 4 3.8 4 6c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="8" cy="6" r="1.5"/></svg>
-        <!-- EDIT LOCATION --> Marion Clawson Park, Ringoes
+        Marion Clawson Park, Ringoes
       </div>
       <div class="run-detail">
         <svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5"/><path d="M5 10l-2 2 2 2"/></svg>
-        <!-- EDIT DESCRIPTION --> Three routes available &mdash; pick your distance!
+        Three routes available &mdash; pick your distance!
       </div>
-
-      <!-- ROUTE LINKS — edit the href URLs and labels as needed -->
       <div class="routes">
         <div class="routes-label">&#128205; Route Maps</div>
         <div class="route-links">
-          <a class="route-link" href="https://onthegomap.com/?route=019d1a80-bd83-7b13-a263-e845698b8301&context=share&fbclid=IwY2xjawQ3SFVleHRuA2FlbQIxMABicmlkETFtM2lGQ1RSZG1VRFdZMWJsc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHh_Oz5dLCVPVzR68M3JNEkhVBbXOTmoU5ZXosMeM06r4eXwSQD6CeA33WSOb_aem_aS62-wtDH-A6Sok4IUGqkQ" target="_blank">
-            <span class="route-dist">5 mi</span> View 5-mile route map
-          </a>
-          <a class="route-link" href="https://onthegomap.com/?route=019d1a81-5184-7b3e-bc1c-faa68f339a19&context=share&fbclid=IwY2xjawQ3SGJleHRuA2FlbQIxMABicmlkETFtM2lGQ1RSZG1VRFdZMWJsc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHncN53TQmR--k0TXUW-QyAuFTwA8dew0OCojkDVDI_Kv86NnaQacgyv3SlVU_aem_7MnKXJDDXJzajOfKk8j0wg" target="_blank">
-            <span class="route-dist">8 mi</span> View 8-mile route map
-          </a>
-          <a class="route-link" href="https://onthegomap.com/?route=019d161c-b935-7bae-a42e-fad328dd8ec7&context=share&fbclid=IwY2xjawQ3SG5leHRuA2FlbQIxMABicmlkETFtM2lGQ1RSZG1VRFdZMWJsc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsVIyLFbZeFaJyMIxM1GrZaZl6UIkcZgWeSDmJxWswNfGijjEkyJhdquqTT3_aem_-LkB1lRQ8bT8blANLqCUIQ" target="_blank">
-            <span class="route-dist">10 mi</span> View 10-mile route map
-          </a>
+          <a class="route-link" href="https://onthegomap.com/?route=019d1a80-bd83-7b13-a263-e845698b8301&context=share" target="_blank"><span class="route-dist">5 mi</span> View 5-mile route map</a>
+          <a class="route-link" href="https://onthegomap.com/?route=019d1a81-5184-7b3e-bc1c-faa68f339a19&context=share" target="_blank"><span class="route-dist">8 mi</span> View 8-mile route map</a>
+          <a class="route-link" href="https://onthegomap.com/?route=019d161c-b935-7bae-a42e-fad328dd8ec7&context=share" target="_blank"><span class="route-dist">10 mi</span> View 10-mile route map</a>
         </div>
       </div>
     </div>
-
-    <!-- TRACK NIGHT -->
-    <div class="run-card">
-      <div class="run-day">Tuesday, Mar&nbsp;31</div>
-      <div class="run-type">Track Night</div>
-      <div class="run-detail">
-        <svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 1"/></svg>
-        7:00 PM
-      </div>
-      <div class="run-detail">
-        <svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2C5.8 2 4 3.8 4 6c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="8" cy="6" r="1.5"/></svg>
-        Hunterdon Central HS
-      </div>
-      <div class="run-detail">
-        <svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2l6 6-6 6"/></svg>
-        <strong>Workout:</strong> 1&nbsp;mi warmup &bull; 4&times;1&nbsp;mi @ HM pace &minus;4%, 5%, 6%, 7% w/ 5&nbsp;min rest or &frac12;&nbsp;mi recovery jog &bull; 1&nbsp;mi cooldown
-      </div>
-    </div>
-
   </div>
   <p style="font-size:13px; color:var(--muted); margin-top:16px; line-height:1.5;">
-    Run details may change &mdash; always check our <a href="https://chat.whatsapp.com/BjwfJWDWXUEK4cEHpZV01u?fbclid=IwY2xjawQ3fe1leHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe7TexpVDCpcquMoPQzyQdWBAlbcpfvvQtWD2NMDKZHq0AG0Rf36xQsyscC64_aem_wtqXIFDK2hSphFmmQ0uJtA" style="color:var(--mid); font-weight:700;">WhatsApp group</a> or <a href="https://www.facebook.com/groups/1389121398590076" style="color:var(--mid); font-weight:700;">Facebook</a> for the latest updates.
+    Run details may change &mdash; always check our <a href="https://chat.whatsapp.com/BjwfJWDWXUEK4cEHpZV01u" style="color:var(--mid); font-weight:700;">WhatsApp group</a> or <a href="https://www.facebook.com/groups/1389121398590076" style="color:var(--mid); font-weight:700;">Facebook</a> for the latest updates.
   </p>
 </div>
 
@@ -379,12 +343,15 @@ footer a { color: var(--light); text-decoration: none; }
 
 <script>
 // ============================================================
-// EMAILJS SETUP — replace these two values after creating
-// your free account at emailjs.com
+// EMAILJS — paste your 3 keys here
 // ============================================================
 const EMAILJS_PUBLIC_KEY  = 'pQhw78S57aMkvn9jb';   // Account → API Keys
 const EMAILJS_SERVICE_ID  = 'service_ghzd1jg';   // Email Services tab
 const EMAILJS_TEMPLATE_ID = 'template_jqraemx';  // Email Templates tab
+// ============================================================
+// GOOGLE SHEETS — paste your Apps Script URL here
+// ============================================================
+const SCHEDULE_URL = 'https://script.google.com/macros/s/AKfycbymH5etcG4zuPY34ZaZatPhVZUkXJS3Hl_-KHV1QDQLJSbHQmSIOwWOdTNftgu-pMM0/exec';
 // ============================================================
 
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
@@ -393,16 +360,11 @@ async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('button[type="submit"]');
-
-  // Basic validation
   const required = form.querySelectorAll('[required]');
   let valid = true;
-  required.forEach(el => { if (!el.value.trim()) { el.style.borderColor = '#d63535'; valid = false; } else { el.style.borderColor = ''; } });
+  required.forEach(el => { if (!el.value.trim()) { el.style.borderColor='#d63535'; valid=false; } else { el.style.borderColor=''; } });
   if (!valid) return;
-
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-
+  btn.textContent = 'Sending…'; btn.disabled = true;
   const params = {
     from_name:  document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
     from_email: document.getElementById('email').value,
@@ -412,65 +374,94 @@ async function handleSubmit(e) {
     pace:       document.getElementById('pace').value || 'Not provided',
     to_email:   'amandacirillo13@gmail.com',
   };
-
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
     form.style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   } catch (err) {
-    btn.textContent = 'Request to Join';
-    btn.disabled = false;
+    btn.textContent = 'Request to Join'; btn.disabled = false;
     alert('Sorry, something went wrong. Please email us directly at amandacirillo13@gmail.com');
-    console.error('EmailJS error:', err);
   }
 }
 
-// ============================================================
-// GOOGLE SHEETS SCHEDULE LOADER
-// Paste your Apps Script Web App URL below after setup
-// ============================================================
-const SCHEDULE_URL = 'https://script.google.com/macros/s/AKfycbz76yuG1bDLqwgiI5BMzxmDc4VVi6114uS1ebAK7jNYMbUi7V7p4UWnvG5OsLUorAwP/exec';
-// ============================================================
+// SVG icons
+const ICON_CLOCK = `<svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 1"/></svg>`;
+const ICON_PIN   = `<svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2C5.8 2 4 3.8 4 6c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="8" cy="6" r="1.5"/></svg>`;
+const ICON_RUN   = `<svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5"/><path d="M5 10l-2 2 2 2"/></svg>`;
+const ICON_ARROW = `<svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2l6 6-6 6"/></svg>`;
 
-async function loadSchedule() {
-  if (SCHEDULE_URL === 'YOUR_APPS_SCRIPT_URL') return; // not set up yet
+function buildRunCard(run) {
+  const isSat = run.type === 'saturday';
+  let detailsHtml = `
+    <div class="run-detail">${ICON_CLOCK} ${run.time || '—'}</div>
+    <div class="run-detail">${ICON_PIN} ${run.location || '—'}</div>`;
 
-  try {
-    const res = await fetch(SCHEDULE_URL + '?action=get');
-    if (!res.ok) return;
-    const data = await res.json();
-
-    // Saturday — always shown, update details if changed
-    if (data.saturday) {
-      const s = data.saturday;
-      const satCard = document.querySelector('.run-card');
-      const details = satCard.querySelectorAll('.run-detail');
-      if (s.time)     details[0].lastChild.textContent = ' ' + s.time;
-      if (s.location) details[1].lastChild.textContent = ' ' + s.location;
-      if (s.notes)    details[2].lastChild.textContent = ' ' + s.notes;
-    }
-
-    // Track workout — show or hide
-    const trackCard = document.querySelectorAll('.run-card')[1];
-    if (!trackCard) return;
-
-    if (data.track && data.track.show === 'true') {
-      const t = data.track;
-      trackCard.style.display = '';
-      if (t.day && t.date) trackCard.querySelector('.run-day').textContent = t.day + ', ' + t.date;
-      const tDetails = trackCard.querySelectorAll('.run-detail');
-      if (t.time)     tDetails[0].lastChild.textContent = ' ' + t.time;
-      if (t.location) tDetails[1].lastChild.textContent = ' ' + t.location;
-      if (t.workout) {
-        const wEl = tDetails[2];
-        wEl.innerHTML = '<svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2l6 6-6 6"/></svg><span><strong>Workout:</strong> ' + t.workout + '</span>';
-      }
-    } else {
-      trackCard.style.display = 'none';
-    }
-  } catch(err) {
-    console.log('Schedule fetch skipped:', err.message);
+  if (run.notes) {
+    detailsHtml += `<div class="run-detail">${ICON_RUN} ${run.notes}</div>`;
   }
+  if (run.workout) {
+    detailsHtml += `<div class="run-detail">${ICON_ARROW} <span><strong>Workout:</strong> ${run.workout}</span></div>`;
+  }
+
+  // Route links for Saturday
+  let routesHtml = '';
+  if (isSat) {
+    routesHtml = `<div class="routes">
+      <div class="routes-label">📍 Route Maps</div>
+      <div class="route-links">
+        <a class="route-link" href="https://onthegomap.com/?route=019d1a80-bd83-7b13-a263-e845698b8301&context=share" target="_blank"><span class="route-dist">5 mi</span> View 5-mile route map</a>
+        <a class="route-link" href="https://onthegomap.com/?route=019d1a81-5184-7b3e-bc1c-faa68f339a19&context=share" target="_blank"><span class="route-dist">8 mi</span> View 8-mile route map</a>
+        <a class="route-link" href="https://onthegomap.com/?route=019d161c-b935-7bae-a42e-fad328dd8ec7&context=share" target="_blank"><span class="route-dist">10 mi</span> View 10-mile route map</a>
+      </div></div>`;
+  }
+
+  const label = run.label || (isSat ? 'Group Run' : run.type === 'track' ? 'Track Night' : 'Run');
+  const dayLine = isSat ? 'Saturday' : (run.day && run.date ? run.day + ', ' + run.date : run.day || run.date || 'TBD');
+
+  return `<div class="run-card">
+    <div class="run-day">${dayLine}</div>
+    <div class="run-type">${label}</div>
+    ${detailsHtml}
+    ${routesHtml}
+  </div>`;
+}
+
+function applySchedule(data) {
+  const grid = document.getElementById('runs-grid');
+  if (!grid) return;
+
+  const runs = data.runs || [];
+
+  // Saturday is always first
+  const satRun = data.saturday || {};
+  satRun.type = 'saturday';
+
+  // Sort other runs by sortDate (YYYY-MM-DD) ascending
+  const otherRuns = runs.filter(r => r.active === 'true').sort((a, b) => {
+    return (a.sortDate || '9999') > (b.sortDate || '9999') ? 1 : -1;
+  });
+
+  let html = buildRunCard(satRun);
+  otherRuns.forEach(r => { html += buildRunCard(r); });
+
+  grid.innerHTML = html;
+  document.getElementById('sat-fallback') && document.getElementById('sat-fallback').remove();
+}
+
+function loadSchedule() {
+  if (SCHEDULE_URL === 'YOUR_APPS_SCRIPT_URL') return;
+  const cb = 'rrSched_' + Date.now();
+  window[cb] = function(data) {
+    try { applySchedule(data); } catch(e) { console.log('Schedule render error:', e); }
+    delete window[cb];
+    const el = document.getElementById('rr-jsonp');
+    if (el) el.remove();
+  };
+  const s = document.createElement('script');
+  s.id = 'rr-jsonp';
+  s.src = SCHEDULE_URL + '?action=get&callback=' + cb;
+  s.onerror = function() { console.log('Schedule load failed'); };
+  document.body.appendChild(s);
 }
 
 loadSchedule();
