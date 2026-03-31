@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ringoes Rampagers Running Club</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700&display=swap');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -233,7 +234,7 @@ footer a { color: var(--light); text-decoration: none; }
     <p style="font-size:14px; color:var(--muted); margin-bottom:24px; line-height:1.6;">
       We'd love to have you! Fill out the form below and we'll be in touch &mdash; including an invite to our WhatsApp group. Feel free to invite anyone interested in joining the South Hunterdon running community.
     </p>
-    <form id="join-form" onsubmit="handleSubmit(event)" action="https://formspree.io/f/amandacirillo13@gmail.com" method="POST">
+    <form id="join-form" onsubmit="handleSubmit(event)" novalidate>
       <div class="form-grid">
         <div class="form-field">
           <label for="fname">First Name</label>
@@ -377,110 +378,102 @@ footer a { color: var(--light); text-decoration: none; }
 </footer>
 
 <script>
+// ============================================================
+// EMAILJS SETUP — replace these two values after creating
+// your free account at emailjs.com
+// ============================================================
+const EMAILJS_PUBLIC_KEY  = 'pQhw78S57aMkvn9jb';   // Account → API Keys
+const EMAILJS_SERVICE_ID  = 'service_ghzd1jg';   // Email Services tab
+const EMAILJS_TEMPLATE_ID = 'template_jqraemx';  // Email Templates tab
+// ============================================================
+
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
 async function handleSubmit(e) {
   e.preventDefault();
-  const form = document.getElementById('join-form');
+  const form = e.target;
   const btn = form.querySelector('button[type="submit"]');
+
+  // Basic validation
+  const required = form.querySelectorAll('[required]');
+  let valid = true;
+  required.forEach(el => { if (!el.value.trim()) { el.style.borderColor = '#d63535'; valid = false; } else { el.style.borderColor = ''; } });
+  if (!valid) return;
+
   btn.textContent = 'Sending…';
   btn.disabled = true;
 
-  const data = {
-    firstName: document.getElementById('fname').value,
-    lastName: document.getElementById('lname').value,
-    email: document.getElementById('email').value,
-    phone: document.getElementById('phone').value,
-    distance: document.getElementById('distance').value,
-    reason: document.getElementById('reason').value,
-    pace: document.getElementById('pace').value,
+  const params = {
+    from_name:  document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
+    from_email: document.getElementById('email').value,
+    phone:      document.getElementById('phone').value || 'Not provided',
+    distance:   document.getElementById('distance').value,
+    reason:     document.getElementById('reason').value,
+    pace:       document.getElementById('pace').value || 'Not provided',
+    to_email:   'amandacirillo13@gmail.com',
   };
 
   try {
-    const res = await fetch('https://formspree.io/f/xwpkbqnk', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    } else {
-      // Fallback: open mail client
-      const subject = encodeURIComponent('New Member Request: ' + data.firstName + ' ' + data.lastName);
-      const body = encodeURIComponent(
-        'Name: ' + data.firstName + ' ' + data.lastName + '\n' +
-        'Email: ' + data.email + '\n' +
-        'Phone: ' + data.phone + '\n' +
-        'Distance: ' + data.distance + '\n' +
-        'Pace: ' + data.pace + '\n' +
-        'Why they want to join:\n' + data.reason
-      );
-      window.location.href = 'mailto:amandacirillo13@gmail.com?subject=' + subject + '&body=' + body;
-      form.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    }
-  } catch (err) {
-    // Fallback to mailto
-    const subject = encodeURIComponent('New Member Request: ' + data.firstName + ' ' + data.lastName);
-    const body = encodeURIComponent(
-      'Name: ' + data.firstName + ' ' + data.lastName + '\n' +
-      'Email: ' + data.email + '\n' +
-      'Phone: ' + data.phone + '\n' +
-      'Distance: ' + data.distance + '\n' +
-      'Pace: ' + data.pace + '\n' +
-      'Why they want to join:\n' + data.reason
-    );
-    window.location.href = 'mailto:amandacirillo13@gmail.com?subject=' + subject + '&body=' + body;
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
     form.style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
+  } catch (err) {
+    btn.textContent = 'Request to Join';
+    btn.disabled = false;
+    alert('Sorry, something went wrong. Please email us directly at amandacirillo13@gmail.com');
+    console.error('EmailJS error:', err);
   }
 }
 
-// Load schedule from admin if available
-(function loadSchedule() {
+// ============================================================
+// GOOGLE SHEETS SCHEDULE LOADER
+// Paste your Apps Script Web App URL below after setup
+// ============================================================
+const SCHEDULE_URL = 'YOUR_APPS_SCRIPT_URL';
+// ============================================================
+
+async function loadSchedule() {
+  if (SCHEDULE_URL === 'YOUR_APPS_SCRIPT_URL') return; // not set up yet
+
   try {
-    const saved = localStorage.getItem('rr_schedule');
-    if (!saved) return;
-    const schedule = JSON.parse(saved);
+    const res = await fetch(SCHEDULE_URL + '?action=get');
+    if (!res.ok) return;
+    const data = await res.json();
 
-    // Update Saturday card
-    if (schedule.saturday) {
-      const s = schedule.saturday;
-      const cards = document.querySelectorAll('.run-card');
-      const satCard = cards[0];
-      if (s.time) satCard.querySelector('.run-detail:nth-child(3)').childNodes[2 === undefined ? 1 : 1].textContent = ' ' + s.time;
-      if (s.notes) {
-        const noteEl = satCard.querySelectorAll('.run-detail')[2];
-        if (noteEl) noteEl.innerHTML = noteEl.innerHTML.replace(/Three routes.*$/, s.notes);
-      }
+    // Saturday — always shown, update details if changed
+    if (data.saturday) {
+      const s = data.saturday;
+      const satCard = document.querySelector('.run-card');
+      const details = satCard.querySelectorAll('.run-detail');
+      if (s.time)     details[0].lastChild.textContent = ' ' + s.time;
+      if (s.location) details[1].lastChild.textContent = ' ' + s.location;
+      if (s.notes)    details[2].lastChild.textContent = ' ' + s.notes;
     }
 
-    // Update or add track card
-    if (schedule.track && schedule.track.show) {
-      const t = schedule.track;
-      const cards = document.querySelectorAll('.run-card');
-      const trackCard = cards[1];
-      if (trackCard) {
-        if (t.day && t.date) trackCard.querySelector('.run-day').innerHTML = t.day + ', ' + t.date;
-        if (t.time) {
-          const timeEl = trackCard.querySelectorAll('.run-detail')[0];
-          if (timeEl) timeEl.lastChild.textContent = ' ' + t.time;
-        }
-        if (t.location) {
-          const locEl = trackCard.querySelectorAll('.run-detail')[1];
-          if (locEl) locEl.lastChild.textContent = ' ' + t.location;
-        }
-        if (t.workout) {
-          const wkEl = trackCard.querySelectorAll('.run-detail')[2];
-          if (wkEl) wkEl.innerHTML = wkEl.innerHTML.replace(/(<strong>Workout:<\/strong>\s*).*$/, '$1' + t.workout);
-        }
-        trackCard.style.display = '';
+    // Track workout — show or hide
+    const trackCard = document.querySelectorAll('.run-card')[1];
+    if (!trackCard) return;
+
+    if (data.track && data.track.show === 'true') {
+      const t = data.track;
+      trackCard.style.display = '';
+      if (t.day && t.date) trackCard.querySelector('.run-day').textContent = t.day + ', ' + t.date;
+      const tDetails = trackCard.querySelectorAll('.run-detail');
+      if (t.time)     tDetails[0].lastChild.textContent = ' ' + t.time;
+      if (t.location) tDetails[1].lastChild.textContent = ' ' + t.location;
+      if (t.workout) {
+        const wEl = tDetails[2];
+        wEl.innerHTML = '<svg class="run-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2l6 6-6 6"/></svg><span><strong>Workout:</strong> ' + t.workout + '</span>';
       }
-    } else if (schedule.track && !schedule.track.show) {
-      const cards = document.querySelectorAll('.run-card');
-      if (cards[1]) cards[1].style.display = 'none';
+    } else {
+      trackCard.style.display = 'none';
     }
-  } catch(e) {}
-})();
+  } catch(err) {
+    console.log('Schedule fetch skipped:', err.message);
+  }
+}
+
+loadSchedule();
 </script>
 </body>
 </html>

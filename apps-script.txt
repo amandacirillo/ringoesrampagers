@@ -1,0 +1,96 @@
+// ============================================================
+// RINGOES RAMPAGERS — Google Apps Script
+// Paste this entire file into your Apps Script editor
+// ============================================================
+
+const SHEET_NAME = 'Schedule';
+
+function doGet(e) {
+  return handleRequest(e, 'GET');
+}
+
+function doPost(e) {
+  return handleRequest(e, 'POST');
+}
+
+function handleRequest(e, method) {
+  const output = ContentService.createTextOutput();
+  output.setMimeType(ContentService.MimeType.JSON);
+
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(SHEET_NAME);
+
+    // Create sheet with headers if it doesn't exist
+    if (!sheet) {
+      sheet = ss.insertSheet(SHEET_NAME);
+      sheet.getRange('A1:B1').setValues([['key', 'value']]);
+    }
+
+    if (method === 'GET' || (e && e.parameter && e.parameter.action === 'get')) {
+      // READ — return all key/value pairs as structured JSON
+      const data = readSheet(sheet);
+      output.setContent(JSON.stringify(buildScheduleObject(data)));
+
+    } else {
+      // WRITE — parse POST body and save
+      const body = JSON.parse(e.postData.contents);
+      if (body.saturday) {
+        setValue(sheet, 'sat_time',     body.saturday.time     || '');
+        setValue(sheet, 'sat_location', body.saturday.location || '');
+        setValue(sheet, 'sat_notes',    body.saturday.notes    || '');
+      }
+      if (body.track) {
+        setValue(sheet, 'track_show',     body.track.show     || 'false');
+        setValue(sheet, 'track_day',      body.track.day      || 'Tuesday');
+        setValue(sheet, 'track_date',     body.track.date     || '');
+        setValue(sheet, 'track_time',     body.track.time     || '');
+        setValue(sheet, 'track_location', body.track.location || '');
+        setValue(sheet, 'track_workout',  body.track.workout  || '');
+      }
+      output.setContent(JSON.stringify({ status: 'ok' }));
+    }
+  } catch(err) {
+    output.setContent(JSON.stringify({ status: 'error', message: err.toString() }));
+  }
+
+  // Allow CORS so the website can call this
+  return output;
+}
+
+function readSheet(sheet) {
+  const rows = sheet.getDataRange().getValues();
+  const map = {};
+  rows.forEach(row => { if (row[0]) map[row[0]] = row[1]; });
+  return map;
+}
+
+function buildScheduleObject(data) {
+  return {
+    saturday: {
+      time:     data['sat_time']     || '8:00 AM',
+      location: data['sat_location'] || 'Marion Clawson Park, Ringoes',
+      notes:    data['sat_notes']    || 'Three routes available — pick your distance!',
+    },
+    track: {
+      show:     data['track_show']     || 'false',
+      day:      data['track_day']      || 'Tuesday',
+      date:     data['track_date']     || '',
+      time:     data['track_time']     || '7:00 PM',
+      location: data['track_location'] || 'Hunterdon Central HS',
+      workout:  data['track_workout']  || '',
+    }
+  };
+}
+
+function setValue(sheet, key, value) {
+  const data = sheet.getDataRange().getValues();
+  for (let i = 0; i < data.length; i++) {
+    if (data[i][0] === key) {
+      sheet.getRange(i + 1, 2).setValue(value);
+      return;
+    }
+  }
+  // Key not found — append new row
+  sheet.appendRow([key, value]);
+}
