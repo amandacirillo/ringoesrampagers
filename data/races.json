@@ -39,6 +39,16 @@
       "link": "https://www.zeffy.com/en-US/ticketing/2026-frsd-5k-color-runwalk?fbclid=IwY2xjawQ5_HZleHRuA2FlbQIxMABicmlkETE3a2lEczNVY3BETUVzM1Ywc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHkA_myN1D8ZarGREdbfzR-d9Tob6McGZSLpW1NUNOx4BnNdixUxZP0-mpGSP_aem_woQbxgK27sa6BUu7NAm8CQ",
       "notes": "A family fun 5k for our local elementary and middle schools, volunteer positions also available!",
       "active": "true"
+    },
+    {
+      "id": "race_5",
+      "name": "Spring Lake Five",
+      "date": "2026-05-23",
+      "distance": "Other",
+      "location": "Spring Lake, NJ",
+      "link": "www.springlakefive.com",
+      "notes": "Infamous 5mi run on Memorial Day Weekend!  ",
+      "active": "true"
     }
   ]
 }
