@@ -846,15 +846,12 @@ async function submitPhoto(e) {
 }
 
 
-// ── PHOTOS — random rotating gallery, reads data/photos.json ──────────────
+// ── PHOTOS — random rotating gallery from photos/ folder ─────────────────
+// Uses data/photos.json (public file list) + relative photos/ URLs
+// Works for ALL visitors — no GitHub token needed!
 (function () {
   const ROTATE_MS = 8000;
   const FALLBACK  = 'rampagers.jpg';
-
-  function getGhSettings() {
-    try { return JSON.parse(localStorage.getItem('rr_gh_settings') || 'null'); }
-    catch { return null; }
-  }
 
   function shuffle(arr) {
     const a = [...arr];
@@ -913,46 +910,25 @@ async function submitPhoto(e) {
     if (!grid) return;
     const cells = Array.from(grid.children);
 
-    const s      = getGhSettings();
-    const branch = s ? (s.branch || 'main') : 'main';
-
     let photos = [];
 
-    // Strategy 1: fetch public data/photos.json manifest (no token needed)
+    // Read the public manifest — no token, no API, works for everyone
     try {
       const r = await fetch('data/photos.json?v=' + Date.now());
       if (r.ok) {
         const names = await r.json();
-        if (Array.isArray(names) && names.length > 0 && s && s.user && s.repo) {
+        if (Array.isArray(names) && names.length > 0) {
+          // Use relative paths — served by GitHub Pages directly, public
           photos = names.map(n => ({
             name: n,
-            url:  'https://raw.githubusercontent.com/' + s.user + '/' + s.repo + '/' + branch + '/photos/' + n
+            url:  'photos/' + n   // ← simple relative URL, no token needed
           }));
         }
       }
-    } catch (e) { /* try next */ }
+    } catch (e) { /* fall through to fallback */ }
 
-    // Strategy 2: GitHub API (needs token)
-    if (photos.length === 0 && s && s.user && s.repo && s.token) {
-      try {
-        const r = await fetch(
-          'https://api.github.com/repos/' + s.user + '/' + s.repo + '/contents/photos?ref=' + branch,
-          { headers: { 'Authorization': 'token ' + s.token, 'Accept': 'application/vnd.github+json' } }
-        );
-        if (r.ok) {
-          const files = await r.json();
-          photos = files
-            .filter(f => /\.(jpe?g|png|gif|webp)$/i.test(f.name))
-            .map(f => ({
-              name: f.name,
-              url:  'https://raw.githubusercontent.com/' + s.user + '/' + s.repo + '/' + branch + '/photos/' + f.name
-            }));
-        }
-      } catch (e) { /* fall through */ }
-    }
-
-    // Strategy 3: fallback static image
     if (photos.length === 0) {
+      // No photos yet — show the fallback static image
       setCell(cells[0], FALLBACK, 'Ringoes Rampagers');
       return;
     }
