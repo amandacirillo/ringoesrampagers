@@ -1,3 +1,14 @@
 {
-  "races": []
+  "races": [
+    {
+      "id": "race_1",
+      "name": "RVRR 'train'ing Run",
+      "date": "2026-06-06",
+      "distance": "Ultra",
+      "location": "Piscataway, NJ",
+      "link": "https://www.rvrr.org/events/training-run",
+      "notes": "This is a fun run event with flexible distances ranging from 2.8mi to 34.6.  The paces are 7:30, 8:30, 9:30, 10:30, 12, and 15.  ",
+      "active": "true"
+    }
+  ]
 }
