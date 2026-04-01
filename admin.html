@@ -15,7 +15,7 @@
 }
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
 
-/* LOGIN */
+/* ── LOGIN ── */
 #login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--navy);padding:2rem;}
 .login-box{background:white;border-radius:20px;padding:40px 36px;width:100%;max-width:380px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.25);}
 .login-logo{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--navy);margin-bottom:4px;}
@@ -26,113 +26,173 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);m
 .login-btn:hover{background:var(--blue);}
 .login-error{color:var(--red);font-size:13px;margin-top:10px;display:none;}
 
-/* SHELL */
+/* ── SHELL ── */
 #admin-panel{display:none;}
 nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;}
 .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--light);letter-spacing:1px;}
-.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-right{display:flex;align-items:center;gap:10px;}
 .nav-site-link{color:#b0c8ee;text-decoration:none;font-size:13px;font-weight:600;padding:6px 12px;border-radius:6px;transition:background .2s;}
 .nav-site-link:hover{background:rgba(255,255,255,0.1);}
+.nav-icon-btn{background:rgba(255,255,255,0.1);color:#b0c8ee;border:none;padding:6px 12px;border-radius:6px;font-size:16px;cursor:pointer;transition:background .2s;}
+.nav-icon-btn:hover{background:rgba(255,255,255,0.22);}
 .logout-btn{background:rgba(255,255,255,0.1);color:#b0c8ee;border:none;padding:6px 14px;border-radius:6px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
 .logout-btn:hover{background:rgba(255,255,255,0.2);}
-.admin-wrap{max-width:860px;margin:0 auto;padding:36px 2rem 60px;}
+
+.admin-wrap{max-width:860px;margin:0 auto;padding:36px 2rem 100px;}
 .page-title{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--navy);letter-spacing:1px;margin-bottom:4px;}
 .gold-line{width:48px;height:4px;background:var(--gold);border-radius:2px;margin-bottom:12px;}
-.page-sub{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.5;}
+.page-sub{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
 
-/* INFO BANNER */
-.info-banner{background:#e8f4ff;border:1.5px solid #90c4ee;border-radius:12px;padding:16px 20px;margin-bottom:28px;font-size:13px;color:#1a4a7a;line-height:1.7;}
-.info-banner strong{font-weight:800;}
-.info-banner code{background:#d0e8f8;padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px;}
-.download-btn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:var(--navy);color:white;border:none;border-radius:8px;padding:8px 16px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;}
-.download-btn:hover{background:var(--blue);}
+/* ── GITHUB SETTINGS PANEL ── */
+#gh-settings{display:none;background:white;border:1.5px solid #c8d8f0;border-radius:16px;padding:24px;margin-bottom:28px;}
+.gh-title{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--navy);margin-bottom:6px;}
+.gh-sub{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:18px;}
+.gh-sub a{color:var(--navy);font-weight:700;}
+.gh-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:540px){.gh-grid{grid-template-columns:1fr;}}
+.gh-field{display:flex;flex-direction:column;gap:4px;}
+.gh-field.full{grid-column:1/-1;}
+.gh-field label{font-size:11px;font-weight:700;color:var(--bark);text-transform:uppercase;letter-spacing:.5px;}
+.gh-field input{background:var(--cream);border:1.5px solid #c0cce8;border-radius:8px;padding:9px 12px;font-family:'Nunito',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s;}
+.gh-field input:focus{border-color:var(--mid);background:white;}
+.gh-save-btn{margin-top:14px;background:var(--navy);color:white;border:none;border-radius:10px;padding:10px 24px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;cursor:pointer;}
+.gh-save-btn:hover{background:var(--blue);}
+.gh-status{margin-top:10px;font-size:13px;font-weight:600;}
+.gh-status.ok{color:var(--green);}
+.gh-status.err{color:var(--red);}
 
-/* SECTION HEADERS */
+/* ── STATUS BAR ── */
+.status-bar{background:white;border:1.5px solid #c8d8f0;border-radius:12px;padding:14px 18px;margin-bottom:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.status-dot.green{background:var(--green);}
+.status-dot.orange{background:#e67e22;}
+.status-dot.grey{background:#aab;}
+.status-text{font-size:13px;color:var(--muted);font-weight:600;flex:1;}
+.status-configure-btn{font-size:12px;color:var(--navy);font-weight:700;background:none;border:1.5px solid var(--mid);border-radius:6px;padding:4px 10px;cursor:pointer;}
+.status-configure-btn:hover{background:var(--pale);}
+
+/* ── SECTION HEADERS ── */
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
-.section-label{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--navy);letter-spacing:0.5px;}
+.section-label{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--navy);letter-spacing:.5px;}
 .add-run-btn{background:var(--navy);color:white;border:none;border-radius:10px;padding:10px 20px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .2s;}
 .add-run-btn:hover{background:var(--blue);}
 
-/* CARDS */
+/* ── CARDS ── */
 .admin-card{background:white;border-radius:16px;border:1.5px solid #c8d8f0;padding:24px;margin-bottom:16px;position:relative;}
 .admin-card.saturday-card{border-color:#b0d4f8;background:#fafcff;}
 .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
 .card-name{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--navy);}
-.card-actions{display:flex;gap:8px;}
+.card-actions{display:flex;align-items:center;gap:8px;}
 .badge{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
 .badge-sat{background:#e8f5ee;color:var(--green);}
 .icon-btn{background:none;border:1.5px solid #c8d8f0;border-radius:8px;padding:6px 10px;cursor:pointer;font-size:14px;transition:all .15s;color:var(--muted);}
 .icon-btn:hover{border-color:var(--mid);color:var(--navy);}
 .icon-btn.delete:hover{border-color:var(--red);color:var(--red);}
 
-/* FIELD GRID */
+/* ── FIELD GRID ── */
 .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 @media(max-width:560px){.field-grid{grid-template-columns:1fr;}}
 .field{display:flex;flex-direction:column;gap:4px;}
 .field.full{grid-column:1/-1;}
-.field label{font-size:11px;font-weight:700;color:var(--bark);text-transform:uppercase;letter-spacing:0.5px;}
+.field label{font-size:11px;font-weight:700;color:var(--bark);text-transform:uppercase;letter-spacing:.5px;}
 .field input,.field textarea,.field select{background:var(--cream);border:1.5px solid #c0cce8;border-radius:8px;padding:9px 12px;font-family:'Nunito',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s;width:100%;}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--mid);background:white;}
 .field textarea{resize:vertical;min-height:70px;line-height:1.5;}
 .field-hint{font-size:11px;color:var(--muted);margin-top:2px;}
 
-/* TIME PICKER */
+/* ── TIME PICKER ── */
 .time-picker{display:flex;gap:6px;align-items:center;}
 .time-picker select{flex:1;background:var(--cream);border:1.5px solid #c0cce8;border-radius:8px;padding:9px 10px;font-family:'Nunito',sans-serif;font-size:14px;color:var(--text);outline:none;cursor:pointer;}
 .time-picker select:focus{border-color:var(--mid);background:white;}
 .time-sep{font-weight:700;color:var(--muted);flex-shrink:0;}
 
-/* DAY PICKER */
+/* ── DAY PICKER ── */
 .day-picker{display:flex;gap:6px;flex-wrap:wrap;}
 .day-btn{padding:7px 14px;border-radius:20px;border:2px solid #c0cce8;background:white;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .15s;}
 .day-btn.active{background:var(--navy);border-color:var(--navy);color:white;}
 
-/* TOGGLE */
+/* ── TOGGLE ── */
 .toggle-row{display:flex;align-items:center;gap:8px;}
 .toggle-lbl{font-size:13px;font-weight:700;color:var(--bark);}
 .toggle{position:relative;width:40px;height:22px;flex-shrink:0;}
 .toggle input{opacity:0;width:0;height:0;}
 .toggle-slider{position:absolute;inset:0;background:#c0cce8;border-radius:22px;cursor:pointer;transition:background .25s;}
-.toggle-slider::before{content:'';position:absolute;left:3px;top:2px;width:16px;height:16px;background:white;border-radius:50%;transition:transform .25s;box-shadow:0 1px 3px rgba(0,0,0,0.2);}
+.toggle-slider::before{content:'';position:absolute;left:3px;top:2px;width:16px;height:16px;background:white;border-radius:50%;transition:transform .25s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
 .toggle input:checked+.toggle-slider{background:var(--navy);}
 .toggle input:checked+.toggle-slider::before{transform:translateX(18px);}
 
-/* RUNS LIST */
+/* ── RUNS LIST ── */
 #other-runs-list{margin-bottom:20px;}
 .empty-state{text-align:center;padding:32px;color:var(--muted);font-size:14px;background:white;border-radius:16px;border:2px dashed #c8d8f0;}
 
-/* GLOBAL SAVE */
-.global-save-bar{position:sticky;bottom:20px;display:flex;justify-content:center;gap:12px;z-index:50;margin-top:24px;flex-wrap:wrap;}
-.global-save-btn{background:var(--navy);color:white;border:none;border-radius:30px;padding:14px 40px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(112,63,211,0.35);transition:background .2s,transform .15s;}
-.global-save-btn:hover{background:var(--blue);transform:translateY(-2px);}
-.global-save-btn:disabled{background:#aab;box-shadow:none;transform:none;cursor:not-allowed;}
-.global-download-btn{background:var(--gold);color:white;border:none;border-radius:30px;padding:14px 28px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(232,160,32,0.35);transition:background .2s,transform .15s;}
-.global-download-btn:hover{background:var(--goldd);transform:translateY(-2px);}
+/* ── PHOTO SECTION ── */
+.photo-drop-zone{background:white;border:2.5px dashed #b0c4ee;border-radius:16px;padding:36px 24px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;margin-bottom:20px;position:relative;}
+.photo-drop-zone:hover,.photo-drop-zone.drag-over{border-color:var(--mid);background:var(--pale);}
+.photo-drop-icon{font-size:36px;margin-bottom:8px;}
+.photo-drop-title{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--navy);margin-bottom:4px;}
+.photo-drop-sub{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.photo-upload-btn{background:var(--navy);color:white;border:none;border-radius:10px;padding:10px 22px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s;}
+.photo-upload-btn:hover{background:var(--blue);}
+#photo-file-input{display:none;}
+.photo-upload-progress{margin-top:14px;display:none;}
+.progress-bar-wrap{background:#e0e8f8;border-radius:20px;height:8px;overflow:hidden;margin-top:6px;}
+.progress-bar-fill{height:100%;background:var(--navy);border-radius:20px;width:0%;transition:width .3s;}
+.progress-label{font-size:12px;color:var(--muted);font-weight:600;margin-top:4px;}
 
-/* TOAST */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:white;padding:12px 24px;border-radius:30px;font-size:14px;font-weight:600;transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:999;white-space:nowrap;}
-.toast.show{transform:translateX(-50%) translateY(0);}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
+.photo-thumb{position:relative;border-radius:12px;overflow:hidden;background:#e8edf8;aspect-ratio:1;box-shadow:0 2px 8px rgba(0,0,0,.1);}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-thumb-overlay{position:absolute;inset:0;background:rgba(20,10,40,0);transition:background .2s;display:flex;align-items:flex-end;justify-content:space-between;padding:8px;}
+.photo-thumb:hover .photo-thumb-overlay{background:rgba(20,10,40,.45);}
+.photo-thumb-name{color:white;font-size:10px;font-weight:700;opacity:0;transition:opacity .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 32px);}
+.photo-thumb:hover .photo-thumb-name{opacity:1;}
+.photo-del-btn{background:rgba(214,53,53,.9);color:white;border:none;border-radius:6px;padding:4px 7px;font-size:12px;cursor:pointer;opacity:0;transition:opacity .2s;flex-shrink:0;}
+.photo-thumb:hover .photo-del-btn{opacity:1;}
+.photo-del-btn:hover{background:var(--red);}
+.photo-empty{text-align:center;padding:24px;color:var(--muted);font-size:13px;background:white;border-radius:16px;border:2px dashed #c8d8f0;}
+.photo-loading{text-align:center;padding:20px;color:var(--muted);font-size:13px;}
+.photo-count{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px;}
+
+/* ── PUBLISH BAR ── */
+.publish-bar{position:sticky;bottom:0;left:0;right:0;background:rgba(245,247,252,.95);backdrop-filter:blur(10px);border-top:1.5px solid #dde4f0;padding:14px 2rem;display:flex;justify-content:center;align-items:center;gap:12px;z-index:50;flex-wrap:wrap;}
+.publish-btn{background:var(--navy);color:white;border:none;border-radius:30px;padding:14px 44px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(112,63,211,.35);transition:background .2s,transform .15s,box-shadow .2s;display:flex;align-items:center;gap:8px;}
+.publish-btn:hover{background:var(--blue);transform:translateY(-2px);}
+.publish-btn:disabled{background:#9a9ab0;box-shadow:none;transform:none;cursor:not-allowed;}
+.publish-btn.publishing{background:#6a5a9a;}
+.publish-note{font-size:12px;color:var(--muted);font-weight:600;}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--text);color:white;padding:12px 24px;border-radius:30px;font-size:14px;font-weight:600;opacity:0;transition:opacity .3s,transform .3s;z-index:999;white-space:nowrap;pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .toast.success{background:var(--green);}
 .toast.error{background:var(--red);}
+.toast.info{background:var(--bark);}
+
+/* ── SPINNER ── */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
 </style>
 </head>
 <body>
 
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">🏃 Ringoes Rampagers</div>
     <div class="login-sub">Admin Schedule Manager</div>
-    <input type="password" id="pw-input" placeholder="Enter password">
+    <input type="password" id="pw-input" placeholder="Enter password" autocomplete="current-password">
     <button class="login-btn" onclick="doLogin()">Sign In</button>
     <div class="login-error" id="login-error">Incorrect password. Try again.</div>
   </div>
 </div>
 
+<!-- ADMIN PANEL -->
 <div id="admin-panel">
 <nav>
   <div class="nav-logo">⚙️ Rampagers Admin</div>
   <div class="nav-right">
     <a href="index.html" class="nav-site-link" target="_blank">← View Site</a>
+    <button class="nav-icon-btn" onclick="toggleSettings()" title="GitHub Settings">⚙️</button>
     <button class="logout-btn" onclick="doLogout()">Log Out</button>
   </div>
 </nav>
@@ -140,16 +200,46 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 <div class="admin-wrap">
   <div class="page-title">Schedule Manager</div>
   <div class="gold-line"></div>
-  <div class="page-sub">Edit the Saturday run, add track workouts or other runs. Hit <strong>Save</strong> to store locally, then <strong>Download runs.json</strong> and replace the <code>data/runs.json</code> file in your website folder to publish changes live.</div>
+  <div class="page-sub">Edit the Saturday run or add track workouts and other runs. Hit <strong>🚀 Publish to Site</strong> — changes go live in about 60 seconds!</div>
 
-  <!-- HOW IT WORKS BANNER -->
-  <div class="info-banner">
-    <strong>✅ No Google Sheets needed!</strong> Your schedule is saved right here in the browser.<br>
-    When you're ready to update the live website:<br>
-    1. Click <strong>💾 Save Schedule</strong> — stores your changes locally.<br>
-    2. Click <strong>⬇️ Download runs.json</strong> — saves the file to your computer.<br>
-    3. Replace <code>data/runs.json</code> in your website folder with the downloaded file and re-upload/commit it.<br>
-    <em>The website reads from that file automatically.</em>
+  <!-- GITHUB SETTINGS -->
+  <div id="gh-settings">
+    <div class="gh-title">⚙️ GitHub Auto-Publish Setup</div>
+    <div class="gh-sub">
+      Enter your GitHub details once and publishing becomes one click.<br>
+      Need a token? <a href="https://github.com/settings/tokens/new?scopes=repo&description=Rampagers+Admin" target="_blank">Create one here</a> — set scope to <strong>repo</strong>, expiration to <strong>No expiration</strong>. Your token is stored only in this browser.
+    </div>
+    <div class="gh-grid">
+      <div class="gh-field">
+        <label>GitHub Username</label>
+        <input type="text" id="gh-user" placeholder="e.g. acirillo">
+      </div>
+      <div class="gh-field">
+        <label>Repository Name</label>
+        <input type="text" id="gh-repo" placeholder="e.g. ringoesrampagers">
+      </div>
+      <div class="gh-field">
+        <label>Branch</label>
+        <input type="text" id="gh-branch" placeholder="main" value="main">
+      </div>
+      <div class="gh-field">
+        <label>File Path</label>
+        <input type="text" id="gh-path" placeholder="data/runs.json" value="data/runs.json">
+      </div>
+      <div class="gh-field full">
+        <label>Personal Access Token</label>
+        <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+      </div>
+    </div>
+    <button class="gh-save-btn" onclick="saveGhSettings()">Save Settings</button>
+    <div class="gh-status" id="gh-status"></div>
+  </div>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar" id="status-bar">
+    <div class="status-dot grey" id="status-dot"></div>
+    <div class="status-text" id="status-text">Loading settings…</div>
+    <button class="status-configure-btn" onclick="toggleSettings()">Configure</button>
   </div>
 
   <!-- SATURDAY -->
@@ -197,10 +287,37 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
     <div class="empty-state" id="empty-state">No other runs this week. Hit "+ Add Run" to add a track workout or anything else.</div>
   </div>
 
-  <div class="global-save-bar">
-    <button class="global-save-btn" id="save-btn" onclick="saveSchedule()">💾 Save Schedule</button>
-    <button class="global-download-btn" id="download-btn" onclick="downloadJson()">⬇️ Download runs.json</button>
+  <!-- PHOTOS -->
+  <div class="section-header" style="margin-top:36px;">
+    <div class="section-label">📸 Club Photos</div>
+    <div id="photo-count-label" class="photo-count"></div>
   </div>
+
+  <!-- Drop Zone -->
+  <div class="photo-drop-zone" id="photo-drop-zone" onclick="document.getElementById('photo-file-input').click()">
+    <div class="photo-drop-icon">🖼️</div>
+    <div class="photo-drop-title">Upload Photos</div>
+    <div class="photo-drop-sub">Drag &amp; drop photos here, or click to browse.<br>JPG, PNG, GIF, WebP — published instantly to the <code>photos/</code> folder.</div>
+    <button class="photo-upload-btn" onclick="event.stopPropagation();document.getElementById('photo-file-input').click()">📁 Choose Photos</button>
+    <div class="photo-upload-progress" id="photo-upload-progress">
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+      <div class="progress-label" id="progress-label">Uploading…</div>
+    </div>
+  </div>
+  <input type="file" id="photo-file-input" accept="image/*" multiple>
+
+  <!-- Photo Grid -->
+  <div id="photo-grid" class="photo-grid"></div>
+  <div id="photo-empty" class="photo-empty" style="display:none;">No photos uploaded yet. Add some using the drop zone above!</div>
+  <div id="photo-loading" class="photo-loading">Loading photos…</div>
+</div>
+
+<!-- PUBLISH BAR -->
+<div class="publish-bar">
+  <div class="publish-note" id="publish-note">Changes are saved locally until published.</div>
+  <button class="publish-btn" id="publish-btn" onclick="publishSchedule()">
+    🚀 Publish to Site
+  </button>
 </div>
 </div>
 
@@ -277,8 +394,8 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
         <input type="text" class="run-notes" placeholder="Brief description…">
       </div>
       <div class="field full">
-        <label>Workout (optional — for track nights)</label>
-        <textarea class="run-workout" placeholder="1 mi warmup • 4×1 mi @ HM pace • 1 mi cooldown"></textarea>
+        <label>Workout (optional — for track nights, press Enter for each new line)</label>
+        <textarea class="run-workout" placeholder="1mi warmup&#10;6x800 @ 5k pace&#10;400m recovery&#10;1mi cooldown"></textarea>
       </div>
     </div>
   </div>
@@ -288,7 +405,6 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 const PASSWORD = 'Rampagers123!';
 let runIdCounter = 0;
 
-// ── DEFAULT DATA ──────────────────────────────────────────
 const DEFAULT_SCHEDULE = {
   saturday: {
     time: '8:00 AM',
@@ -316,27 +432,83 @@ function doLogout() {
   document.getElementById('pw-input').value = '';
 }
 
+// ── GITHUB SETTINGS ───────────────────────────────────────
+function getGhSettings() {
+  try {
+    const s = localStorage.getItem('rr_gh_settings');
+    return s ? JSON.parse(s) : null;
+  } catch { return null; }
+}
+function saveGhSettings() {
+  const settings = {
+    user:   document.getElementById('gh-user').value.trim(),
+    repo:   document.getElementById('gh-repo').value.trim(),
+    branch: document.getElementById('gh-branch').value.trim() || 'main',
+    path:   document.getElementById('gh-path').value.trim() || 'data/runs.json',
+    token:  document.getElementById('gh-token').value.trim(),
+  };
+  if (!settings.user || !settings.repo || !settings.token) {
+    document.getElementById('gh-status').textContent = '⚠️ Please fill in username, repo, and token.';
+    document.getElementById('gh-status').className = 'gh-status err';
+    return;
+  }
+  localStorage.setItem('rr_gh_settings', JSON.stringify(settings));
+  document.getElementById('gh-status').textContent = '✅ Settings saved!';
+  document.getElementById('gh-status').className = 'gh-status ok';
+  updateStatusBar();
+  setTimeout(() => {
+    document.getElementById('gh-settings').style.display = 'none';
+  }, 900);
+}
+function toggleSettings() {
+  const panel = document.getElementById('gh-settings');
+  const open  = panel.style.display === 'block';
+  panel.style.display = open ? 'none' : 'block';
+  if (!open) {
+    const s = getGhSettings();
+    if (s) {
+      document.getElementById('gh-user').value   = s.user   || '';
+      document.getElementById('gh-repo').value   = s.repo   || '';
+      document.getElementById('gh-branch').value = s.branch || 'main';
+      document.getElementById('gh-path').value   = s.path   || 'data/runs.json';
+      document.getElementById('gh-token').value  = s.token  || '';
+    }
+  }
+}
+function updateStatusBar() {
+  const s   = getGhSettings();
+  const dot  = document.getElementById('status-dot');
+  const txt  = document.getElementById('status-text');
+  if (s && s.user && s.repo && s.token) {
+    dot.className = 'status-dot green';
+    txt.textContent = `Connected — ${s.user}/${s.repo} (${s.branch || 'main'})`;
+  } else {
+    dot.className = 'status-dot orange';
+    txt.textContent = 'Not configured — click Configure to set up auto-publish.';
+  }
+}
+
 // ── INIT ──────────────────────────────────────────────────
 function init() {
+  updateStatusBar();
   let stored = null;
   try {
     const raw = localStorage.getItem('rr_schedule');
     if (raw) stored = JSON.parse(raw);
-  } catch (e) {}
+  } catch {}
   populateForm(stored || DEFAULT_SCHEDULE);
+  initPhotos();
 }
 
 // ── TIME HELPERS ──────────────────────────────────────────
-function timeToString(hourEl, minEl, ampmEl) {
-  return hourEl.value + ':' + minEl.value + ' ' + ampmEl.value;
-}
-function setTimePicker(hourEl, minEl, ampmEl, timeStr) {
-  if (!timeStr) return;
-  const m = timeStr.match(/^(\d+):(\d+)\s*(AM|PM)$/i);
-  if (!m) return;
-  hourEl.value = m[1];
-  minEl.value = m[2].padStart(2, '0');
-  ampmEl.value = m[3].toUpperCase();
+function timeToString(h, m, ap) { return h.value + ':' + m.value + ' ' + ap.value; }
+function setTimePicker(h, m, ap, str) {
+  if (!str) return;
+  const match = str.match(/^(\d+):(\d+)\s*(AM|PM)$/i);
+  if (!match) return;
+  h.value  = match[1];
+  m.value  = match[2].padStart(2, '0');
+  ap.value = match[3].toUpperCase();
 }
 
 // ── DAY PICKER ────────────────────────────────────────────
@@ -350,7 +522,6 @@ function setRunDay(btn, day) {
   card.dataset.day = day;
   updateCardName(card);
 }
-
 function updateCardName(card) {
   const label = card.querySelector('.run-label')?.value || '';
   const date  = card.querySelector('.run-display-date')?.value || '';
@@ -361,11 +532,11 @@ function updateCardName(card) {
 
 // ── ADD RUN ───────────────────────────────────────────────
 function addRun(data) {
-  const tpl  = document.getElementById('run-card-tpl');
+  const tpl   = document.getElementById('run-card-tpl');
   const clone = tpl.content.cloneNode(true);
   const card  = clone.querySelector('.admin-card');
   card.dataset.id  = 'run_' + (++runIdCounter);
-  card.dataset.day = data ? (data.day || 'Tuesday') : 'Tuesday';
+  card.dataset.day = data?.day || 'Tuesday';
 
   if (data) {
     const labelEl = card.querySelector('.run-label');
@@ -377,16 +548,12 @@ function addRun(data) {
       }
       labelEl.value = data.label;
     }
-    const dateEl = card.querySelector('.run-date');
-    if (dateEl && data.sortDate) dateEl.value = data.sortDate;
-    const dispEl = card.querySelector('.run-display-date');
-    if (dispEl && data.date) dispEl.value = data.date;
-    const locEl  = card.querySelector('.run-location');
-    if (locEl && data.location) locEl.value = data.location;
-    const notesEl = card.querySelector('.run-notes');
-    if (notesEl && data.notes) notesEl.value = data.notes;
-    const workEl  = card.querySelector('.run-workout');
-    if (workEl && data.workout) workEl.value = data.workout;
+    const f = (cls, val) => { const el = card.querySelector(cls); if (el && val) el.value = val; };
+    f('.run-date', data.sortDate);
+    f('.run-display-date', data.date);
+    f('.run-location', data.location);
+    f('.run-notes', data.notes);
+    f('.run-workout', data.workout);
     const activeEl = card.querySelector('.run-active');
     if (activeEl) activeEl.checked = (data.active !== 'false');
     setTimePicker(
@@ -395,32 +562,26 @@ function addRun(data) {
       card.querySelector('.run-ampm'),
       data.time || '7:00 PM'
     );
-    // Activate the right day button
     const shortDay = DAY_SHORT[data.day] || 'Tue';
-    card.querySelectorAll('.day-btn').forEach(b => {
-      b.classList.toggle('active', b.textContent.trim() === shortDay);
-    });
+    card.querySelectorAll('.day-btn').forEach(b =>
+      b.classList.toggle('active', b.textContent.trim() === shortDay)
+    );
   }
 
-  // Live card-name updates
-  ['run-label', 'run-display-date'].forEach(cls => {
-    const el = card.querySelector('.' + cls);
+  ['run-label','run-display-date'].forEach(cls => {
+    const el  = card.querySelector('.' + cls);
     if (!el) return;
-    const evt = el.tagName === 'SELECT' ? 'change' : 'input';
-    el.addEventListener(evt, () => updateCardName(card));
+    el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => updateCardName(card));
   });
 
   document.getElementById('other-runs-list').appendChild(card);
   document.getElementById('empty-state').style.display = 'none';
   updateCardName(card);
-  return card;
 }
-
 function deleteRun(btn) {
   btn.closest('.admin-card').remove();
-  if (!document.querySelector('#other-runs-list .admin-card')) {
+  if (!document.querySelector('#other-runs-list .admin-card'))
     document.getElementById('empty-state').style.display = '';
-  }
 }
 
 // ── COLLECT DATA ──────────────────────────────────────────
@@ -434,17 +595,14 @@ function collectSchedule() {
     location: document.getElementById('sat-location').value,
     notes:    document.getElementById('sat-notes').value,
   };
-
-  const cards = document.querySelectorAll('#other-runs-list .admin-card');
-  const runs = Array.from(cards).map(card => {
+  const runs = Array.from(document.querySelectorAll('#other-runs-list .admin-card')).map(card => {
     const activeBtn = card.querySelector('.day-btn.active');
-    const shortDay  = activeBtn ? activeBtn.textContent.trim() : 'Tue';
-    const fullDay   = DAY_LONG[shortDay] || card.dataset.day || 'Tuesday';
+    const short     = activeBtn ? activeBtn.textContent.trim() : 'Tue';
     return {
       id:       card.dataset.id,
       label:    card.querySelector('.run-label')?.value || '',
-      sortDate: card.querySelector('.run-date')?.value || '',
-      day:      fullDay,
+      sortDate: card.querySelector('.run-date')?.value  || '',
+      day:      DAY_LONG[short] || card.dataset.day || 'Tuesday',
       date:     card.querySelector('.run-display-date')?.value || '',
       time:     timeToString(
                   card.querySelector('.run-hour'),
@@ -452,12 +610,11 @@ function collectSchedule() {
                   card.querySelector('.run-ampm')
                 ),
       location: card.querySelector('.run-location')?.value || '',
-      notes:    card.querySelector('.run-notes')?.value || '',
-      workout:  card.querySelector('.run-workout')?.value || '',
+      notes:    card.querySelector('.run-notes')?.value    || '',
+      workout:  card.querySelector('.run-workout')?.value  || '',
       active:   String(card.querySelector('.run-active')?.checked ?? true),
     };
   });
-
   return { saturday, runs };
 }
 
@@ -474,54 +631,337 @@ function populateForm(data) {
     if (s.location) document.getElementById('sat-location').value = s.location;
     if (s.notes)    document.getElementById('sat-notes').value    = s.notes;
   }
-
-  // Clear existing run cards
-  const list = document.getElementById('other-runs-list');
-  list.querySelectorAll('.admin-card').forEach(c => c.remove());
+  document.querySelectorAll('#other-runs-list .admin-card').forEach(c => c.remove());
   document.getElementById('empty-state').style.display = '';
-
-  if (data.runs && data.runs.length) {
-    data.runs.forEach(r => addRun(r));
-  }
+  if (data.runs?.length) data.runs.forEach(r => addRun(r));
 }
 
-// ── SAVE to localStorage ──────────────────────────────────
-function saveSchedule() {
-  const payload = collectSchedule();
-  try {
-    localStorage.setItem('rr_schedule', JSON.stringify(payload));
-    showToast('✅ Schedule saved! Click ⬇️ Download runs.json to publish.', 'success');
-  } catch (e) {
-    showToast('❌ Could not save to browser storage.', 'error');
+// ── PUBLISH TO GITHUB ─────────────────────────────────────
+async function publishSchedule() {
+  const s = getGhSettings();
+  if (!s || !s.user || !s.repo || !s.token) {
+    toggleSettings();
+    showToast('⚙️ Please configure GitHub settings first.', 'info');
+    return;
   }
-}
 
-// ── DOWNLOAD runs.json ────────────────────────────────────
-function downloadJson() {
-  // Always save first so the downloaded file matches current state
   const payload = collectSchedule();
+  // Always save locally too
   localStorage.setItem('rr_schedule', JSON.stringify(payload));
 
-  const json = JSON.stringify(payload, null, 2);
-  const blob = new Blob([json], { type: 'application/json' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
-  a.download = 'runs.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast('📥 runs.json downloaded — replace data/runs.json on the site!', 'success');
+  const btn = document.getElementById('publish-btn');
+  const note = document.getElementById('publish-note');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Publishing…';
+  note.textContent = 'Pushing to GitHub…';
+
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+  const apiUrl  = `https://api.github.com/repos/${s.user}/${s.repo}/contents/${s.path}`;
+
+  try {
+    // Get current file SHA (needed to update existing file)
+    let sha = null;
+    const getRes = await fetch(`${apiUrl}?ref=${s.branch}`, {
+      headers: {
+        'Authorization': `token ${s.token}`,
+        'Accept': 'application/vnd.github+json',
+      }
+    });
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      sha = fileData.sha;
+    } else if (getRes.status !== 404) {
+      throw new Error(`GitHub API error ${getRes.status}: ${await getRes.text()}`);
+    }
+
+    // Commit the new file
+    const body = {
+      message: `Update schedule — ${new Date().toLocaleString('en-US', {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}`,
+      content,
+      branch: s.branch,
+    };
+    if (sha) body.sha = sha;
+
+    const putRes = await fetch(apiUrl, {
+      method:  'PUT',
+      headers: {
+        'Authorization': `token ${s.token}`,
+        'Accept':        'application/vnd.github+json',
+        'Content-Type':  'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!putRes.ok) {
+      const err = await putRes.json();
+      throw new Error(err.message || `HTTP ${putRes.status}`);
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = '✅ Published!';
+    note.textContent = 'Live in ~60 seconds on GitHub Pages.';
+    showToast('🚀 Published! Site updates in ~60 seconds.', 'success');
+    setTimeout(() => {
+      btn.innerHTML = '🚀 Publish to Site';
+      note.textContent = 'Changes are saved locally until published.';
+    }, 4000);
+
+  } catch (err) {
+    btn.disabled = false;
+    btn.innerHTML = '🚀 Publish to Site';
+    note.textContent = 'Publish failed — see error below.';
+    console.error('Publish error:', err);
+
+    let msg = err.message || 'Unknown error';
+    if (msg.includes('Bad credentials') || msg.includes('401'))
+      msg = 'Invalid token — check your GitHub token in settings.';
+    else if (msg.includes('Not Found') || msg.includes('404'))
+      msg = 'Repo or file path not found — check your settings.';
+
+    showToast('❌ ' + msg, 'error');
+  }
+}
+
+// ── PHOTOS ────────────────────────────────────────────────
+const PHOTOS_FOLDER = 'photos';
+let loadedPhotos = []; // { name, sha, url }
+
+// Called after login once GH settings are confirmed
+async function initPhotos() {
+  const s = getGhSettings();
+  if (!s || !s.user || !s.repo || !s.token) {
+    document.getElementById('photo-loading').textContent = '⚙️ Configure GitHub settings to manage photos.';
+    return;
+  }
+  await loadPhotos();
+}
+
+async function loadPhotos() {
+  const s = getGhSettings();
+  if (!s) return;
+  const loading = document.getElementById('photo-loading');
+  const grid    = document.getElementById('photo-grid');
+  const empty   = document.getElementById('photo-empty');
+  loading.style.display = 'block';
+  grid.innerHTML = '';
+  empty.style.display = 'none';
+
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${s.user}/${s.repo}/contents/${PHOTOS_FOLDER}?ref=${s.branch}&t=${Date.now()}`,
+      { headers: { 'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github+json' } }
+    );
+
+    if (res.status === 404) {
+      // Folder doesn't exist yet — that's fine, photos will create it
+      loadedPhotos = [];
+      loading.style.display = 'none';
+      empty.style.display = 'block';
+      updatePhotoCount(0);
+      return;
+    }
+    if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+
+    const files = await res.json();
+    loadedPhotos = files
+      .filter(f => /\.(jpe?g|png|gif|webp|svg)$/i.test(f.name))
+      .map(f => ({ name: f.name, sha: f.sha, path: f.path,
+                   url: `https://raw.githubusercontent.com/${s.user}/${s.repo}/${s.branch}/${f.path}` }));
+
+    loading.style.display = 'none';
+    if (loadedPhotos.length === 0) {
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      loadedPhotos.forEach(renderPhotoThumb);
+    }
+    updatePhotoCount(loadedPhotos.length);
+  } catch (err) {
+    loading.textContent = '❌ Could not load photos — check GitHub settings.';
+    console.error(err);
+  }
+}
+
+function updatePhotoCount(n) {
+  const el = document.getElementById('photo-count-label');
+  el.textContent = n === 0 ? '' : `${n} photo${n === 1 ? '' : 's'}`;
+}
+
+function renderPhotoThumb(photo) {
+  const grid = document.getElementById('photo-grid');
+  const div  = document.createElement('div');
+  div.className   = 'photo-thumb';
+  div.dataset.name = photo.name;
+  div.dataset.sha  = photo.sha;
+  div.innerHTML = `
+    <img src="${photo.url}?t=${Date.now()}" alt="${photo.name}" loading="lazy">
+    <div class="photo-thumb-overlay">
+      <span class="photo-thumb-name">${photo.name}</span>
+      <button class="photo-del-btn" onclick="deletePhoto(this,'${photo.name}','${photo.sha}')" title="Delete">🗑</button>
+    </div>`;
+  grid.appendChild(div);
+}
+
+// ── UPLOAD ────────────────────────────────────────────────
+document.getElementById('photo-file-input').addEventListener('change', function() {
+  if (this.files.length) uploadPhotos(Array.from(this.files));
+  this.value = ''; // reset so same file can be re-selected
+});
+
+// Drag & drop
+const dropZone = document.getElementById('photo-drop-zone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+  if (files.length) uploadPhotos(files);
+});
+
+async function uploadPhotos(files) {
+  const s = getGhSettings();
+  if (!s || !s.user || !s.repo || !s.token) {
+    toggleSettings();
+    showToast('⚙️ Configure GitHub settings before uploading.', 'info');
+    return;
+  }
+
+  const progress  = document.getElementById('photo-upload-progress');
+  const bar       = document.getElementById('progress-bar-fill');
+  const label     = document.getElementById('progress-label');
+  progress.style.display = 'block';
+  bar.style.width = '0%';
+
+  let done = 0;
+  const errors = [];
+
+  for (const file of files) {
+    label.textContent = `Uploading ${file.name} (${done + 1}/${files.length})…`;
+    try {
+      await uploadSinglePhoto(file, s);
+      done++;
+      bar.style.width = Math.round((done / files.length) * 100) + '%';
+    } catch (err) {
+      errors.push(file.name);
+      console.error('Upload error', file.name, err);
+    }
+  }
+
+  progress.style.display = 'none';
+  bar.style.width = '0%';
+
+  if (errors.length === 0) {
+    showToast(`✅ ${done} photo${done === 1 ? '' : 's'} uploaded!`, 'success');
+  } else {
+    showToast(`⚠️ ${done} uploaded, ${errors.length} failed.`, 'error');
+  }
+  await loadPhotos(); // refresh grid
+}
+
+async function uploadSinglePhoto(file, s) {
+  // Read file as base64
+  const base64 = await fileToBase64(file);
+
+  // Sanitise filename: lowercase, spaces→dashes, strip special chars
+  const safeName = file.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9.\-_]/g, '');
+  const filePath = `${PHOTOS_FOLDER}/${safeName}`;
+  const apiUrl   = `https://api.github.com/repos/${s.user}/${s.repo}/contents/${filePath}`;
+
+  // Check if file already exists (to get SHA for update)
+  let sha = null;
+  const check = await fetch(`${apiUrl}?ref=${s.branch}`, {
+    headers: { 'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github+json' }
+  });
+  if (check.ok) sha = (await check.json()).sha;
+
+  const body = {
+    message: `Add photo: ${safeName}`,
+    content: base64,
+    branch:  s.branch,
+  };
+  if (sha) body.sha = sha;
+
+  const res = await fetch(apiUrl, {
+    method:  'PUT',
+    headers: {
+      'Authorization': `token ${s.token}`,
+      'Accept':        'application/vnd.github+json',
+      'Content-Type':  'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.message || `HTTP ${res.status}`);
+  }
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload  = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// ── DELETE PHOTO ──────────────────────────────────────────
+async function deletePhoto(btn, name, sha) {
+  if (!confirm(`Delete "${name}" from the site? This cannot be undone.`)) return;
+  const s = getGhSettings();
+  if (!s) return;
+
+  btn.textContent = '…';
+  btn.disabled = true;
+
+  const filePath = `${PHOTOS_FOLDER}/${name}`;
+  const apiUrl   = `https://api.github.com/repos/${s.user}/${s.repo}/contents/${filePath}`;
+
+  try {
+    const res = await fetch(apiUrl, {
+      method:  'DELETE',
+      headers: {
+        'Authorization': `token ${s.token}`,
+        'Accept':        'application/vnd.github+json',
+        'Content-Type':  'application/json',
+      },
+      body: JSON.stringify({ message: `Remove photo: ${name}`, sha, branch: s.branch }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.message || `HTTP ${res.status}`);
+    }
+
+    // Remove the thumbnail immediately without waiting for loadPhotos
+    const thumb = btn.closest('.photo-thumb');
+    thumb.style.transition = 'opacity .3s, transform .3s';
+    thumb.style.opacity = '0';
+    thumb.style.transform = 'scale(.85)';
+    setTimeout(() => { thumb.remove(); updatePhotoCount(document.querySelectorAll('.photo-thumb').length); }, 300);
+
+    if (!document.querySelector('.photo-thumb'))
+      document.getElementById('photo-empty').style.display = 'block';
+
+    showToast(`🗑 "${name}" deleted.`, 'info');
+  } catch (err) {
+    btn.textContent = '🗑';
+    btn.disabled = false;
+    showToast('❌ Delete failed: ' + (err.message || 'unknown error'), 'error');
+  }
 }
 
 // ── TOAST ─────────────────────────────────────────────────
+let toastTimer;
 function showToast(msg, type) {
   const t = document.getElementById('toast');
+  clearTimeout(toastTimer);
   t.textContent = msg;
   t.className   = 'toast' + (type ? ' ' + type : '');
   requestAnimationFrame(() => t.classList.add('show'));
-  setTimeout(() => t.classList.remove('show'), 4000);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 4500);
 }
 </script>
 </body>
