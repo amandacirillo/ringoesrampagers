@@ -349,9 +349,8 @@ const EMAILJS_PUBLIC_KEY  = 'pQhw78S57aMkvn9jb';   // Account → API Keys
 const EMAILJS_SERVICE_ID  = 'service_ghzd1jg';   // Email Services tab
 const EMAILJS_TEMPLATE_ID = 'template_jqraemx';  // Email Templates tab
 // ============================================================
-// GOOGLE SHEETS — paste your Apps Script URL here
-// ============================================================
-const SCHEDULE_URL = 'https://script.google.com/macros/s/AKfycbymH5etcG4zuPY34ZaZatPhVZUkXJS3Hl_-KHV1QDQLJSbHQmSIOwWOdTNftgu-pMM0/exec';
+// Schedule loaded from data/runs.json
+// Update via admin.html → Download runs.json → replace data/runs.json
 // ============================================================
 
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
@@ -449,19 +448,12 @@ function applySchedule(data) {
 }
 
 function loadSchedule() {
-  if (SCHEDULE_URL === 'YOUR_APPS_SCRIPT_URL') return;
-  const cb = 'rrSched_' + Date.now();
-  window[cb] = function(data) {
-    try { applySchedule(data); } catch(e) { console.log('Schedule render error:', e); }
-    delete window[cb];
-    const el = document.getElementById('rr-jsonp');
-    if (el) el.remove();
-  };
-  const s = document.createElement('script');
-  s.id = 'rr-jsonp';
-  s.src = SCHEDULE_URL + '?action=get&callback=' + cb;
-  s.onerror = function() { console.log('Schedule load failed'); };
-  document.body.appendChild(s);
+  fetch('data/runs.json?v=' + Date.now())
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(data => {
+      try { applySchedule(data); } catch(e) { console.log('Schedule render error:', e); }
+    })
+    .catch(err => { console.log('Schedule load failed, using fallback card.', err); });
 }
 
 loadSchedule();

@@ -40,16 +40,12 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 .gold-line{width:48px;height:4px;background:var(--gold);border-radius:2px;margin-bottom:12px;}
 .page-sub{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.5;}
 
-/* SETUP */
-.setup-banner{background:#fff8e1;border:2px solid var(--gold);border-radius:12px;padding:18px 20px;margin-bottom:28px;}
-.setup-banner h3{font-size:14px;font-weight:800;color:#7a5800;margin-bottom:8px;}
-.setup-url-row{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap;}
-.setup-url-row input{flex:1;min-width:200px;padding:9px 12px;border:1.5px solid #e8c060;border-radius:8px;font-family:monospace;font-size:12px;outline:none;}
-.setup-url-row input:focus{border-color:var(--gold);}
-.url-save-btn{background:var(--gold);color:white;border:none;border-radius:8px;padding:10px 16px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}
-.url-save-btn:hover{background:var(--goldd);}
-.connected-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f5ee;color:var(--green);font-size:13px;font-weight:700;padding:6px 14px;border-radius:20px;}
-.change-url-btn{background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;margin-left:8px;text-decoration:underline;}
+/* INFO BANNER */
+.info-banner{background:#e8f4ff;border:1.5px solid #90c4ee;border-radius:12px;padding:16px 20px;margin-bottom:28px;font-size:13px;color:#1a4a7a;line-height:1.7;}
+.info-banner strong{font-weight:800;}
+.info-banner code{background:#d0e8f8;padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px;}
+.download-btn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:var(--navy);color:white;border:none;border-radius:8px;padding:8px 16px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;}
+.download-btn:hover{background:var(--blue);}
 
 /* SECTION HEADERS */
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
@@ -65,8 +61,6 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 .card-actions{display:flex;gap:8px;}
 .badge{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
 .badge-sat{background:#e8f5ee;color:var(--green);}
-.badge-active{background:var(--pale);color:var(--mid);}
-.badge-inactive{background:#eef0f5;color:#8890aa;}
 .icon-btn{background:none;border:1.5px solid #c8d8f0;border-radius:8px;padding:6px 10px;cursor:pointer;font-size:14px;transition:all .15s;color:var(--muted);}
 .icon-btn:hover{border-color:var(--mid);color:var(--navy);}
 .icon-btn.delete:hover{border-color:var(--red);color:var(--red);}
@@ -108,10 +102,12 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 .empty-state{text-align:center;padding:32px;color:var(--muted);font-size:14px;background:white;border-radius:16px;border:2px dashed #c8d8f0;}
 
 /* GLOBAL SAVE */
-.global-save-bar{position:sticky;bottom:20px;display:flex;justify-content:center;z-index:50;margin-top:24px;}
+.global-save-bar{position:sticky;bottom:20px;display:flex;justify-content:center;gap:12px;z-index:50;margin-top:24px;flex-wrap:wrap;}
 .global-save-btn{background:var(--navy);color:white;border:none;border-radius:30px;padding:14px 40px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(112,63,211,0.35);transition:background .2s,transform .15s;}
 .global-save-btn:hover{background:var(--blue);transform:translateY(-2px);}
 .global-save-btn:disabled{background:#aab;box-shadow:none;transform:none;cursor:not-allowed;}
+.global-download-btn{background:var(--gold);color:white;border:none;border-radius:30px;padding:14px 28px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(232,160,32,0.35);transition:background .2s,transform .15s;}
+.global-download-btn:hover{background:var(--goldd);transform:translateY(-2px);}
 
 /* TOAST */
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:white;padding:12px 24px;border-radius:30px;font-size:14px;font-weight:600;transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:999;white-space:nowrap;}
@@ -144,19 +140,16 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 <div class="admin-wrap">
   <div class="page-title">Schedule Manager</div>
   <div class="gold-line"></div>
-  <div class="page-sub">Edit the Saturday run, add track workouts or other runs. Changes go live the moment you hit Save & Publish.</div>
+  <div class="page-sub">Edit the Saturday run, add track workouts or other runs. Hit <strong>Save</strong> to store locally, then <strong>Download runs.json</strong> and replace the <code>data/runs.json</code> file in your website folder to publish changes live.</div>
 
-  <!-- SETUP -->
-  <div class="setup-banner" id="setup-banner">
-    <h3>🔗 Connect to Google Sheets — paste your Apps Script URL below</h3>
-    <div class="setup-url-row">
-      <input type="text" id="script-url-input" placeholder="https://script.google.com/macros/s/…/exec">
-      <button class="url-save-btn" onclick="saveScriptUrl()">Connect</button>
-    </div>
-    <div id="connected-indicator" style="margin-top:10px;display:none;">
-      <span class="connected-badge">✓ Connected to Google Sheets</span>
-      <button class="change-url-btn" onclick="disconnectSheet()">Change URL</button>
-    </div>
+  <!-- HOW IT WORKS BANNER -->
+  <div class="info-banner">
+    <strong>✅ No Google Sheets needed!</strong> Your schedule is saved right here in the browser.<br>
+    When you're ready to update the live website:<br>
+    1. Click <strong>💾 Save Schedule</strong> — stores your changes locally.<br>
+    2. Click <strong>⬇️ Download runs.json</strong> — saves the file to your computer.<br>
+    3. Replace <code>data/runs.json</code> in your website folder with the downloaded file and re-upload/commit it.<br>
+    <em>The website reads from that file automatically.</em>
   </div>
 
   <!-- SATURDAY -->
@@ -170,8 +163,8 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
         <label>Time</label>
         <div class="time-picker">
           <select id="sat-hour">
-            <option>6</option><option>7</option><option selected>8</option><option>9</option>
-            <option>10</option><option>11</option><option>12</option>
+            <option>5</option><option>6</option><option>7</option><option selected>8</option>
+            <option>9</option><option>10</option><option>11</option><option>12</option>
           </select>
           <span class="time-sep">:</span>
           <select id="sat-min">
@@ -179,7 +172,7 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
             <option value="30">30</option><option value="45">45</option>
           </select>
           <select id="sat-ampm">
-            <option>AM</option><option selected>AM</option>
+            <option selected>AM</option><option>PM</option>
           </select>
         </div>
       </div>
@@ -205,7 +198,8 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
   </div>
 
   <div class="global-save-bar">
-    <button class="global-save-btn" id="save-btn" onclick="saveSchedule()">💾 Save &amp; Publish Schedule</button>
+    <button class="global-save-btn" id="save-btn" onclick="saveSchedule()">💾 Save Schedule</button>
+    <button class="global-download-btn" id="download-btn" onclick="downloadJson()">⬇️ Download runs.json</button>
   </div>
 </div>
 </div>
@@ -214,7 +208,7 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 
 <!-- RUN CARD TEMPLATE -->
 <template id="run-card-tpl">
-  <div class="admin-card" data-id="">
+  <div class="admin-card" data-id="" data-day="Tuesday">
     <div class="card-top">
       <div class="card-name">New Run</div>
       <div class="card-actions">
@@ -239,9 +233,9 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
         </select>
       </div>
       <div class="field">
-        <label>Date</label>
+        <label>Sort Date (for ordering)</label>
         <input type="date" class="run-date">
-        <div class="field-hint">Used for sorting — won't show the ugly format on site</div>
+        <div class="field-hint">Used for sorting — won't show on site</div>
       </div>
       <div class="field full">
         <label>Day &amp; Display Date (shown on card)</label>
@@ -261,7 +255,7 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
         <label>Time</label>
         <div class="time-picker">
           <select class="run-hour">
-            <option>6</option><option>7</option><option selected>7</option><option>8</option>
+            <option>5</option><option>6</option><option selected>7</option><option>8</option>
             <option>9</option><option>10</option><option>11</option><option>12</option>
           </select>
           <span class="time-sep">:</span>
@@ -292,8 +286,17 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 
 <script>
 const PASSWORD = 'Rampagers123!';
-let scriptUrl = '';
 let runIdCounter = 0;
+
+// ── DEFAULT DATA ──────────────────────────────────────────
+const DEFAULT_SCHEDULE = {
+  saturday: {
+    time: '8:00 AM',
+    location: 'Marion Clawson Park, Ringoes',
+    notes: 'Three routes available — pick your distance!'
+  },
+  runs: []
+};
 
 // ── AUTH ──────────────────────────────────────────────────
 function doLogin() {
@@ -306,7 +309,7 @@ function doLogin() {
     document.getElementById('pw-input').value = '';
   }
 }
-document.getElementById('pw-input').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 function doLogout() {
   document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('admin-panel').style.display = 'none';
@@ -314,35 +317,13 @@ function doLogout() {
 }
 
 // ── INIT ──────────────────────────────────────────────────
-async function init() {
-  scriptUrl = localStorage.getItem('rr_script_url') || '';
-  if (scriptUrl) {
-    document.getElementById('script-url-input').value = scriptUrl;
-    showConnected(true);
-    await fetchSchedule();
-  }
-}
-
-// ── URL ───────────────────────────────────────────────────
-function saveScriptUrl() {
-  const val = document.getElementById('script-url-input').value.trim();
-  if (!val.startsWith('https://')) { showToast('Please paste a valid URL', 'error'); return; }
-  scriptUrl = val;
-  localStorage.setItem('rr_script_url', scriptUrl);
-  showConnected(true);
-  showToast('Connected! Loading schedule…', 'success');
-  fetchSchedule();
-}
-function disconnectSheet() {
-  localStorage.removeItem('rr_script_url');
-  scriptUrl = '';
-  showConnected(false);
-  document.getElementById('script-url-input').value = '';
-}
-function showConnected(yes) {
-  document.getElementById('script-url-input').style.display = yes ? 'none' : '';
-  document.querySelector('.url-save-btn').style.display = yes ? 'none' : '';
-  document.getElementById('connected-indicator').style.display = yes ? 'block' : 'none';
+function init() {
+  let stored = null;
+  try {
+    const raw = localStorage.getItem('rr_schedule');
+    if (raw) stored = JSON.parse(raw);
+  } catch (e) {}
+  populateForm(stored || DEFAULT_SCHEDULE);
 }
 
 // ── TIME HELPERS ──────────────────────────────────────────
@@ -354,11 +335,14 @@ function setTimePicker(hourEl, minEl, ampmEl, timeStr) {
   const m = timeStr.match(/^(\d+):(\d+)\s*(AM|PM)$/i);
   if (!m) return;
   hourEl.value = m[1];
-  minEl.value = m[2].padStart(2,'0');
+  minEl.value = m[2].padStart(2, '0');
   ampmEl.value = m[3].toUpperCase();
 }
 
 // ── DAY PICKER ────────────────────────────────────────────
+const DAY_SHORT = { Tuesday:'Tue', Wednesday:'Wed', Thursday:'Thu', Friday:'Fri', Saturday:'Sat', Sunday:'Sun', Monday:'Mon' };
+const DAY_LONG  = { Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday', Mon:'Monday' };
+
 function setRunDay(btn, day) {
   const card = btn.closest('.admin-card');
   card.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
@@ -368,26 +352,24 @@ function setRunDay(btn, day) {
 }
 
 function updateCardName(card) {
-  const label = card.querySelector('.run-label') ? card.querySelector('.run-label').value : '';
-  const date = card.querySelector('.run-display-date') ? card.querySelector('.run-display-date').value : '';
-  const day = card.dataset.day || '';
-  card.querySelector('.card-name').textContent = label + (day ? ' · ' + day : '') + (date ? ' ' + date : '');
+  const label = card.querySelector('.run-label')?.value || '';
+  const date  = card.querySelector('.run-display-date')?.value || '';
+  const day   = card.dataset.day || '';
+  card.querySelector('.card-name').textContent =
+    label + (day ? ' · ' + day : '') + (date ? ' ' + date : '');
 }
 
 // ── ADD RUN ───────────────────────────────────────────────
 function addRun(data) {
-  const tpl = document.getElementById('run-card-tpl');
+  const tpl  = document.getElementById('run-card-tpl');
   const clone = tpl.content.cloneNode(true);
-  const card = clone.querySelector('.admin-card');
-  const id = 'run_' + (++runIdCounter);
-  card.dataset.id = id;
+  const card  = clone.querySelector('.admin-card');
+  card.dataset.id  = 'run_' + (++runIdCounter);
   card.dataset.day = data ? (data.day || 'Tuesday') : 'Tuesday';
 
   if (data) {
-    // Populate from saved data
     const labelEl = card.querySelector('.run-label');
-    if (data.label && labelEl) {
-      // Add option if not standard
+    if (data.label) {
       if (![...labelEl.options].find(o => o.value === data.label)) {
         const opt = document.createElement('option');
         opt.value = opt.textContent = data.label;
@@ -397,29 +379,35 @@ function addRun(data) {
     }
     const dateEl = card.querySelector('.run-date');
     if (dateEl && data.sortDate) dateEl.value = data.sortDate;
-    const dispDateEl = card.querySelector('.run-display-date');
-    if (dispDateEl && data.date) dispDateEl.value = data.date;
-    const locEl = card.querySelector('.run-location');
+    const dispEl = card.querySelector('.run-display-date');
+    if (dispEl && data.date) dispEl.value = data.date;
+    const locEl  = card.querySelector('.run-location');
     if (locEl && data.location) locEl.value = data.location;
     const notesEl = card.querySelector('.run-notes');
     if (notesEl && data.notes) notesEl.value = data.notes;
-    const workoutEl = card.querySelector('.run-workout');
-    if (workoutEl && data.workout) workoutEl.value = data.workout;
+    const workEl  = card.querySelector('.run-workout');
+    if (workEl && data.workout) workEl.value = data.workout;
     const activeEl = card.querySelector('.run-active');
-    if (activeEl) activeEl.checked = data.active !== 'false';
-    // Time
-    setTimePicker(card.querySelector('.run-hour'), card.querySelector('.run-min'), card.querySelector('.run-ampm'), data.time || '7:00 PM');
-    // Day buttons
+    if (activeEl) activeEl.checked = (data.active !== 'false');
+    setTimePicker(
+      card.querySelector('.run-hour'),
+      card.querySelector('.run-min'),
+      card.querySelector('.run-ampm'),
+      data.time || '7:00 PM'
+    );
+    // Activate the right day button
+    const shortDay = DAY_SHORT[data.day] || 'Tue';
     card.querySelectorAll('.day-btn').forEach(b => {
-      b.classList.toggle('active', b.textContent.trim() === (data.day || 'Tuesday').substring(0,3));
+      b.classList.toggle('active', b.textContent.trim() === shortDay);
     });
   }
 
-  // Listeners for card name update
-  ['run-label','run-display-date'].forEach(cls => {
+  // Live card-name updates
+  ['run-label', 'run-display-date'].forEach(cls => {
     const el = card.querySelector('.' + cls);
-    if (el) el.addEventListener('input', () => updateCardName(card));
-    if (el && el.tagName === 'SELECT') el.addEventListener('change', () => updateCardName(card));
+    if (!el) return;
+    const evt = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(evt, () => updateCardName(card));
   });
 
   document.getElementById('other-runs-list').appendChild(card);
@@ -429,113 +417,111 @@ function addRun(data) {
 }
 
 function deleteRun(btn) {
-  const card = btn.closest('.admin-card');
-  card.remove();
-  if (!document.getElementById('other-runs-list').querySelector('.admin-card')) {
+  btn.closest('.admin-card').remove();
+  if (!document.querySelector('#other-runs-list .admin-card')) {
     document.getElementById('empty-state').style.display = '';
   }
 }
 
 // ── COLLECT DATA ──────────────────────────────────────────
-function collectRuns() {
-  const cards = document.getElementById('other-runs-list').querySelectorAll('.admin-card');
-  return Array.from(cards).map(card => {
+function collectSchedule() {
+  const saturday = {
+    time:     timeToString(
+                document.getElementById('sat-hour'),
+                document.getElementById('sat-min'),
+                document.getElementById('sat-ampm')
+              ),
+    location: document.getElementById('sat-location').value,
+    notes:    document.getElementById('sat-notes').value,
+  };
+
+  const cards = document.querySelectorAll('#other-runs-list .admin-card');
+  const runs = Array.from(cards).map(card => {
     const activeBtn = card.querySelector('.day-btn.active');
-    const day = card.dataset.day || (activeBtn ? activeBtn.textContent.trim() : 'Tuesday');
-    // Map short day names back to full
-    const dayMap = {Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday',Fri:'Friday',Sat:'Saturday',Sun:'Sunday',Mon:'Monday'};
-    const fullDay = dayMap[day] || day;
+    const shortDay  = activeBtn ? activeBtn.textContent.trim() : 'Tue';
+    const fullDay   = DAY_LONG[shortDay] || card.dataset.day || 'Tuesday';
     return {
-      id:        card.dataset.id,
-      label:     card.querySelector('.run-label') ? card.querySelector('.run-label').value : '',
-      sortDate:  card.querySelector('.run-date') ? card.querySelector('.run-date').value : '',
-      day:       fullDay,
-      date:      card.querySelector('.run-display-date') ? card.querySelector('.run-display-date').value : '',
-      time:      timeToString(card.querySelector('.run-hour'), card.querySelector('.run-min'), card.querySelector('.run-ampm')),
-      location:  card.querySelector('.run-location') ? card.querySelector('.run-location').value : '',
-      notes:     card.querySelector('.run-notes') ? card.querySelector('.run-notes').value : '',
-      workout:   card.querySelector('.run-workout') ? card.querySelector('.run-workout').value : '',
-      active:    card.querySelector('.run-active') ? String(card.querySelector('.run-active').checked) : 'true',
+      id:       card.dataset.id,
+      label:    card.querySelector('.run-label')?.value || '',
+      sortDate: card.querySelector('.run-date')?.value || '',
+      day:      fullDay,
+      date:     card.querySelector('.run-display-date')?.value || '',
+      time:     timeToString(
+                  card.querySelector('.run-hour'),
+                  card.querySelector('.run-min'),
+                  card.querySelector('.run-ampm')
+                ),
+      location: card.querySelector('.run-location')?.value || '',
+      notes:    card.querySelector('.run-notes')?.value || '',
+      workout:  card.querySelector('.run-workout')?.value || '',
+      active:   String(card.querySelector('.run-active')?.checked ?? true),
     };
   });
+
+  return { saturday, runs };
 }
 
-// ── FETCH ─────────────────────────────────────────────────
-async function fetchSchedule() {
-  if (!scriptUrl) return;
-  return new Promise(resolve => {
-    const cb = 'rrAdminFetch_' + Date.now();
-    window[cb] = function(data) {
-      delete window[cb];
-      const old = document.getElementById('rr-admin-jsonp');
-      if (old) old.remove();
-      populateForm(data);
-      resolve();
-    };
-    const s = document.createElement('script');
-    s.id = 'rr-admin-jsonp';
-    s.src = scriptUrl + '?action=get&callback=' + cb;
-    s.onerror = () => { showToast('Could not load from Google Sheets', 'error'); resolve(); };
-    document.body.appendChild(s);
-  });
-}
-
+// ── POPULATE FORM ─────────────────────────────────────────
 function populateForm(data) {
-  // Saturday
   if (data.saturday) {
     const s = data.saturday;
-    setTimePicker(document.getElementById('sat-hour'), document.getElementById('sat-min'), document.getElementById('sat-ampm'), s.time || '8:00 AM');
+    setTimePicker(
+      document.getElementById('sat-hour'),
+      document.getElementById('sat-min'),
+      document.getElementById('sat-ampm'),
+      s.time || '8:00 AM'
+    );
     if (s.location) document.getElementById('sat-location').value = s.location;
-    if (s.notes)    document.getElementById('sat-notes').value = s.notes;
+    if (s.notes)    document.getElementById('sat-notes').value    = s.notes;
   }
-  // Other runs
-  document.getElementById('other-runs-list').innerHTML = '';
+
+  // Clear existing run cards
+  const list = document.getElementById('other-runs-list');
+  list.querySelectorAll('.admin-card').forEach(c => c.remove());
   document.getElementById('empty-state').style.display = '';
-  document.getElementById('other-runs-list').appendChild(document.getElementById('empty-state'));
+
   if (data.runs && data.runs.length) {
     data.runs.forEach(r => addRun(r));
   }
-  showToast('Schedule loaded ✓', 'success');
 }
 
-// ── SAVE ──────────────────────────────────────────────────
-async function saveSchedule() {
-  if (!scriptUrl) { showToast('Paste your Apps Script URL first', 'error'); return; }
-  const btn = document.getElementById('save-btn');
-  btn.disabled = true; btn.textContent = 'Saving…';
-
-  const payload = {
-    action: 'set',
-    saturday: {
-      time:     timeToString(document.getElementById('sat-hour'), document.getElementById('sat-min'), document.getElementById('sat-ampm')),
-      location: document.getElementById('sat-location').value,
-      notes:    document.getElementById('sat-notes').value,
-    },
-    runs: collectRuns(),
-  };
-
+// ── SAVE to localStorage ──────────────────────────────────
+function saveSchedule() {
+  const payload = collectSchedule();
   try {
-    const res = await fetch(scriptUrl, { method:'POST', body: JSON.stringify(payload) });
-    const result = await res.json();
-    if (result.status === 'ok') {
-      showToast('✅ Schedule published! Live on the site.', 'success');
-    } else {
-      showToast('Error: ' + (result.message || 'unknown'), 'error');
-    }
-  } catch(e) {
-    showToast('❌ Could not reach Google Sheets. Check the URL.', 'error');
-  } finally {
-    btn.disabled = false; btn.textContent = '💾 Save & Publish Schedule';
+    localStorage.setItem('rr_schedule', JSON.stringify(payload));
+    showToast('✅ Schedule saved! Click ⬇️ Download runs.json to publish.', 'success');
+  } catch (e) {
+    showToast('❌ Could not save to browser storage.', 'error');
   }
+}
+
+// ── DOWNLOAD runs.json ────────────────────────────────────
+function downloadJson() {
+  // Always save first so the downloaded file matches current state
+  const payload = collectSchedule();
+  localStorage.setItem('rr_schedule', JSON.stringify(payload));
+
+  const json = JSON.stringify(payload, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'runs.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('📥 runs.json downloaded — replace data/runs.json on the site!', 'success');
 }
 
 // ── TOAST ─────────────────────────────────────────────────
 function showToast(msg, type) {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = 'toast' + (type ? ' '+type : '');
+  t.className   = 'toast' + (type ? ' ' + type : '');
   requestAnimationFrame(() => t.classList.add('show'));
-  setTimeout(() => t.classList.remove('show'), 3500);
+  setTimeout(() => t.classList.remove('show'), 4000);
 }
 </script>
 </body>
