@@ -122,6 +122,57 @@ nav { background: var(--navy); padding: 0 2rem; display: flex; align-items: cent
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
 .photo-caption-static { font-size: 11px; color: var(--blue); font-weight: 600; text-align: center; }
 
+/* RACES */
+.races-grid { display: flex; flex-direction: column; gap: 12px; }
+.race-card { background: white; border: 1.5px solid #c8d8f0; border-radius: 14px; padding: 20px 22px; display: flex; align-items: flex-start; gap: 16px; transition: border-color .2s, transform .15s; }
+.race-card:hover { border-color: var(--mid); transform: translateY(-2px); }
+.race-date-block { background: var(--pale); border-radius: 10px; padding: 8px 14px; text-align: center; flex-shrink: 0; min-width: 56px; }
+.race-date-month { font-size: 11px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; }
+.race-date-day { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--navy); line-height: 1; }
+.race-info { flex: 1; min-width: 0; }
+.race-name { font-weight: 800; font-size: 16px; color: var(--text); margin-bottom: 4px; }
+.race-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+.race-badge { font-size: 11px; font-weight: 700; background: var(--pale); color: var(--navy); padding: 2px 9px; border-radius: 20px; }
+.race-badge.featured { background: #fff3d6; color: #9a5f00; }
+.race-detail-row { font-size: 13px; color: var(--muted); margin-bottom: 3px; line-height: 1.5; }
+.race-detail-row a { color: var(--navy); font-weight: 700; text-decoration: none; }
+.race-detail-row a:hover { text-decoration: underline; }
+.race-notes { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; line-height: 1.5; }
+.race-empty { text-align: center; padding: 32px; color: var(--muted); font-size: 14px; background: white; border-radius: 14px; border: 2px dashed #c8d8f0; }
+.submit-race-btn { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 2px solid var(--mid); color: var(--navy); border-radius: 30px; padding: 10px 22px; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .2s, border-color .2s; }
+.submit-race-btn:hover { background: var(--pale); border-color: var(--navy); }
+.submit-photo-btn { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 2px solid var(--mid); color: var(--navy); border-radius: 30px; padding: 10px 22px; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .2s, border-color .2s; margin-top: 14px; }
+.submit-photo-btn:hover { background: var(--pale); border-color: var(--navy); }
+
+/* MODALS */
+.modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(20,10,50,.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; }
+.modal-backdrop.open { display: flex; }
+.modal { background: white; border-radius: 20px; padding: 32px 28px; width: 100%; max-width: 480px; box-shadow: 0 24px 64px rgba(0,0,0,.25); max-height: 90vh; overflow-y: auto; position: relative; }
+.modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--navy); margin-bottom: 4px; }
+.modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; line-height: 1.6; }
+.modal-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--muted); line-height: 1; }
+.modal-close:hover { color: var(--text); }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+@media (max-width: 420px) { .modal-grid { grid-template-columns: 1fr; } }
+.modal-field { display: flex; flex-direction: column; gap: 4px; }
+.modal-field.full { grid-column: 1 / -1; }
+.modal-field label { font-size: 11px; font-weight: 700; color: var(--bark); text-transform: uppercase; letter-spacing: .5px; }
+.modal-field input, .modal-field textarea, .modal-field select { background: var(--cream); border: 1.5px solid #c0cce8; border-radius: 8px; padding: 9px 12px; font-family: 'Nunito', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color .2s; width: 100%; }
+.modal-field input:focus, .modal-field textarea:focus, .modal-field select:focus { border-color: var(--mid); background: white; }
+.modal-field textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
+.modal-file-label { display: flex; align-items: center; gap: 10px; background: var(--cream); border: 2px dashed #b0c4ee; border-radius: 10px; padding: 14px 16px; cursor: pointer; font-size: 13px; color: var(--muted); font-weight: 600; transition: border-color .2s, background .2s; }
+.modal-file-label:hover { border-color: var(--mid); background: var(--pale); }
+.modal-file-label input { display: none; }
+.modal-file-name { font-size: 12px; color: var(--navy); font-weight: 700; margin-top: 6px; min-height: 16px; }
+.modal-submit-btn { width: 100%; background: var(--navy); color: white; border: none; border-radius: 10px; padding: 13px; font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 6px; transition: background .2s; }
+.modal-submit-btn:hover { background: var(--blue); }
+.modal-submit-btn:disabled { background: #aab; cursor: not-allowed; }
+.modal-success { display: none; text-align: center; padding: 20px 0 8px; }
+.modal-success-icon { font-size: 42px; margin-bottom: 8px; }
+.modal-success-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--navy); margin-bottom: 6px; }
+.modal-success-sub { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.modal-note { font-size: 11px; color: var(--muted); margin-top: 10px; line-height: 1.5; text-align: center; }
+
 /* FOOTER */
 footer { background: var(--navy); color: #b0c8ee; text-align: center; padding: 28px 2rem; font-size: 13px; }
 footer a { color: var(--light); text-decoration: none; }
@@ -142,6 +193,7 @@ footer a { color: var(--light); text-decoration: none; }
   <div class="nav-logo">Ringoes Rampagers</div>
   <ul class="nav-links">
     <li><a href="#runs">Runs</a></li>
+    <li><a href="#races">Races</a></li>
     <li><a href="#join">Join Us</a></li>
     <li><a href="#connect">Connect</a></li>
     <li><a href="#photos">Photos</a></li>
@@ -301,11 +353,33 @@ footer a { color: var(--light); text-decoration: none; }
       <span class="link-label">Run Schedule</span>
       <span class="link-sub">Saturdays at Marion Clawson Park</span>
     </div>
+    <div class="link-card sm" onclick="document.getElementById('races').scrollIntoView({behavior:'smooth'})">
+      <span class="link-icon">&#127939;</span>
+      <span class="link-label">Races &amp; Events</span>
+      <span class="link-sub">Upcoming races for club members</span>
+    </div>
     <a class="link-card sm" href="https://ringoesrampagers.org">
       <span class="link-icon">&#127760;</span>
       <span class="link-label">This Website</span>
       <span class="link-sub">ringoesrampagers.org</span>
     </a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- RACES & EVENTS -->
+<div class="section" id="races">
+  <div class="section-title">Races &amp; Events</div>
+  <div class="section-line"></div>
+  <p style="font-size:14px; color:var(--muted); margin-bottom:20px; line-height:1.5;">
+    Upcoming races and events our members are running. Know of one we missed?
+  </p>
+  <div class="races-grid" id="races-grid">
+    <div class="race-empty" id="races-empty">Loading upcoming races…</div>
+  </div>
+  <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:4px;">
+    <button class="submit-race-btn" onclick="openModal('race-modal')">🏅 Submit a Race or Event</button>
   </div>
 </div>
 
@@ -326,6 +400,115 @@ footer a { color: var(--light); text-decoration: none; }
     </div>
     <div class="photo-placeholder-cell">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9883f2" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 6l1.5-2h3L15 6"/></svg>
+    </div>
+  </div>
+  <div style="margin-top:14px;">
+    <button class="submit-photo-btn" onclick="openModal('photo-modal')">📷 Submit a Photo</button>
+  </div>
+</div>
+
+<!-- RACE SUBMISSION MODAL -->
+<div class="modal-backdrop" id="race-modal" onclick="closeOnBackdrop(event,'race-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('race-modal')">&times;</button>
+    <div id="race-form-wrap">
+      <div class="modal-title">🏅 Submit a Race</div>
+      <div class="modal-sub">Know of an upcoming race or event? Send it our way and we'll add it to the site!</div>
+      <form id="race-submit-form" onsubmit="submitRace(event)" novalidate>
+        <div class="modal-grid">
+          <div class="modal-field full">
+            <label>Race / Event Name *</label>
+            <input type="text" id="rs-name" placeholder="e.g. Hunterdon Half Marathon" required>
+          </div>
+          <div class="modal-field">
+            <label>Date *</label>
+            <input type="date" id="rs-date" required>
+          </div>
+          <div class="modal-field">
+            <label>Distance / Type</label>
+            <select id="rs-distance">
+              <option value="">Select…</option>
+              <option>5K</option><option>10K</option><option>15K</option>
+              <option>Half Marathon</option><option>Marathon</option>
+              <option>Ultra</option><option>Trail Run</option>
+              <option>Triathlon</option><option>Other</option>
+            </select>
+          </div>
+          <div class="modal-field full">
+            <label>Location</label>
+            <input type="text" id="rs-location" placeholder="City, State or venue">
+          </div>
+          <div class="modal-field full">
+            <label>Registration Link</label>
+            <input type="url" id="rs-link" placeholder="https://…">
+          </div>
+          <div class="modal-field full">
+            <label>Notes (optional)</label>
+            <textarea id="rs-notes" placeholder="Anything else we should know? Local race, club discount code, etc."></textarea>
+          </div>
+          <div class="modal-field">
+            <label>Your Name</label>
+            <input type="text" id="rs-from-name" placeholder="Jane Smith">
+          </div>
+          <div class="modal-field">
+            <label>Your Email</label>
+            <input type="email" id="rs-from-email" placeholder="you@email.com">
+          </div>
+        </div>
+        <button type="submit" class="modal-submit-btn" id="race-submit-btn">Send to Admin</button>
+        <p class="modal-note">Submissions are reviewed before being added to the site.</p>
+      </form>
+    </div>
+    <div class="modal-success" id="race-success">
+      <div class="modal-success-icon">🏅</div>
+      <div class="modal-success-title">Race Submitted!</div>
+      <div class="modal-success-sub">Thanks! We'll review it and add it to the site soon.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO SUBMISSION MODAL -->
+<div class="modal-backdrop" id="photo-modal" onclick="closeOnBackdrop(event,'photo-modal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('photo-modal')">&times;</button>
+    <div id="photo-form-wrap">
+      <div class="modal-title">📷 Submit a Photo</div>
+      <div class="modal-sub">Got a great shot from a group run, race, or club event? Send it our way and we'll add it to the gallery!</div>
+      <form id="photo-submit-form" onsubmit="submitPhoto(event)" novalidate>
+        <div class="modal-grid">
+          <div class="modal-field">
+            <label>Your Name</label>
+            <input type="text" id="ps-name" placeholder="Jane Smith">
+          </div>
+          <div class="modal-field">
+            <label>Your Email</label>
+            <input type="email" id="ps-email" placeholder="you@email.com">
+          </div>
+          <div class="modal-field full">
+            <label>Caption / Description (optional)</label>
+            <input type="text" id="ps-caption" placeholder="Saturday group run, April 2025">
+          </div>
+          <div class="modal-field full">
+            <label>Photo File *</label>
+            <label class="modal-file-label" for="ps-file">
+              <span>📎</span> <span>Click to choose a photo (JPG, PNG)</span>
+              <input type="file" id="ps-file" accept="image/*" onchange="updateFileName(this,'ps-file-name')" required>
+            </label>
+            <div class="modal-file-name" id="ps-file-name"></div>
+          </div>
+          <div class="modal-field full">
+            <label>Message (optional)</label>
+            <textarea id="ps-message" placeholder="Anything you'd like to add…"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="modal-submit-btn" id="photo-submit-btn">Send Photo to Admin</button>
+        <p class="modal-note">Photos are reviewed before being added to the gallery. Max file size ~20MB.</p>
+      </form>
+    </div>
+    <div class="modal-success" id="photo-success">
+      <div class="modal-success-icon">📷</div>
+      <div class="modal-success-title">Photo Submitted!</div>
+      <div class="modal-success-sub">Thanks for sharing! We'll review it and add it to the gallery soon.</div>
     </div>
   </div>
 </div>
@@ -482,6 +665,185 @@ function loadSchedule() {
 }
 
 loadSchedule();
+loadRaces();
+
+// ── RACES ──────────────────────────────────────────────────────────────
+function loadRaces() {
+  fetch('data/races.json?v=' + Date.now())
+    .then(r => r.ok ? r.json() : Promise.reject('not found'))
+    .then(data => renderRaces(data.races || []))
+    .catch(() => renderRaces([]));
+}
+
+function renderRaces(races) {
+  const grid  = document.getElementById('races-grid');
+  const empty = document.getElementById('races-empty');
+  if (!grid) return;
+
+  // Filter to future/today only, sort by date ascending
+  const today = new Date(); today.setHours(0,0,0,0);
+  const future = races
+    .filter(r => r.active !== 'false')
+    .filter(r => !r.date || new Date(r.date + 'T00:00:00') >= today)
+    .sort((a, b) => (a.date || '9999') > (b.date || '9999') ? 1 : -1);
+
+  if (future.length === 0) {
+    empty.textContent = 'No upcoming races yet — check back soon, or submit one below!';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  future.forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'race-card';
+
+    // Date block
+    let monthStr = '', dayStr = '';
+    if (r.date) {
+      const d = new Date(r.date + 'T00:00:00');
+      monthStr = d.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+      dayStr   = d.getDate();
+    }
+    const dateBlock = r.date
+      ? `<div class="race-date-block"><div class="race-date-month">${monthStr}</div><div class="race-date-day">${dayStr}</div></div>`
+      : '';
+
+    // Badges
+    const badges = [r.distance, r.type].filter(Boolean).map(b =>
+      `<span class="race-badge${r.featured === 'true' ? ' featured' : ''}">${b}</span>`
+    ).join('');
+
+    // Details
+    const loc   = r.location ? `<div class="race-detail-row">📍 ${r.location}</div>` : '';
+    const link  = r.link     ? `<div class="race-detail-row">🔗 <a href="${r.link}" target="_blank" rel="noopener">Register / Info</a></div>` : '';
+    const notes = r.notes    ? `<div class="race-notes">${r.notes}</div>` : '';
+
+    card.innerHTML = `
+      ${dateBlock}
+      <div class="race-info">
+        <div class="race-name">${r.name || 'Unnamed Event'}</div>
+        <div class="race-meta">${badges}</div>
+        ${loc}${link}${notes}
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ── MODALS ─────────────────────────────────────────────────────────────
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeOnBackdrop(e, id) {
+  if (e.target === document.getElementById(id)) closeModal(id);
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-backdrop.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+function updateFileName(input, labelId) {
+  const label = document.getElementById(labelId);
+  if (!label) return;
+  label.textContent = input.files.length
+    ? Array.from(input.files).map(f => f.name).join(', ')
+    : '';
+}
+
+// ── WEB3FORMS helper ───────────────────────────────────────────────────
+const WEB3_KEY = '6684a662-bbb0-4e8f-9fba-c01fb649e53a';
+async function web3Submit(payload) {
+  const res  = await fetch('https://api.web3forms.com/submit', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body:    JSON.stringify({ access_key: WEB3_KEY, ...payload }),
+  });
+  const data = await res.json();
+  if (!data.success) throw new Error(data.message || 'Submission failed');
+}
+
+// ── SUBMIT RACE ────────────────────────────────────────────────────────
+async function submitRace(e) {
+  e.preventDefault();
+  const btn = document.getElementById('race-submit-btn');
+  const required = [document.getElementById('rs-name'), document.getElementById('rs-date')];
+  let valid = true;
+  required.forEach(el => {
+    if (!el.value.trim()) { el.style.borderColor = '#d63535'; valid = false; }
+    else el.style.borderColor = '';
+  });
+  if (!valid) return;
+
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  try {
+    await web3Submit({
+      subject:     'Race Submission — Ringoes Rampagers',
+      from_name:   document.getElementById('rs-from-name').value || 'Anonymous',
+      email:       document.getElementById('rs-from-email').value || 'noreply@example.com',
+      race_name:   document.getElementById('rs-name').value,
+      race_date:   document.getElementById('rs-date').value,
+      distance:    document.getElementById('rs-distance').value,
+      location:    document.getElementById('rs-location').value,
+      link:        document.getElementById('rs-link').value,
+      notes:       document.getElementById('rs-notes').value,
+    });
+    document.getElementById('race-form-wrap').style.display = 'none';
+    document.getElementById('race-success').style.display = 'block';
+  } catch (err) {
+    btn.textContent = 'Send to Admin'; btn.disabled = false;
+    btn.insertAdjacentHTML('afterend', '<p style="color:#d63535;font-size:13px;margin-top:8px;">Something went wrong. Please try again.</p>');
+  }
+}
+
+// ── SUBMIT PHOTO ───────────────────────────────────────────────────────
+async function submitPhoto(e) {
+  e.preventDefault();
+  const btn  = document.getElementById('photo-submit-btn');
+  const file = document.getElementById('ps-file');
+
+  if (!file.files.length) {
+    file.closest('.modal-field').querySelector('.modal-file-label').style.borderColor = '#d63535';
+    return;
+  }
+
+  btn.textContent = 'Sending…'; btn.disabled = true;
+
+  try {
+    // Convert image to base64 preview (first 3 chars = data type, rest = base64)
+    const b64 = await new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload  = () => res(reader.result);
+      reader.onerror = rej;
+      reader.readAsDataURL(file.files[0]);
+    });
+
+    // Web3Forms doesn't support binary file attachments via JSON,
+    // so we send the metadata + a note to email manually
+    await web3Submit({
+      subject:      'Photo Submission — Ringoes Rampagers',
+      from_name:    document.getElementById('ps-name').value || 'Anonymous',
+      email:        document.getElementById('ps-email').value || 'noreply@example.com',
+      caption:      document.getElementById('ps-caption').value,
+      message:      document.getElementById('ps-message').value,
+      filename:     file.files[0].name,
+      filesize_kb:  Math.round(file.files[0].size / 1024) + ' KB',
+      note:         'The submitter will need to email the photo directly — Web3Forms does not support file attachments. Reply to their email to request the file.',
+    });
+    document.getElementById('photo-form-wrap').style.display = 'none';
+    document.getElementById('photo-success').style.display = 'block';
+  } catch (err) {
+    btn.textContent = 'Send Photo to Admin'; btn.disabled = false;
+    btn.insertAdjacentHTML('afterend', '<p style="color:#d63535;font-size:13px;margin-top:8px;">Something went wrong. Please try again.</p>');
+  }
+}
 
 
 // ── PHOTOS — random rotating gallery, reads data/photos.json ──────────────

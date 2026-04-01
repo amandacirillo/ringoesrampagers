@@ -168,6 +168,11 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
 .toast.error{background:var(--red);}
 .toast.info{background:var(--bark);}
 
+/* ── RACE CARDS (admin) ── */
+.race-admin-card{background:white;border-radius:16px;border:1.5px solid #c8d8f0;padding:22px;margin-bottom:14px;}
+.race-admin-card .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.race-admin-card .card-name{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--navy);}
+
 /* ── SPINNER ── */
 @keyframes spin{to{transform:rotate(360deg)}}
 .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
@@ -287,6 +292,15 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
     <div class="empty-state" id="empty-state">No other runs this week. Hit "+ Add Run" to add a track workout or anything else.</div>
   </div>
 
+  <!-- RACES & EVENTS -->
+  <div class="section-header" style="margin-top:36px;">
+    <div class="section-label">🏅 Races &amp; Events</div>
+    <button class="add-run-btn" onclick="addRace()">+ Add Race</button>
+  </div>
+  <div id="races-admin-list">
+    <div class="empty-state" id="races-empty-state">No races added yet. Hit "+ Add Race" to add one.</div>
+  </div>
+
   <!-- PHOTOS -->
   <div class="section-header" style="margin-top:36px;">
     <div class="section-label">📸 Club Photos</div>
@@ -401,6 +415,57 @@ nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justif
   </div>
 </template>
 
+<!-- RACE CARD TEMPLATE -->
+<template id="race-card-tpl">
+  <div class="race-admin-card" data-id="">
+    <div class="card-top">
+      <div class="card-name">New Race</div>
+      <div class="card-actions">
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" class="race-active" checked>
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-lbl">Visible on site</span>
+        </div>
+        <button class="icon-btn delete" onclick="deleteRace(this)" title="Delete">🗑</button>
+      </div>
+    </div>
+    <div class="field-grid">
+      <div class="field full">
+        <label>Race / Event Name</label>
+        <input type="text" class="race-name-input" placeholder="e.g. Hunterdon Half Marathon">
+      </div>
+      <div class="field">
+        <label>Date</label>
+        <input type="date" class="race-date">
+      </div>
+      <div class="field">
+        <label>Distance / Type</label>
+        <select class="race-distance">
+          <option value="">Select…</option>
+          <option>5K</option><option>10K</option><option>15K</option>
+          <option>Half Marathon</option><option>Marathon</option>
+          <option>Ultra</option><option>Trail Run</option>
+          <option>Triathlon</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label>Location</label>
+        <input type="text" class="race-location" placeholder="City, State or venue">
+      </div>
+      <div class="field full">
+        <label>Registration / Info Link</label>
+        <input type="url" class="race-link" placeholder="https://…">
+      </div>
+      <div class="field full">
+        <label>Notes (optional)</label>
+        <textarea class="race-notes" placeholder="Club members running this, discount codes, etc."></textarea>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script>
 const PASSWORD = 'Rampagers123!';
 let runIdCounter = 0;
@@ -497,6 +562,7 @@ function init() {
     if (raw) stored = JSON.parse(raw);
   } catch {}
   populateForm(stored || DEFAULT_SCHEDULE);
+  initRaces();
   initPhotos();
 }
 
@@ -696,6 +762,9 @@ async function publishSchedule() {
       const err = await putRes.json();
       throw new Error(err.message || `HTTP ${putRes.status}`);
     }
+
+    // Also publish races.json
+    try { await publishRaces(); } catch(e) { console.warn('races publish skipped:', e); }
 
     btn.disabled = false;
     btn.innerHTML = '✅ Published!';
@@ -955,6 +1024,94 @@ async function deletePhoto(btn, name, sha) {
   }
 }
 
+
+// ── RACES ADMIN ──────────────────────────────────────────────────────
+let raceIdCounter = 0;
+let loadedRaces   = [];
+
+function initRaces() {
+  fetch('data/races.json?v=' + Date.now())
+    .then(r => r.ok ? r.json() : { races: [] })
+    .then(data => {
+      loadedRaces = data.races || [];
+      document.querySelectorAll('.race-admin-card').forEach(c => c.remove());
+      document.getElementById('races-empty-state').style.display = '';
+      loadedRaces.forEach(r => addRace(r));
+    })
+    .catch(() => {});
+}
+
+function addRace(data) {
+  const tpl   = document.getElementById('race-card-tpl');
+  const clone = tpl.content.cloneNode(true);
+  const card  = clone.querySelector('.race-admin-card');
+  card.dataset.id = 'race_' + (++raceIdCounter);
+
+  if (data) {
+    const f = (cls, val) => { const el = card.querySelector(cls); if (el && val != null) el.value = val; };
+    f('.race-name-input', data.name);
+    f('.race-date',       data.date);
+    f('.race-distance',   data.distance);
+    f('.race-location',   data.location);
+    f('.race-link',       data.link);
+    f('.race-notes',      data.notes);
+    const activeEl = card.querySelector('.race-active');
+    if (activeEl) activeEl.checked = (data.active !== 'false');
+    updateRaceCardName(card);
+  }
+
+  card.querySelector('.race-name-input').addEventListener('input', () => updateRaceCardName(card));
+  document.getElementById('races-admin-list').appendChild(card);
+  document.getElementById('races-empty-state').style.display = 'none';
+}
+
+function updateRaceCardName(card) {
+  const name = card.querySelector('.race-name-input')?.value || 'New Race';
+  const date = card.querySelector('.race-date')?.value || '';
+  card.querySelector('.card-name').textContent = name + (date ? '  ·  ' + date : '');
+}
+
+function deleteRace(btn) {
+  btn.closest('.race-admin-card').remove();
+  if (!document.querySelector('#races-admin-list .race-admin-card'))
+    document.getElementById('races-empty-state').style.display = '';
+}
+
+function collectRaces() {
+  return Array.from(document.querySelectorAll('#races-admin-list .race-admin-card')).map(card => ({
+    id:       card.dataset.id,
+    name:     card.querySelector('.race-name-input')?.value || '',
+    date:     card.querySelector('.race-date')?.value       || '',
+    distance: card.querySelector('.race-distance')?.value   || '',
+    location: card.querySelector('.race-location')?.value   || '',
+    link:     card.querySelector('.race-link')?.value       || '',
+    notes:    card.querySelector('.race-notes')?.value      || '',
+    active:   String(card.querySelector('.race-active')?.checked ?? true),
+  }));
+}
+
+async function publishRaces() {
+  const s = getGhSettings();
+  if (!s || !s.user || !s.repo || !s.token) return;
+  const payload = { races: collectRaces() };
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+  const apiUrl  = `https://api.github.com/repos/${s.user}/${s.repo}/contents/data/races.json`;
+
+  let sha = null;
+  const check = await fetch(`${apiUrl}?ref=${s.branch}`, {
+    headers: { 'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github+json' }
+  });
+  if (check.ok) sha = (await check.json()).sha;
+
+  const body = { message: 'Update races', content, branch: s.branch };
+  if (sha) body.sha = sha;
+  const res = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: { 'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error((await res.json()).message || 'races publish failed');
+}
 
 // ── PUBLISH PHOTO MANIFEST ────────────────────────────────
 // Writes data/photos.json so index.html can read the photo list
