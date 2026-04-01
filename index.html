@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ringoes Rampagers Running Club</title>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700&display=swap');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,6 +67,8 @@ nav { background: var(--navy); padding: 0 2rem; display: flex; align-items: cent
 .run-type { display: inline-block; background: var(--pale); color: var(--mid); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin: 6px 0 12px; }
 .run-type.soon { background: #eef0f5; color: #8890aa; }
 .run-detail { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 6px; line-height: 1.4; }
+.workout-detail { align-items: flex-start; }
+.workout-detail span { line-height: 1.7; }
 .run-icon { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
 
 /* ROUTE LINKS */
@@ -343,44 +344,67 @@ footer a { color: var(--light); text-decoration: none; }
 
 <script>
 // ============================================================
-// EMAILJS — paste your 3 keys here
+// Contact form — Web3Forms (free, no Outlook popup)
+// The access_key below routes submissions to amandacirillo13@gmail.com
+// Get your own free key at https://web3forms.com if needed
 // ============================================================
-const EMAILJS_PUBLIC_KEY  = 'pQhw78S57aMkvn9jb';   // Account → API Keys
-const EMAILJS_SERVICE_ID  = 'service_ghzd1jg';   // Email Services tab
-const EMAILJS_TEMPLATE_ID = 'template_jqraemx';  // Email Templates tab
+// Schedule loaded from data/runs.json
+// Update via admin.html → Download runs.json → replace data/runs.json
 // ============================================================
-// GOOGLE SHEETS — paste your Apps Script URL here
-// ============================================================
-const SCHEDULE_URL = 'https://script.google.com/macros/s/AKfycbymH5etcG4zuPY34ZaZatPhVZUkXJS3Hl_-KHV1QDQLJSbHQmSIOwWOdTNftgu-pMM0/exec';
-// ============================================================
-
-emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const btn = form.querySelector('button[type="submit"]');
+  const btn  = form.querySelector('button[type="submit"]');
+
+  // Client-side validation
   const required = form.querySelectorAll('[required]');
   let valid = true;
-  required.forEach(el => { if (!el.value.trim()) { el.style.borderColor='#d63535'; valid=false; } else { el.style.borderColor=''; } });
+  required.forEach(el => {
+    if (!el.value.trim()) { el.style.borderColor = '#d63535'; valid = false; }
+    else { el.style.borderColor = ''; }
+  });
   if (!valid) return;
-  btn.textContent = 'Sending…'; btn.disabled = true;
-  const params = {
-    from_name:  document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
-    from_email: document.getElementById('email').value,
-    phone:      document.getElementById('phone').value || 'Not provided',
-    distance:   document.getElementById('distance').value,
-    reason:     document.getElementById('reason').value,
-    pace:       document.getElementById('pace').value || 'Not provided',
-    to_email:   'amandacirillo13@gmail.com',
+
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  const payload = {
+    access_key:  '6684a662-bbb0-4e8f-9fba-c01fb649e53a',
+    subject:     'New Join Request — Ringoes Rampagers',
+    from_name:   document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
+    email:       document.getElementById('email').value,
+    phone:       document.getElementById('phone').value || 'Not provided',
+    distance:    document.getElementById('distance').value,
+    pace:        document.getElementById('pace') ? document.getElementById('pace').value : '',
+    reason:      document.getElementById('reason').value,
   };
+
   try {
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-    form.style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
+    const res  = await fetch('https://api.web3forms.com/submit', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body:    JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (data.success) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      throw new Error(data.message || 'Submission failed');
+    }
   } catch (err) {
-    btn.textContent = 'Request to Join'; btn.disabled = false;
-    alert('Sorry, something went wrong. Please email us directly at amandacirillo13@gmail.com');
+    btn.textContent = 'Request to Join';
+    btn.disabled = false;
+    // Show inline error — no Outlook popup
+    let errEl = document.getElementById('form-error');
+    if (!errEl) {
+      errEl = document.createElement('p');
+      errEl.id = 'form-error';
+      errEl.style.cssText = 'color:#d63535;font-size:13px;margin-top:10px;font-weight:600;';
+      btn.parentNode.insertBefore(errEl, btn.nextSibling);
+    }
+    errEl.textContent = 'Sorry, something went wrong. Please email amandacirillo13@gmail.com directly.';
   }
 }
 
@@ -400,7 +424,8 @@ function buildRunCard(run) {
     detailsHtml += `<div class="run-detail">${ICON_RUN} ${run.notes}</div>`;
   }
   if (run.workout) {
-    detailsHtml += `<div class="run-detail">${ICON_ARROW} <span><strong>Workout:</strong> ${run.workout}</span></div>`;
+    const workoutHtml = run.workout.replace(/\n/g, '<br>');
+    detailsHtml += `<div class="run-detail workout-detail">${ICON_ARROW} <span><strong>Workout:</strong><br>${workoutHtml}</span></div>`;
   }
 
   // Route links for Saturday
@@ -449,19 +474,12 @@ function applySchedule(data) {
 }
 
 function loadSchedule() {
-  if (SCHEDULE_URL === 'YOUR_APPS_SCRIPT_URL') return;
-  const cb = 'rrSched_' + Date.now();
-  window[cb] = function(data) {
-    try { applySchedule(data); } catch(e) { console.log('Schedule render error:', e); }
-    delete window[cb];
-    const el = document.getElementById('rr-jsonp');
-    if (el) el.remove();
-  };
-  const s = document.createElement('script');
-  s.id = 'rr-jsonp';
-  s.src = SCHEDULE_URL + '?action=get&callback=' + cb;
-  s.onerror = function() { console.log('Schedule load failed'); };
-  document.body.appendChild(s);
+  fetch('data/runs.json?v=' + Date.now())
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(data => {
+      try { applySchedule(data); } catch(e) { console.log('Schedule render error:', e); }
+    })
+    .catch(err => { console.log('Schedule load failed, using fallback card.', err); });
 }
 
 loadSchedule();
