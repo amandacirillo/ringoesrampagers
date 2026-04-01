@@ -4,5 +4,18 @@
     "location": "Marion Clawson Park, Ringoes",
     "notes": "Three routes available — pick your distance!"
   },
-  "runs": []
+  "runs": [
+    {
+      "id": "run_1",
+      "label": "Track Night",
+      "sortDate": "2026-04-07",
+      "day": "Tuesday",
+      "date": "Apr 7",
+      "time": "7:00 PM",
+      "location": "",
+      "notes": "",
+      "workout": "1mi warmup at 7pm (arrive earlier for longer warmup)\n7:10pm we begin intervals\n6x800 @ 5k pace\n400m recovery or 2 min rest\n1mi cooldown\n\nModified:\n2x800 with 400m/2min rest\n4x400 with 200m/1min rest",
+      "active": "true"
+    }
+  ]
 }
