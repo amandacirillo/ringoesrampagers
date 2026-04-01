@@ -9,6 +9,36 @@
       "link": "https://www.rvrr.org/events/training-run",
       "notes": "This is a fun run event with flexible distances ranging from 2.8mi to 34.6.  The paces are 7:30, 8:30, 9:30, 10:30, 12, and 15.  ",
       "active": "true"
+    },
+    {
+      "id": "race_2",
+      "name": "Pine Beach 5k",
+      "date": "2026-06-28",
+      "distance": "5K",
+      "location": "Pine Beach, NJ",
+      "link": "https://runsignup.com/Race/NJ/PineBeach/OceanRunningClubsPineBeach5k",
+      "notes": "A 5K that a few of us will be doing",
+      "active": "true"
+    },
+    {
+      "id": "race_3",
+      "name": "Clinton Township Country 15k",
+      "date": "2026-04-25",
+      "distance": "15K",
+      "location": "Clinton, NJ",
+      "link": "https://runsignup.com/Race/NJ/Lebanon/ClintonTownshipCountryRun15k5k",
+      "notes": "Our local 15k, there is also a 5k option",
+      "active": "true"
+    },
+    {
+      "id": "race_4",
+      "name": "FRSD 5k Color Run",
+      "date": "2026-05-17",
+      "distance": "5K",
+      "location": "Flemington, NJ",
+      "link": "https://www.zeffy.com/en-US/ticketing/2026-frsd-5k-color-runwalk?fbclid=IwY2xjawQ5_HZleHRuA2FlbQIxMABicmlkETE3a2lEczNVY3BETUVzM1Ywc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHkA_myN1D8ZarGREdbfzR-d9Tob6McGZSLpW1NUNOx4BnNdixUxZP0-mpGSP_aem_woQbxgK27sa6BUu7NAm8CQ",
+      "notes": "A family fun 5k for our local elementary and middle schools, volunteer positions also available!",
+      "active": "true"
     }
   ]
 }
