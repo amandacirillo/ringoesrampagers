@@ -857,6 +857,7 @@ async function uploadPhotos(files) {
     showToast(`⚠️ ${done} uploaded, ${errors.length} failed.`, 'error');
   }
   await loadPhotos(); // refresh grid
+  await publishPhotoManifest();
 }
 
 async function uploadSinglePhoto(file, s) {
@@ -946,10 +947,59 @@ async function deletePhoto(btn, name, sha) {
       document.getElementById('photo-empty').style.display = 'block';
 
     showToast(`🗑 "${name}" deleted.`, 'info');
+    await publishPhotoManifest();
   } catch (err) {
     btn.textContent = '🗑';
     btn.disabled = false;
     showToast('❌ Delete failed: ' + (err.message || 'unknown error'), 'error');
+  }
+}
+
+
+// ── PUBLISH PHOTO MANIFEST ────────────────────────────────
+// Writes data/photos.json so index.html can read the photo list
+// without needing the GitHub token (pure public fetch).
+async function publishPhotoManifest() {
+  const s = getGhSettings();
+  if (!s || !s.user || !s.repo || !s.token) return;
+
+  // Re-fetch the current photos list
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${s.user}/${s.repo}/contents/${PHOTOS_FOLDER}?ref=${s.branch}`,
+      { headers: { 'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github+json' } }
+    );
+    if (!res.ok) return;
+    const files = await res.json();
+    const names = files
+      .filter(f => /\.(jpe?g|png|gif|webp)$/i.test(f.name))
+      .map(f => f.name);
+
+    const manifestPath = 'data/photos.json';
+    const apiUrl = `https://api.github.com/repos/${s.user}/${s.repo}/contents/${manifestPath}`;
+    const jsonContent = btoa(unescape(encodeURIComponent(JSON.stringify(names, null, 2))));
+
+    // Get existing SHA
+    let sha = null;
+    const check = await fetch(`${apiUrl}?ref=${s.branch}`, {
+      headers: { 'Authorization': `token ${s.token}`, 'Accept': 'application/vnd.github+json' }
+    });
+    if (check.ok) sha = (await check.json()).sha;
+
+    const body = { message: 'Update photo manifest', content: jsonContent, branch: s.branch };
+    if (sha) body.sha = sha;
+
+    await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${s.token}`,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+  } catch (err) {
+    console.warn('Could not update photo manifest:', err);
   }
 }
 
