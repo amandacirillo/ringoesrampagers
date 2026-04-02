@@ -8,18 +8,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700&display=swap');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --navy: #703fd3;
-  --blue: #8a64d9;
-  --mid: #9883f2;
-  --light: #d5caed;
-  --pale: #d7d1f0;
-  --cream: #F5F7FC;
-  --sand: #EDF0F8;
-  --gold: #E8A020;
-  --goldd: #C47F0A;
-  --bark: #4A4060;
-  --text: #1A1A2E;
-  --muted: #5A5A7A;
+  --navy: #5b2ebd;
+  --blue: #7248d1;
+  --mid: #9370e8;
+  --light: #cbbff0;
+  --pale: #e8e3f8;
+  --cream: #f6f4fe;
+  --sand: #edeaf8;
+  --teal: #0eb8a0;
+  --teald: #0a8f7c;
+  --bark: #3d2d6b;
+  --text: #12102a;
+  --muted: #5e5480;
   --white: #FFFFFF;
 }
 body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
@@ -35,24 +35,24 @@ nav { background: var(--navy); padding: 0 2rem; display: flex; align-items: cent
 /* HERO */
 .hero { background: var(--navy); padding: 56px 2rem 52px; text-align: center; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(120deg, transparent, transparent 80px, rgba(255,255,255,0.015) 80px, rgba(255,255,255,0.015) 81px); pointer-events: none; }
-.hero-tag { display: inline-block; background: var(--gold); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+.hero-tag { display: inline-block; background: var(--teal); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
 .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 88px); color: var(--cream); line-height: 0.9; letter-spacing: 2px; margin-bottom: 10px; }
 .hero h1 span { color: var(--light); }
 .hero-sub { font-size: 16px; color: #b0c8ee; margin-bottom: 28px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.5; }
 .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.btn-primary { background: var(--gold); color: white; padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: transform .15s, background .2s; text-decoration: none; display: inline-block; }
-.btn-primary:hover { background: var(--goldd); transform: translateY(-1px); }
+.btn-primary { background: var(--teal); color: white; padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: transform .15s, background .2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: var(--teald); transform: translateY(-1px); }
 .btn-outline { background: transparent; color: var(--light); padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 14px; border: 2px solid var(--light); cursor: pointer; transition: background .2s, color .2s; text-decoration: none; display: inline-block; }
 .btn-outline:hover { background: var(--light); color: var(--navy); }
 
 /* SECTIONS */
 .section { padding: 52px 2rem; max-width: 860px; margin: 0 auto; }
 .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--navy); letter-spacing: 1px; margin-bottom: 4px; }
-.section-line { width: 48px; height: 4px; background: var(--gold); border-radius: 2px; margin-bottom: 28px; }
+.section-line { width: 48px; height: 4px; background: var(--teal); border-radius: 2px; margin-bottom: 28px; }
 .divider { height: 1px; background: #d0dcf0; max-width: 860px; margin: 0 auto; }
 
 /* EDIT BANNER */
-.edit-banner { background: #fffbe6; border: 1.5px dashed #e8a020; border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; font-size: 12px; color: #7a5800; line-height: 1.6; }
+.edit-banner { background: #fffbe6; border: 1.5px dashed #0eb8a0; border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; font-size: 12px; color: #7a5800; line-height: 1.6; }
 .edit-banner strong { font-weight: 700; }
 
 /* RUN CARDS */
@@ -393,14 +393,14 @@ footer a { color: var(--light); text-decoration: none; }
   <p style="font-size:14px; color:var(--muted); margin-bottom:20px; line-height:1.5;">Highlights from our runs, races, and post-run hangouts.</p>
   <div class="photo-grid" id="photo-grid">
     <div class="photo-placeholder-cell">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9883f2" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 6l1.5-2h3L15 6"/></svg>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9370e8" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 6l1.5-2h3L15 6"/></svg>
       <div class="photo-caption-static">Loading photos…</div>
     </div>
     <div class="photo-placeholder-cell">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9883f2" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 6l1.5-2h3L15 6"/></svg>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9370e8" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 6l1.5-2h3L15 6"/></svg>
     </div>
     <div class="photo-placeholder-cell">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9883f2" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 6l1.5-2h3L15 6"/></svg>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9370e8" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 6l1.5-2h3L15 6"/></svg>
     </div>
   </div>
   <div style="margin-top:14px;">
