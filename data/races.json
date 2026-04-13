@@ -49,6 +49,16 @@
       "link": "www.springlakefive.com",
       "notes": "Infamous 5mi run on Memorial Day Weekend!  ",
       "active": "true"
+    },
+    {
+      "id": "race_6",
+      "name": "JCC Dash & Splash 5k",
+      "date": "2026-05-16",
+      "distance": "5K",
+      "location": "Bridgewater, NJ",
+      "link": "https://runsignup.com/Race/NJ/Bridgewater/DashAndSplash3K5K?fbclid=IwY2xjawRJtZdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeWcevqc0Q8Bra-S00iVi5qXpXeZ17U5u-dFKMTQRQLsYwrugiVpiaBvz7es0_aem_9TSPDJd8uwZCV4TwwhQ9vQ",
+      "notes": "Pool party afterwards!",
+      "active": "true"
     }
   ]
 }
