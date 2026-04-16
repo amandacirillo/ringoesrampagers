@@ -8,13 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-04-15",
+      "sortDate": "2026-04-22",
       "day": "Wednesday",
-      "date": "Apr 15",
+      "date": "Apr 22",
       "time": "6:30 PM",
       "location": "Hunterdon Central HS",
       "notes": "",
-      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n2x1000 @ 10k pace\n400m recovery or 2 min rest\n2x200 @ fast pace\n200m recovery or 90 seconds\n1 minute rest, repeat full set\nBonus cash out: 400m at 10k\n1mi cooldown\n\nModified:\n1x1000 with 400m/2min rest\n2x200 with 200m/90 sec rest\nrepeat after 1 min rest",
+      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\nTBD\n1mi cooldown\n\nModified:\nTBD",
       "active": "true"
     }
   ]
