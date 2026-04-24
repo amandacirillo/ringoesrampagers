@@ -59,6 +59,16 @@
       "link": "https://runsignup.com/Race/NJ/Bridgewater/DashAndSplash3K5K?fbclid=IwY2xjawRJtZdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeWcevqc0Q8Bra-S00iVi5qXpXeZ17U5u-dFKMTQRQLsYwrugiVpiaBvz7es0_aem_9TSPDJd8uwZCV4TwwhQ9vQ",
       "notes": "Pool party afterwards!",
       "active": "true"
+    },
+    {
+      "id": "race_7",
+      "name": "Bridge to Bridge Relay Race",
+      "date": "2026-09-26",
+      "distance": "Other",
+      "location": "1112 River Road, Washington's Crossing, PA 18977",
+      "link": "https://runsignup.com/Race/Events/PA/WashingtonCrossing/Bridge2Bridge",
+      "notes": "Teams of 4 to 7, message in the group or post on Facebook to join or form a team!",
+      "active": "true"
     }
   ]
 }
