@@ -2,7 +2,7 @@
   "saturday": {
     "time": "8:00 AM",
     "location": "Marion Clawson Park, Ringoes",
-    "notes": "I know the weather looks a little wet tomorrow, but I'll still be there!  Four routes available — pick your distance!"
+    "notes": "Four routes available — pick your distance!"
   },
   "runs": [
     {
@@ -15,6 +15,18 @@
       "location": "Hunterdon Central HS",
       "notes": "",
       "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\nWorkout TBD\n1mi cooldown\n\nModified:\nTBD",
+      "active": "true"
+    },
+    {
+      "id": "run_2",
+      "label": "Special Event",
+      "sortDate": "2026-05-10",
+      "day": "Sunday",
+      "date": "TBD (5/10 or 5/24??)",
+      "time": "10:30 AM",
+      "location": "Unionville Winery",
+      "notes": "A loop around Hopewell/Sourlands, ending with some wine!  Families welcome.  Winery opens at noon, so this allows for about a 90 minute run.",
+      "workout": "",
       "active": "true"
     }
   ]
