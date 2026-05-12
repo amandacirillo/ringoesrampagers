@@ -8,13 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-05-06",
+      "sortDate": "2026-05-13",
       "day": "Wednesday",
-      "date": "May 6",
+      "date": "May 13",
       "time": "6:30 PM",
       "location": "Hunterdon Central HS",
       "notes": "",
-      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n4x800 (400m rest or 3 min)\nBroken mile (400@10k, 400@5k, 400@5k-10s, 400 AFAYC - 100m jog between each 400)\n1mi cooldown\n\nModified:\n2x800\nBroken mile (400@10k, 400@5k, 400@5k-10s, 400 AFAYC - 100m jog between each 400)",
+      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n1600 (800/4min), 1200 (600/3min), 1000 (400/2min), 800 (400/2min), 600 (200/1min), 400 (200/1min), 200\n1mi cooldown\n\nModified:\n1600 (800/4min), 1200 (800/4min), 800 (400/2min), 400",
       "active": "true"
     },
     {
