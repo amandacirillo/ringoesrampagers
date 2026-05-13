@@ -20,13 +20,13 @@
     {
       "id": "run_2",
       "label": "Special Event",
-      "sortDate": "2026-05-10",
+      "sortDate": "2026-05-24",
       "day": "Sunday",
-      "date": "TBD (5/10 or 5/24??)",
+      "date": "May 24",
       "time": "10:30 AM",
       "location": "Unionville Winery",
-      "notes": "A loop around Hopewell/Sourlands, ending with some wine!  Families welcome.  Winery opens at noon, so this allows for about a 90 minute run.",
-      "workout": "",
+      "notes": "A 7mi loop around Hopewell/Sourlands, ending with some wine!  Families welcome.  Winery opens at noon so we should all be finished around then.",
+      "workout": "https://onthegomap.com/s/rht6cg89",
       "active": "true"
     }
   ]
