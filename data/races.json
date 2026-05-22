@@ -21,46 +21,6 @@
       "active": "true"
     },
     {
-      "id": "race_3",
-      "name": "Clinton Township Country 15k",
-      "date": "2026-04-25",
-      "distance": "15K",
-      "location": "Clinton, NJ",
-      "link": "https://runsignup.com/Race/NJ/Lebanon/ClintonTownshipCountryRun15k5k",
-      "notes": "Our local 15k, there is also a 5k option",
-      "active": "true"
-    },
-    {
-      "id": "race_4",
-      "name": "FRSD 5k Color Run",
-      "date": "2026-05-17",
-      "distance": "5K",
-      "location": "Flemington, NJ",
-      "link": "https://www.zeffy.com/en-US/ticketing/2026-frsd-5k-color-runwalk?fbclid=IwY2xjawQ5_HZleHRuA2FlbQIxMABicmlkETE3a2lEczNVY3BETUVzM1Ywc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHkA_myN1D8ZarGREdbfzR-d9Tob6McGZSLpW1NUNOx4BnNdixUxZP0-mpGSP_aem_woQbxgK27sa6BUu7NAm8CQ",
-      "notes": "A family fun 5k for our local elementary and middle schools, volunteer positions also available!",
-      "active": "true"
-    },
-    {
-      "id": "race_5",
-      "name": "Spring Lake Five",
-      "date": "2026-05-23",
-      "distance": "Other",
-      "location": "Spring Lake, NJ",
-      "link": "www.springlakefive.com",
-      "notes": "Infamous 5mi run on Memorial Day Weekend!  ",
-      "active": "true"
-    },
-    {
-      "id": "race_6",
-      "name": "JCC Dash & Splash 5k",
-      "date": "2026-05-16",
-      "distance": "5K",
-      "location": "Bridgewater, NJ",
-      "link": "https://runsignup.com/Race/NJ/Bridgewater/DashAndSplash3K5K?fbclid=IwY2xjawRJtZdleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeWcevqc0Q8Bra-S00iVi5qXpXeZ17U5u-dFKMTQRQLsYwrugiVpiaBvz7es0_aem_9TSPDJd8uwZCV4TwwhQ9vQ",
-      "notes": "Pool party afterwards!",
-      "active": "true"
-    },
-    {
       "id": "race_7",
       "name": "Bridge to Bridge Relay Race",
       "date": "2026-09-26",
