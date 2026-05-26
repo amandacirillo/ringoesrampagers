@@ -8,13 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-05-20",
+      "sortDate": "2026-05-27",
       "day": "Wednesday",
-      "date": "CANCELLED DUE TO WEATHER",
+      "date": "May 27",
       "time": "6:30 PM",
       "location": "Hunterdon Central HS",
       "notes": "",
-      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n1600 (800/4min), 1200 (600/3min), 1000 (400/2min), 800 (400/2min), 600 (200/1min), 400 (200/1min), 200\n1mi cooldown\n\nModified:\n1600 (800/4min), 1200 (800/4min), 800 (400/2min), 400",
+      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n3x1200 (400, 2.5min), 4x400 (200, 1min)\n1mi cooldown\n\nModified:\n1200 (400), 2x800 (400), 2x400 (200)",
       "active": "true"
     },
     {
