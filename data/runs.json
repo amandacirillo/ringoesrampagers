@@ -16,18 +16,6 @@
       "notes": "",
       "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n3x1200 (400, 2.5min), 4x400 (200, 1min)\n1mi cooldown\n\nModified:\n1200 (400), 2x800 (400), 2x400 (200)",
       "active": "true"
-    },
-    {
-      "id": "run_2",
-      "label": "Special Event",
-      "sortDate": "2026-05-24",
-      "day": "Sunday",
-      "date": "May 24",
-      "time": "10:30 AM",
-      "location": "Unionville Winery",
-      "notes": "A 7mi loop around Hopewell/Sourlands, ending with some wine!  Families welcome.  Winery opens at noon so we should all be finished around then.",
-      "workout": "https://onthegomap.com/s/rht6cg89",
-      "active": "true"
     }
   ]
 }
