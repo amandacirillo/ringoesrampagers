@@ -8,13 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-05-27",
+      "sortDate": "2026-06-03",
       "day": "Wednesday",
-      "date": "May 27",
+      "date": "June 3",
       "time": "6:30 PM",
       "location": "Hunterdon Central HS",
       "notes": "",
-      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n3x1200 (400, 2.5min), 4x400 (200, 1min)\n1mi cooldown\n\nModified:\n1200 (400), 2x800 (400), 2x400 (200)",
+      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n6x800 (400, 2.5min), 1x400 (200, 1min)\n1mi cooldown\n\nModified:\n3x800 (400), 3x400 (200)",
       "active": "true"
     }
   ]
