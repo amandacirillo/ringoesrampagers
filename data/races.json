@@ -29,6 +29,16 @@
       "link": "https://runsignup.com/Race/Events/PA/WashingtonCrossing/Bridge2Bridge",
       "notes": "Teams of 4 to 7, message in the group or post on Facebook to join or form a team!",
       "active": "true"
+    },
+    {
+      "id": "race_4",
+      "name": "Richmond Marathon/Half Marathon/8k",
+      "date": "2026-11-14",
+      "distance": "Marathon",
+      "location": "Richmond, VA",
+      "link": "https://www.richmondmarathon.org/",
+      "notes": "Ryan is signed up for the full, Amanda is doing the half!",
+      "active": "true"
     }
   ]
 }
