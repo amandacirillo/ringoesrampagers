@@ -14,7 +14,7 @@
       "time": "6:30 PM",
       "location": "Hunterdon Central HS",
       "notes": "",
-      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n4x(600, 400, 200) with 400m recovery\n1mi cooldown\n\nModified:\n3x(600, 400, 200) with 400m recovery",
+      "workout": "1mi warmup at 6:30pm (arrive earlier for longer warmup)\n6:40pm we begin intervals\n200 (200), 400 (200), 600 (400), 800 (400), 1000 (400), 800 (400), 600 (200), 400 (200), 200\n1mi cooldown\n\nModified:\n200 (200), 400 (200), 600 (400), 800 (400), 1000 (400)",
       "active": "true"
     }
   ]
