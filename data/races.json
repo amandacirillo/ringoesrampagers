@@ -1,7 +1,7 @@
 {
   "races": [
     {
-      "id": "race_2",
+      "id": "race_1",
       "name": "Pine Beach 5k",
       "date": "2026-06-28",
       "distance": "5K",
@@ -11,7 +11,7 @@
       "active": "true"
     },
     {
-      "id": "race_3",
+      "id": "race_2",
       "name": "Bridge to Bridge Relay Race",
       "date": "2026-09-26",
       "distance": "Other",
@@ -21,7 +21,7 @@
       "active": "true"
     },
     {
-      "id": "race_4",
+      "id": "race_3",
       "name": "Richmond Marathon/Half Marathon/8k",
       "date": "2026-11-14",
       "distance": "Marathon",
