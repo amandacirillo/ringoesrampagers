@@ -29,6 +29,16 @@
       "link": "https://www.richmondmarathon.org/",
       "notes": "Ryan is signed up for the full, Amanda is signed up for the half",
       "active": "true"
+    },
+    {
+      "id": "race_4",
+      "name": "Duke's Holiday Half, 10k, and 5k",
+      "date": "2026-12-06",
+      "distance": "Half Marathon",
+      "location": "Bridgewater, NJ",
+      "link": "https://runsignup.com/Race/NJ/Bridgewater/TheDukeSHolidayHalfMarathon10KAnd5KRaceFest",
+      "notes": "This is the 2025 race, keeping my eyes open for 2026!",
+      "active": "true"
     }
   ]
 }
