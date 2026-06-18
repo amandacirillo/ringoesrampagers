@@ -39,6 +39,16 @@
       "link": "https://runsignup.com/Race/NJ/Bridgewater/TheDukeSHolidayHalfMarathon10KAnd5KRaceFest",
       "notes": "This is the 2025 race, keeping my eyes open for 2026!",
       "active": "true"
+    },
+    {
+      "id": "race_5",
+      "name": "Duck Donuts 5k/10k",
+      "date": "2026-11-01",
+      "distance": "10K",
+      "location": "Bridgewater, NJ",
+      "link": "https://runsignup.com/Race/NJ/Bridgewater/DUCKDONUT5KPresentedbyAtlanticHeathSystem",
+      "notes": "",
+      "active": "true"
     }
   ]
 }
