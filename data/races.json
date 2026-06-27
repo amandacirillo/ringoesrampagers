@@ -72,12 +72,12 @@
     },
     {
       "id": "race_8",
-      "name": "Philadelphia Half Marathon",
-      "date": "2026-11-21",
-      "distance": "Half Marathon",
+      "name": "Philadelphia Marathon",
+      "date": "2026-11-22",
+      "distance": "Marathon",
       "location": "Philadelphia, PA",
       "link": "https://www.philadelphiamarathon.com/",
-      "notes": "Chris is participating in the half on saturday",
+      "notes": "Chris is running the full marathon!",
       "active": "true"
     },
     {
