@@ -7,7 +7,7 @@
       "distance": "5K",
       "location": "Pine Beach, NJ",
       "link": "https://runsignup.com/Race/NJ/PineBeach/OceanRunningClubsPineBeach5k",
-      "notes": "A 5K that a few of us will be doing",
+      "notes": "A 5K that a few of us will be doing (Becca and Amanda)",
       "active": "true"
     },
     {
@@ -48,6 +48,46 @@
       "location": "Bridgewater, NJ",
       "link": "https://runsignup.com/Race/NJ/Bridgewater/DUCKDONUT5KPresentedbyAtlanticHeathSystem",
       "notes": "",
+      "active": "true"
+    },
+    {
+      "id": "race_6",
+      "name": "D&L RaceFest",
+      "date": "2026-11-15",
+      "distance": "Half Marathon",
+      "location": "Easton, PA",
+      "link": "https://race.delawareandlehigh.org/",
+      "notes": "Half Marathon, Full Marathon, Marathon Relay\nBecca is participating in the Half",
+      "active": "true"
+    },
+    {
+      "id": "race_7",
+      "name": "HomeFront Halloween 5k",
+      "date": "2026-10-25",
+      "distance": "5K",
+      "location": "Princeton, NJ",
+      "link": "https://runsignup.com/Race/NJ/Princeton/HomeFront5K",
+      "notes": "1mi walk also available",
+      "active": "true"
+    },
+    {
+      "id": "race_8",
+      "name": "Philadelphia Half Marathon",
+      "date": "2026-11-21",
+      "distance": "Half Marathon",
+      "location": "Philadelphia, PA",
+      "link": "https://www.philadelphiamarathon.com/",
+      "notes": "Chris is participating in the half on saturday",
+      "active": "true"
+    },
+    {
+      "id": "race_9",
+      "name": "The Jim Thorpe Area Running Festival",
+      "date": "2027-04-24",
+      "distance": "Marathon",
+      "location": "Jim Thorpe, PA",
+      "link": "https://runsignup.com/Race/PA/JimThorpe/TheJimThorpeAreaRunningFestival",
+      "notes": "Net downhill, Kevin is eyeing the half",
       "active": "true"
     }
   ]
