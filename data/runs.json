@@ -16,6 +16,18 @@
       "notes": "TIME TRIAL NIGHT",
       "workout": "6:45pm - 1600m\n6:55pm - 400m\n7:00pm - 100m\n7:05pm - 800m\n7:15pm - 200m\n7:20pm - 4x400m\n7:30pm - 4x100m",
       "active": "true"
+    },
+    {
+      "id": "run_2",
+      "label": "Track Night",
+      "sortDate": "",
+      "day": "Tuesday",
+      "date": "",
+      "time": "7:00 PM",
+      "location": "",
+      "notes": "",
+      "workout": "",
+      "active": "true"
     }
   ]
 }
