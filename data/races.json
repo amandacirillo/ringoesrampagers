@@ -1,16 +1,6 @@
 {
   "races": [
     {
-      "id": "race_1",
-      "name": "Pine Beach 5k",
-      "date": "2026-06-28",
-      "distance": "5K",
-      "location": "Pine Beach, NJ",
-      "link": "https://runsignup.com/Race/NJ/PineBeach/OceanRunningClubsPineBeach5k",
-      "notes": "A 5K that a few of us will be doing (Becca and Amanda)",
-      "active": "true"
-    },
-    {
       "id": "race_2",
       "name": "Bridge to Bridge Relay Race",
       "date": "2026-09-26",
