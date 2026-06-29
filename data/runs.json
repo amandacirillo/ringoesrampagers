@@ -8,25 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-06-23",
+      "sortDate": "2026-06-30",
       "day": "Tuesday",
-      "date": "June 23",
+      "date": "June 30",
       "time": "6:30 PM",
       "location": "Hunterdon Central HS",
       "notes": "TIME TRIAL NIGHT",
-      "workout": "6:45pm - 1600m\n6:55pm - 400m\n7:00pm - 100m\n7:05pm - 800m\n7:15pm - 200m\n7:20pm - 4x400m\n7:30pm - 4x100m",
-      "active": "true"
-    },
-    {
-      "id": "run_2",
-      "label": "Track Night",
-      "sortDate": "",
-      "day": "Tuesday",
-      "date": "",
-      "time": "7:00 PM",
-      "location": "",
-      "notes": "",
-      "workout": "",
+      "workout": "6:40pm first interval.  400s until you drop",
       "active": "true"
     }
   ]
