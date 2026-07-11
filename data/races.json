@@ -21,16 +21,6 @@
       "active": "true"
     },
     {
-      "id": "race_3",
-      "name": "Duke's Holiday Half, 10k, and 5k",
-      "date": "2026-12-06",
-      "distance": "Half Marathon",
-      "location": "Bridgewater, NJ",
-      "link": "https://runsignup.com/Race/NJ/Bridgewater/TheDukeSHolidayHalfMarathon10KAnd5KRaceFest",
-      "notes": "This is the 2025 race, keeping my eyes open for 2026!",
-      "active": "true"
-    },
-    {
       "id": "race_4",
       "name": "Duck Donuts 5k/10k",
       "date": "2026-11-01",
@@ -98,6 +88,16 @@
       "location": "Houston, TX",
       "link": "https://www.chevronhoustonmarathon.com/",
       "notes": "Patrick is running!",
+      "active": "true"
+    },
+    {
+      "id": "race_11",
+      "name": "Delaware River Loop Series",
+      "date": "2026-10-17",
+      "distance": "Other",
+      "location": "Stockton, NJ",
+      "link": "runsignup.com/DelawareRiverLoopSeries",
+      "notes": "Join us for Year 7 of the Delaware River Loop Series! Six guided group runs totaling 66 miles along the Delaware River, crossing historic bridges and canal towpaths from October through February. Registration is limited to 100 runners and always sells out. There is no waitlist, so don't wait!\n6.6mi, 7.1mi, 7.3mi, 11.1mi, 14.8mi, 18.9mi",
       "active": "true"
     }
   ]
