@@ -2,20 +2,7 @@
   "saturday": {
     "time": "8:00 AM",
     "location": "Marion Clawson Park, Ringoes",
-    "notes": "Four routes available — pick your distance!"
+    "notes": "Three routes available — pick your distance!"
   },
-  "runs": [
-    {
-      "id": "run_1",
-      "label": "Track Night",
-      "sortDate": "2026-07-14",
-      "day": "Tuesday",
-      "date": "July 14",
-      "time": "6:30 PM",
-      "location": "Hunterdon Central HS",
-      "notes": "",
-      "workout": "6:40pm first interval\n2x (1000m (400m), 400m (200m), 800m (400m), 400m) 400m+water between sets\n\nModified:\n1000, 400, 800, 400, 800, 400\n",
-      "active": "true"
-    }
-  ]
+  "runs": []
 }
