@@ -4,5 +4,18 @@
     "location": "Marion Clawson Park, Ringoes",
     "notes": "Three routes available — pick your distance!"
   },
-  "runs": []
+  "runs": [
+    {
+      "id": "run_1",
+      "label": "Track Night",
+      "sortDate": "2026-07-14",
+      "day": "Tuesday",
+      "date": "July 14",
+      "time": "6:30 PM",
+      "location": "",
+      "notes": "",
+      "workout": "2x(1000, 400, 800, 400)",
+      "active": "true"
+    }
+  ]
 }
