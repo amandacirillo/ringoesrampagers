@@ -8,13 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-07-14",
-      "day": "Tuesday",
-      "date": "July 14",
+      "sortDate": "2026-07-22",
+      "day": "Wednesday",
+      "date": "July 22",
       "time": "6:30 PM",
       "location": "",
       "notes": "",
-      "workout": "2x(1000, 400, 800, 400)",
+      "workout": "6:40pm first interval\n2x(800(400), 4x200 (200)) - water break between sets\n800(400), 8x100 (walk back)\n\nModified:\n800(400), 4x200 (200) - water break between sets\n800(400), 8x100 (walk back)\n",
       "active": "true"
     }
   ]
