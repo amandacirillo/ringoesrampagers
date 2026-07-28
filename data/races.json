@@ -2,16 +2,6 @@
   "races": [
     {
       "id": "race_1",
-      "name": "Pine Beach 5k",
-      "date": "2026-06-28",
-      "distance": "5K",
-      "location": "Pine Beach, NJ",
-      "link": "https://runsignup.com/Race/NJ/PineBeach/OceanRunningClubsPineBeach5k",
-      "notes": "A 5K that a few of us will be doing",
-      "active": "true"
-    },
-    {
-      "id": "race_2",
       "name": "Bridge to Bridge Relay Race",
       "date": "2026-09-26",
       "distance": "Other",
@@ -21,13 +11,93 @@
       "active": "true"
     },
     {
-      "id": "race_3",
+      "id": "race_2",
       "name": "Richmond Marathon/Half Marathon/8k",
       "date": "2026-11-14",
       "distance": "Marathon",
       "location": "Richmond, VA",
       "link": "https://www.richmondmarathon.org/",
       "notes": "Ryan is signed up for the full, Amanda is signed up for the half",
+      "active": "true"
+    },
+    {
+      "id": "race_3",
+      "name": "Duck Donuts 5k/10k",
+      "date": "2026-11-01",
+      "distance": "10K",
+      "location": "Bridgewater, NJ",
+      "link": "https://runsignup.com/Race/NJ/Bridgewater/DUCKDONUT5KPresentedbyAtlanticHeathSystem",
+      "notes": "",
+      "active": "true"
+    },
+    {
+      "id": "race_4",
+      "name": "D&L RaceFest",
+      "date": "2026-11-15",
+      "distance": "Half Marathon",
+      "location": "Easton, PA",
+      "link": "https://race.delawareandlehigh.org/",
+      "notes": "Half Marathon, Full Marathon, Marathon Relay\nBecca is participating in the Half",
+      "active": "true"
+    },
+    {
+      "id": "race_5",
+      "name": "HomeFront Halloween 5k",
+      "date": "2026-10-25",
+      "distance": "5K",
+      "location": "Princeton, NJ",
+      "link": "https://runsignup.com/Race/NJ/Princeton/HomeFront5K",
+      "notes": "1mi walk also available",
+      "active": "true"
+    },
+    {
+      "id": "race_6",
+      "name": "Philadelphia Marathon",
+      "date": "2026-11-22",
+      "distance": "Marathon",
+      "location": "Philadelphia, PA",
+      "link": "https://www.philadelphiamarathon.com/",
+      "notes": "Chris is running the full marathon!",
+      "active": "true"
+    },
+    {
+      "id": "race_7",
+      "name": "The Jim Thorpe Area Running Festival",
+      "date": "2027-04-24",
+      "distance": "Marathon",
+      "location": "Jim Thorpe, PA",
+      "link": "https://runsignup.com/Race/PA/JimThorpe/TheJimThorpeAreaRunningFestival",
+      "notes": "Net downhill, Kevin is eyeing the half",
+      "active": "true"
+    },
+    {
+      "id": "race_8",
+      "name": "New York City Marathon",
+      "date": "2026-11-01",
+      "distance": "Marathon",
+      "location": "Staten Island, NY",
+      "link": "https://www.nyrr.org/tcsnycmarathon",
+      "notes": "Patrick is running!",
+      "active": "true"
+    },
+    {
+      "id": "race_9",
+      "name": "Houston Marathon",
+      "date": "2027-01-17",
+      "distance": "Marathon",
+      "location": "Houston, TX",
+      "link": "https://www.chevronhoustonmarathon.com/",
+      "notes": "Patrick is running!",
+      "active": "true"
+    },
+    {
+      "id": "race_10",
+      "name": "Delaware River Loop Series",
+      "date": "2026-10-17",
+      "distance": "Other",
+      "location": "Stockton, NJ",
+      "link": "runsignup.com/DelawareRiverLoopSeries",
+      "notes": "Join us for Year 7 of the Delaware River Loop Series! Six guided group runs totaling 66 miles along the Delaware River, crossing historic bridges and canal towpaths from October through February. Registration is limited to 100 runners and always sells out. There is no waitlist, so don't wait!\n\nLoop #1 - 6.6 miles - October 17th, 8:45am\nStarting and finishing at Yardley Park and Ride / 1799 House. Yardley, PA.\n\nLoop #2 - 7.1 miles - November 7th, 8:30am\nStarting and finishing at Holcombe Jimison Farmstead Museum. Lambertville, NJ.\n\nLoop #3 - 7.3 miles - November 28th, 8:30am\nStarting and finishing at Bulls Island Recreation Area. Stockton, NJ.\n\nLoop #4 - 11.1 miles - December 19th, 8:15am\nStarting and finishing at Yardley Park and Ride / 1799 House. Yardley, PA.\n\nLoop #5 - 14.8 miles - January 9th, 8:00am\nStarting and finishing at Washington Crossing Park (NJ) / Nelson House. Titusville, NJ.\n\nLoop #6 - 18.9 miles - January 30th, 7:45am\nStarting and finishing at Bull's Island Recreation Area. Stockton, NJ.",
       "active": "true"
     }
   ]
