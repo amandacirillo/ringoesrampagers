@@ -8,13 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-08-04",
+      "sortDate": "2026-08-11",
       "day": "Tuesday",
-      "date": "Aug 4",
+      "date": "Aug 11",
       "time": "6:30 PM",
       "location": "",
       "notes": "",
-      "workout": "6:40pm first interval\nA-workout:\n1.5mi HM (3 min jog)\n1mi HM (3 min jog)\n800m HM\n8x100m strides\n\nB-workout:\n2x1mi HM (3 min jog)\n800m HM\n8x100m strides\n\nC-workout:\n4x1200m HM (3 min jog)\n8x100m strides",
+      "workout": "6:40pm first interval\nA-workout:\n8x600@3k-5k pace, 400m recovery\n\nB-workout:\n6x600@3k-5k pace, 400m recovery\n\nC-workout:\n5x600@3k-5k pace, 400m recovery",
       "active": "true"
     }
   ]
