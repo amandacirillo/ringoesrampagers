@@ -8,13 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-08-18",
+      "sortDate": "2026-08-25",
       "day": "Tuesday",
-      "date": "Aug 18",
+      "date": "Aug 25",
       "time": "6:30 PM",
       "location": "",
       "notes": "",
-      "workout": "6:40pm first interval\nA-workout:\n3 sets of:\n     4x200 AFAYC, 200m recovery\n     0.5mi between sets\n1.5mi @ HM\n\nB-workout:\n2 sets of:\n     5x200 AFAYC, 200m recovery\n     0.5mi between sets\n1mi @ HM\n\nC-workout:\n2 sets of:\n     4x200 AFAYC, 200m recovery\n     0.5mi between sets\n1200m @ HM",
+      "workout": "6:40pm first interval\nA-workout:\n6x1000 @ 3k-5k, 600m recovery\n\nB-workout:\n5x1000 @ 3k-5k, 600m recovery\n\nC-workout:\n4x1000 @ 3k-5k, 600m recovery",
       "active": "true"
     }
   ]
