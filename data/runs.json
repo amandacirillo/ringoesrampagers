@@ -16,6 +16,18 @@
       "notes": "",
       "workout": "6:40pm first interval\nA-workout:\n2 sets of:\n     5x300 AFAYC, 300m recovery\n     0.5mi between sets\n1mi @ HM\n\nB-workout:\n2 sets of:\n     4x300 AFAYC, 300m recovery\n     0.5mi between sets\n1200m @ HM\n\nC-workout:\n2 sets of:\n     3x300 AFAYC, 300m recovery\n     0.5mi between sets\n1200m @ HM",
       "active": "true"
+    },
+    {
+      "id": "run_2",
+      "label": "Special Event",
+      "sortDate": "2026-09-06",
+      "day": "Sunday",
+      "date": "9/6 Federal Twist Winery Run",
+      "time": "7:00 PM",
+      "location": "",
+      "notes": "Jump onto the canal from the winery and do a two bridge loop, about 7.5mi.  Or just do an out and back on the canal for however many miles you choose!",
+      "workout": "https://onthegomap.com/?route=01a05d20-7bef-7fbb-bd8a-329634b9231b&context=share",
+      "active": "true"
     }
   ]
 }
