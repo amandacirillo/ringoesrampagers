@@ -1,16 +1,6 @@
 {
   "races": [
     {
-      "id": "race_1",
-      "name": "Bridge to Bridge Relay Race",
-      "date": "2026-09-26",
-      "distance": "Other",
-      "location": "1112 River Road, Washington's Crossing, PA 18977",
-      "link": "https://runsignup.com/Race/Events/PA/WashingtonCrossing/Bridge2Bridge",
-      "notes": "Teams of 4 to 7, message in the group or post on Facebook to join or form a team!",
-      "active": "true"
-    },
-    {
       "id": "race_2",
       "name": "Richmond Marathon/Half Marathon/8k",
       "date": "2026-11-14",
@@ -98,6 +88,16 @@
       "location": "Stockton, NJ",
       "link": "runsignup.com/DelawareRiverLoopSeries",
       "notes": "Join us for Year 7 of the Delaware River Loop Series! Six guided group runs totaling 66 miles along the Delaware River, crossing historic bridges and canal towpaths from October through February. Registration is limited to 100 runners and always sells out. There is no waitlist, so don't wait!\n\nLoop #1 - 6.6 miles - October 17th, 8:45am\nStarting and finishing at Yardley Park and Ride / 1799 House. Yardley, PA.\n\nLoop #2 - 7.1 miles - November 7th, 8:30am\nStarting and finishing at Holcombe Jimison Farmstead Museum. Lambertville, NJ.\n\nLoop #3 - 7.3 miles - November 28th, 8:30am\nStarting and finishing at Bulls Island Recreation Area. Stockton, NJ.\n\nLoop #4 - 11.1 miles - December 19th, 8:15am\nStarting and finishing at Yardley Park and Ride / 1799 House. Yardley, PA.\n\nLoop #5 - 14.8 miles - January 9th, 8:00am\nStarting and finishing at Washington Crossing Park (NJ) / Nelson House. Titusville, NJ.\n\nLoop #6 - 18.9 miles - January 30th, 7:45am\nStarting and finishing at Bull's Island Recreation Area. Stockton, NJ.",
+      "active": "true"
+    },
+    {
+      "id": "race_11",
+      "name": "Flemington Turkey Trot",
+      "date": "2026-11-26",
+      "distance": "5K",
+      "location": "Flemington, NJ",
+      "link": "https://cea-nj.org/events/turkey-trot/",
+      "notes": "Team is setup, 'Ringoes Rampagers'",
       "active": "true"
     }
   ]
