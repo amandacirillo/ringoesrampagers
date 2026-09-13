@@ -8,13 +8,13 @@
     {
       "id": "run_1",
       "label": "Track Night",
-      "sortDate": "2026-09-08",
+      "sortDate": "2026-09-15",
       "day": "Tuesday",
-      "date": "Sept 8",
+      "date": "Sept 15",
       "time": "6:30 PM",
       "location": "",
       "notes": "",
-      "workout": "6:40pm first interval\nA-workout:\n9x600@3k-5k pace, 400m recovery\n\nB-workout:\n8x600@3k-5k pace, 400m recovery\n\nC-workout:\n8x600@3k-5k pace, 400m recovery",
+      "workout": "6:40pm first interval\nA-workout:\n2x1200m @3k-5k, 800m recovery\n2x1000m @3k-5k, 600m recovery\n2x800m @3k-5k, 400m recovery\n\nB-workout:\n4x1000m @3k-5k, 600m recovery\n2x800m @3k-5k, 400m recovery\n\nC-workout:\n3x1000m @3k-5k, 600m recovery\n3x800m @3k-5k, 400m recovery",
       "active": "true"
     }
   ]
