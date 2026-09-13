@@ -1,7 +1,7 @@
 {
   "races": [
     {
-      "id": "race_2",
+      "id": "race_1",
       "name": "Richmond Marathon/Half Marathon/8k",
       "date": "2026-11-14",
       "distance": "Marathon",
@@ -11,7 +11,7 @@
       "active": "true"
     },
     {
-      "id": "race_3",
+      "id": "race_2",
       "name": "Duck Donuts 5k/10k",
       "date": "2026-11-01",
       "distance": "10K",
@@ -21,7 +21,7 @@
       "active": "true"
     },
     {
-      "id": "race_4",
+      "id": "race_3",
       "name": "D&L RaceFest",
       "date": "2026-11-15",
       "distance": "Half Marathon",
@@ -31,7 +31,7 @@
       "active": "true"
     },
     {
-      "id": "race_5",
+      "id": "race_4",
       "name": "HomeFront Halloween 5k",
       "date": "2026-10-25",
       "distance": "5K",
@@ -41,7 +41,7 @@
       "active": "true"
     },
     {
-      "id": "race_6",
+      "id": "race_5",
       "name": "Philadelphia Marathon",
       "date": "2026-11-22",
       "distance": "Marathon",
@@ -51,7 +51,7 @@
       "active": "true"
     },
     {
-      "id": "race_7",
+      "id": "race_6",
       "name": "The Jim Thorpe Area Running Festival",
       "date": "2027-04-24",
       "distance": "Marathon",
@@ -61,7 +61,7 @@
       "active": "true"
     },
     {
-      "id": "race_8",
+      "id": "race_7",
       "name": "New York City Marathon",
       "date": "2026-11-01",
       "distance": "Marathon",
@@ -71,7 +71,7 @@
       "active": "true"
     },
     {
-      "id": "race_9",
+      "id": "race_8",
       "name": "Houston Marathon",
       "date": "2027-01-17",
       "distance": "Marathon",
@@ -81,7 +81,7 @@
       "active": "true"
     },
     {
-      "id": "race_10",
+      "id": "race_9",
       "name": "Delaware River Loop Series",
       "date": "2026-10-17",
       "distance": "Other",
@@ -91,7 +91,7 @@
       "active": "true"
     },
     {
-      "id": "race_11",
+      "id": "race_10",
       "name": "Flemington Turkey Trot",
       "date": "2026-11-26",
       "distance": "5K",
